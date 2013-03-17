@@ -17,9 +17,13 @@ The app is configured to use HTTP auth in prod. Make sure to set those ENVs in H
 
 Since this is a tiny app, please do use it to experiment with technologies.
 
-## Non-obvious places in the app:
+## Non-obvious places in the app
 * `config/initializers/gridhook.rb` handles incoming events.
 * `config/environments/production.rb` sets up HTTP auth.
+
+## Useful URLs
+* [Configure your SendGrid apps](http://sendgrid.com/app)
+* [SendGrid event docs](http://sendgrid.com/docs/API_Reference/Webhooks/event.html)
 
 ## Suggested things to play with
 * Ember
