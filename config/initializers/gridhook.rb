@@ -8,7 +8,6 @@ Gridhook.configure do |config|
 
     Rails.logger.info "GridHook event: #{as.inspect}"
 
-
     Event.create!(
       email:       as.delete(:email),
       name:        as.delete(:event),
