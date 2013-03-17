@@ -4,6 +4,18 @@ Gridhook.configure do |config|
 
   config.event_processor = proc do |event|
     # event is a Gridhook::Event object
-    Rails.logger.info "GridHook event: #{event.attributes.inspect}"
+    as = event.attributes
+
+    Rails.logger.info "GridHook event: #{as.inspect}"
+
+
+    Event.create!(
+      email:       as.delete(:email),
+      name:        as.delete(:event),
+      happened_at: event.timestamp,  # Parsed for us.
+      arguments:   as.delete(:arguments),
+      category:    as.delete(:category),
+      data:        as.except(:timestamp)
+    )
   end
 end
