@@ -2,7 +2,7 @@
 
 Rails 4 app on Heroku to log SendGrid webhook events.
 
-Very WiP. Currently only saves to DB and shows a count on the (unsecured9 root page; no UI beyond that.
+Very WiP. Currently only saves to DB and shows a count on the (unsecured) root page; no UI beyond that.
 
 But feel free to use `heroku run console` :)
 
