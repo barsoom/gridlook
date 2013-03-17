@@ -1,8 +1,5 @@
 Gridlook::Application.routes.draw do
-  root to: "welcome#index"
-
-  # TODO: Password ;)
-  get '/secretlist', to: 'events#index'
+  root to: 'events#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
