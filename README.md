@@ -2,9 +2,9 @@
 
 Rails 4 app on Heroku to log SendGrid webhook events.
 
-Very WiP. Currently only saves to DB and shows a count on the (unsecured) root page; no UI beyond that.
+See e.g. <http://gridlook.herokuapp.com/secretlist>.
 
-But feel free to use `heroku run console` :)
+Very WiP. Needs a proper UI. Feel free to use `heroku run console` :)
 
 Uses [gridhook](https://github.com/injekt/gridhook) to parse the events.
 
