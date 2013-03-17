@@ -8,6 +8,11 @@ Very WiP. Needs a proper UI. Feel free to use `heroku run console` :)
 
 Uses [gridhook](https://github.com/injekt/gridhook) to parse the events.
 
+Don't worry about deploy downtime etc: SendGrid will retry:
+
+> SendGrid expects a 200 HTTP response to the POST, otherwise the event notification will be retried.
+> If your URL returns a non-200 HTTP code it will be deferred and retried for 24 hours.
+
 Since this is a tiny app, please do use it to experiment with technologies.
 
 ## Suggested things to play with
