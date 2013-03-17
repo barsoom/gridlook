@@ -1,4 +1,7 @@
 Gridlook::Application.configure do
+  config.middleware.insert_after(::Rack::Lock, "::Rack::Auth::Basic", "Secret") do |u, pw|
+    false
+  end
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

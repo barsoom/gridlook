@@ -1,7 +1,6 @@
 Gridlook::Application.configure do
-
   config.middleware.insert_after(::Rack::Lock, "::Rack::Auth::Basic", "Secret") do |u, pw|
-      u == ENV['HTTP_USER'] && pw == ENV['HTTP_PASSWORD']
+    u == ENV['HTTP_USER'] && pw == ENV['HTTP_PASSWORD']
   end
 
   # Settings specified here will take precedence over those in config/application.rb.
@@ -25,7 +24,7 @@ Gridlook::Application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
+  config.serve_static_assets = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor  = :uglifier
