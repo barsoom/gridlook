@@ -8,11 +8,14 @@ Gridhook.configure do |config|
 
     Rails.logger.info "GridHook event: #{as.inspect}"
 
+    # We get these as a JSON string.
+    arguments = JSON.parse(as.delete(:arguments)).symbolize_keys
+
     Event.create!(
       email:       as.delete(:email),
       name:        as.delete(:event),
       happened_at: event.timestamp,  # Parsed for us.
-      arguments:   as.delete(:arguments),
+      arguments:   arguments,
       category:    as.delete(:category),
       data:        as.except(:timestamp)
     )
