@@ -4,7 +4,7 @@ Gridhook.configure do |config|
 
   config.event_processor = proc do |event|
     # event is a Gridhook::Event object
-    as = event.attributes
+    as = event.attributes.except(:environment, :"smtp-id")
 
     Rails.logger.info "GridHook event: #{as.inspect}"
 
