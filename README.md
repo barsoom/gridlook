@@ -24,6 +24,8 @@ heroku pg:promote HEROKU_POSTGRESQL_RED_URL  # Replace "RED" with whatever ENV w
 heroku config:set HTTP_USER=aladdin HTTP_PASSWORD=sesame
 # Configure Rails secret key (not actually used yet).
 heroku config:set SECRET_KEY_BASE=`rake secret`
+# Configure Rails time zone.
+heroku config:set RAILS_TZ=CET  # Whatever you prefer.
 
 # Deploy app.
 heroku push
@@ -65,5 +67,4 @@ Don't worry about deploy downtime etc: SendGrid will retry:
 * Slim templates
 * Nicer markup
 * Styling
-* Time zone
 * Verify that migration works on a new app (was iffy on this one)
