@@ -7,6 +7,7 @@ gem 'rails', '4.0.0.beta1'
 gem 'gridhook'
 gem 'slim'
 gem 'kaminari'
+gem 'ember-rails'
 
 group :development do
   gem 'sqlite3'

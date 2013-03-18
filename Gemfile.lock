@@ -10,6 +10,8 @@ GEM
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
+    active_model_serializers (0.7.0)
+      activemodel (>= 3.0)
     activemodel (4.0.0.beta1)
       activesupport (= 4.0.0.beta1)
       builder (~> 3.1.0)
@@ -27,13 +29,29 @@ GEM
       tzinfo (~> 0.3.33)
     arel (4.0.0.beta2)
     atomic (1.0.1)
+    barber (0.4.1)
+      ember-source
+      execjs
+      handlebars-source
     builder (3.1.4)
+    ember-data-source (0.0.5)
+      ember-source
+    ember-rails (0.11.1)
+      active_model_serializers
+      barber (>= 0.4.1)
+      ember-data-source
+      ember-source
+      execjs (>= 1.2)
+      railties (>= 3.1)
+    ember-source (0.0.2)
+      handlebars-source (>= 1.0.0.rc3, < 1.0.0.rc4)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
     gridhook (0.1.4)
       rails (>= 3.1.0)
       yajl-ruby (~> 1.1.0)
+    handlebars-source (1.0.0.rc3)
     hike (1.2.1)
     i18n (0.6.4)
     jquery-rails (2.2.1)
@@ -109,6 +127,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ember-rails
   gridhook
   jquery-rails
   kaminari
