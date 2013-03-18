@@ -59,3 +59,6 @@ Don't worry about deploy downtime etc: SendGrid will retry:
   * Creating one event works
   * UI works given events in DB
 * Frontend to browse/search properly
+* Slim templates
+* Nicer markup
+* Styling
