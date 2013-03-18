@@ -60,6 +60,7 @@ Don't worry about deploy downtime etc: SendGrid will retry:
   * Auth is applied in prod
   * Creating one event works
   * UI works given events in DB
+* Pagination
 * Frontend to browse/search properly
 * Slim templates
 * Nicer markup
