@@ -1,5 +1,6 @@
 <h3>
-  <i><%= link_to(event.email, email: event.email) %></i>
+  <i><%= event.email %></i>
+  <i>(<%= link_to("filter", email: event.email) %>)</i>
   <b><%= event.name %></b>
   <%= event.happened_at %>
 </h3>
