@@ -1,8 +1,10 @@
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: gridlook_development
   pool: 5
-  timeout: 5000
+  username: <%= ENV['USER'] %>
+  password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -30,7 +32,7 @@ test:
   encoding: unicode
   database: gridlook_test
   pool: 5
-  username: gridlook
+  username: <%= ENV['USER'] %>
   password:
 
 production:

@@ -13,6 +13,18 @@ group :development do
   gem 'sqlite3'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'konacha'
+  gem 'konacha-chai-matchers'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'database_cleaner'
+end
+
 group :production do
   gem 'pg'
 end
@@ -20,8 +32,10 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'slim'
+  gem 'handlebars_assets'
   gem 'sass-rails',   '~> 4.0.0.beta1'
-  #gem 'coffee-rails', '~> 4.0.0.beta1'
+  gem 'coffee-rails', '~> 4.0.0.beta1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', platforms: :ruby
