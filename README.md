@@ -63,3 +63,4 @@ Don't worry about deploy downtime etc: SendGrid will retry:
 * Nicer markup
 * Styling
 * Time zone
+* https
