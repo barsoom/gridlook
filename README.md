@@ -2,6 +2,8 @@
 
 Rails 4 app on Heroku to log SendGrid webhook events.
 
+## WiP notes
+
 See e.g. <http://gridlook.herokuapp.com>. HTTP auth details on wiki.
 
 Very WiP. Needs a proper UI. Feel free to use `heroku run console` :)
@@ -30,6 +32,9 @@ Since this is a tiny app, please do use it to experiment with technologies.
 * nosql (Mongo?)
 
 ## TODO
+* Tests
+  * Auth is applied in prod
+  * Creating one event works
+  * UI works given events in DB
 * Frontend to browse/search properly
-* Ensure downtime free deploys so we don't lose data
 * Use other APIs to check for stuff we missed in case we do lose data?
