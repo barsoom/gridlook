@@ -1,4 +1,4 @@
-<h2>Antal events:</h2>
+<h2>Total events:</h2>
 <p><%= number_with_delimiter count %></p>
 
 <%= form_tag "", method: :get do %>
@@ -10,6 +10,6 @@
   <%= button_to "Remove filter", {}, method: :get %>
 <% end %>
 
-<h2>Senaste events:</h2>
+<h2>Latest events:</h2>
 
 <%= render events %>
