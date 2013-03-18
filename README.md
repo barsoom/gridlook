@@ -65,3 +65,4 @@ Don't worry about deploy downtime etc: SendGrid will retry:
 * Nicer markup
 * Styling
 * Time zone
+* Verify that migration works on a new app (was iffy on this one)
