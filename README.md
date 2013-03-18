@@ -2,7 +2,7 @@
 
 Rails 4 app on Heroku to log SendGrid webhook events.
 
-Very WiP currently! Logs but needs a proper UI. Feel free to use `heroku run console` for now :)
+Very WiP currently! See [todos](#todo).
 
 Uses [gridhook](https://github.com/injekt/gridhook) to parse the events.
 
@@ -50,7 +50,7 @@ That should be it. SendGrid should start sending you events and your app should 
 
 ## Notes
 
-Don't worry about deploy downtime etc: SendGrid will retry:
+Don't worry about deploy downtime etc. SendGrid will retry:
 
 > SendGrid expects a 200 HTTP response to the POST, otherwise the event notification will be retried.
 > If your URL returns a non-200 HTTP code it will be deferred and retried for 24 hours.
