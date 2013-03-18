@@ -1,0 +1,17 @@
+h3
+  i = event.email
+  '
+  span (#{link_to("filter", email: event.email)})
+  '
+  b= event.name
+  '
+  = event.happened_at
+
+h4 Categories
+= debug event.category
+
+h4 Arguments
+= debug event.arguments
+
+h4 Other data
+= debug event.data

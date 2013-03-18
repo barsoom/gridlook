@@ -1,0 +1,17 @@
+h2 Total events:
+p= number_with_delimiter(count)
+
+= form_tag "", method: :get do
+  = label_tag :email, "Exact email:"
+  '
+  = text_field_tag :email, email
+  = button_tag "Filter", type: :submit
+
+- if email
+  = button_to "Remove filter", {}, method: :get
+
+h2 Events:
+
+= paginate events
+= render events
+= paginate events
