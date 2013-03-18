@@ -38,7 +38,9 @@ Now your app is deployed. The next step is to configure SendGrid. Follow [their 
 
 Don't forget to both configure and enable the app.
 
-The URL you configure should be something like `http://aladdin:sesame@my-gridlook.herokuapp.com/events`. Make sure to use your own values for HTTP auth username, password, and the Heroku app name.
+The URL you configure should be something like `https://aladdin:sesame@my-gridlook.herokuapp.com/events`. Make sure to use your own values for HTTP auth username, password, and the Heroku app name.
+
+As long as you use Heroku, you get https for free. If you use your own domain, you need to [set stuff up](https://devcenter.heroku.com/articles/ssl).
 
 That should be it. SendGrid should start sending you events and your app should start logging and showing them.
 
@@ -63,4 +65,3 @@ Don't worry about deploy downtime etc: SendGrid will retry:
 * Nicer markup
 * Styling
 * Time zone
-* https
