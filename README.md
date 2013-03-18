@@ -57,6 +57,11 @@ Don't worry about deploy downtime etc: SendGrid will retry:
 * `config/initializers/gridhook.rb` handles incoming events.
 * `config/environments/production.rb` sets up HTTP auth.
 
+## Development
+
+    script/bootstrap
+    # todo: add tests
+
 ## TODO
 * Tests
   * Auth is applied in prod
