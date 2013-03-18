@@ -1,6 +1,15 @@
 <h2>Antal events:</h2>
 <p><%= number_with_delimiter count %></p>
 
+<%= form_tag "", method: :get do %>
+  <%= text_field_tag :email, email %>
+  <%= button_tag "Filter", type: :submit %>
+<% end %>
+
+<% if email %>
+  <%= button_to "Remove filter", {}, method: :get %>
+<% end %>
+
 <h2>Senaste events:</h2>
 
 <%= render events %>

@@ -1,8 +1,11 @@
 class EventsController < ApplicationController
   def index
+    email = params[:email].to_s.strip.presence
+
     render locals: {
       count:  Event.count,
-      events: Event.recent(100)
+      email: email,
+      events: Event.email(email).recent(100)
     }
   end
 end
