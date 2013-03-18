@@ -16,6 +16,8 @@ Create and set up a Heroku app:
 heroku create my-gridlook  # Choose a better name.
 
 # Set up DB per https://devcenter.heroku.com/articles/heroku-postgresql
+# If you're not cheap and know you'll need more than you get with the free plan,
+# you might want to set up another plan and save yourself the bother of a plan migration.
 heroku addons:add heroku-postgresql:dev
 heroku config | grep HEROKU_POSTGRESQL  # See what ENV was used for this DB.
 heroku pg:promote HEROKU_POSTGRESQL_RED_URL  # Replace "RED" with whatever ENV was used.
