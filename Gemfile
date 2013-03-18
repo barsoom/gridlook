@@ -5,6 +5,7 @@ ruby '1.9.3'
 gem 'rails', '4.0.0.beta1'
 
 gem 'gridhook'
+gem 'kaminari'
 
 group :development do
   gem 'sqlite3'

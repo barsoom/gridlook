@@ -11,6 +11,8 @@
   <%= button_to "Remove filter", {}, method: :get %>
 <% end %>
 
-<h2>Latest events:</h2>
+<h2>Events:</h2>
 
+<%= paginate events %>
 <%= render events %>
+<%= paginate events %>

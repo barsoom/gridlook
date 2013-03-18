@@ -11,8 +11,8 @@ class Event < ActiveRecord::Base
     end
   end
 
-  def self.recent(count)
+  def self.recent(page, per)
     order("happened_at DESC, id DESC").
-      limit(count)
+      page(page).per(per)
   end
 end
