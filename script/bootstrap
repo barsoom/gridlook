@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+system "mkdir -p tmp"
+
+def bundler_installed?
+  system("which bundle 1> /dev/null") && `bundle -v`.include?("Bundler version")
+end
+
+unless bundler_installed?
+  system("gem install bundler --no-ri --no-rdoc
+") || exit(1)
+end
+
+system("bundle") || exit(1)
