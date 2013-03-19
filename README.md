@@ -62,7 +62,7 @@ Don't worry about deploy downtime etc. SendGrid will retry:
 ## Development
 
     script/bootstrap
-    rake app:reset
+    rake db:setup
     rake  # Run tests
 
 ## TODO
