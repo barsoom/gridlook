@@ -6,11 +6,11 @@ describe Event do
       Event.new(category: ["hello#world", "x#y"]).mailer_action.should == "hello#world"
     end
 
-    it "handles having no mailer action category" do
+    it "is nil with no mailer action category" do
       Event.new(category: ["hello"]).mailer_action.should be_nil
     end
 
-    it "handles having no categories" do
+    it "is nil with no categories" do
       Event.new(category: nil).mailer_action.should be_nil
     end
   end
