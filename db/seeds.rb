@@ -4,11 +4,11 @@
 if Rails.env.development?
 
   def local
-    %w[foo bar baz].sample
+    %w[fish dog cat camel horse cow capybara anteater badger badger badger badger mushroom mushroom].sample
   end
 
   def host
-    %w[example.com bananas.com].sample
+    %w[example.com bananas.com apples.com oranges.com grapes.com].sample
   end
 
   def event
@@ -23,7 +23,7 @@ if Rails.env.development?
   end
 
   def categories
-    %w[one two three four five six].sample(rand(3))
+    %w[FooMailer#fooed BarMailer#bared BazMailer#bazed].sample
   end
 
   250.times do |i|
