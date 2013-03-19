@@ -23,7 +23,7 @@ if Rails.env.development?
   end
 
   def categories
-    %w[FooMailer#fooed BarMailer#bared BazMailer#bazed].sample
+    %w[FooMailer#fooed BarMailer#bared BazMailer#bazed].sample(1)
   end
 
   250.times do |i|
