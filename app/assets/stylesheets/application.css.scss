@@ -12,9 +12,12 @@
  *= require_tree .
  */
 
+$block-vmargin: 30px;
+$gray: #ccc;
+
 body {
   font-family: 'Helvetica Neue', Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   padding: 15px 20px;
   background: #f9f9fa;
   color: #2d3238;
@@ -35,7 +38,7 @@ footer {
   a {
     color: inherit;
     text-decoration: none;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid $gray;
   }
 }
 
@@ -48,7 +51,7 @@ h2 {
 }
 
 .filter-form {
-  margin: 30px 0;
+  margin: $block-vmargin 0;
 
   label {
     font-weight: 600;
@@ -61,5 +64,21 @@ h2 {
   width: 20em;
 }
 
-.remove-filter {
+.events-table {
+  min-width: 700px;
+  margin: $block-vmargin 0;
+  border-collapse: collapse;
+
+  tr.main-data td {
+    border-top: 1px solid $gray;
+    padding-top: 22px;
+  }
+
+  tr.extra-data td {
+    padding-bottom: 15px;
+  }
+
+  td.email {
+    font-weight: bold;
+  }
 }

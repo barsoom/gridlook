@@ -1,17 +1,12 @@
-h3
-  i = event.email
-  '
-  span (#{link_to("filter", email: event.email)})
-  '
-  b= event.name
-  '
-  = event.happened_at
+tr.main-data
+  td.filter= link_to("filter", email: event.email)
+  td.email
+    = event.email
+  td.happened-at= event.happened_at
+  td.event= event.name
+tr.extra-data
+  td colspan=4
 
-h4 Categories
-= debug event.category
-
-h4 Arguments
-= debug event.arguments
-
-h4 Other data
-= debug event.data
+    = data_if_present event.category, "Categories"
+    = data_if_present event.arguments, "Arguments"
+    = data_if_present event.data, "Other data"

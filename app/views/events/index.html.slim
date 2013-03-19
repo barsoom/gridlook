@@ -10,6 +10,11 @@
 - if email
   .remove-filter= button_to "Remove filter", {}, method: :get
 
-= paginate events
-= render events
-= paginate events
+- if events.any?
+  = paginate events
+
+  table.events-table= render events
+
+  = paginate events
+- else
+  p No events :(
