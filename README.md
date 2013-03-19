@@ -2,7 +2,10 @@
 
 Rails 4 app on Heroku to log SendGrid webhook events.
 
-Very WiP currently! See [todos](#todo).
+It improves on SendGrid's email activity page in these ways:
+
+  * The history is not truncated (unless you truncate it yourself)
+  * Filtering on an address is a GET with a query parameter, so you can link from internal systems
 
 Uses [gridhook](https://github.com/injekt/gridhook) to parse the events.
 
