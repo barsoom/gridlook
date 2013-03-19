@@ -14,4 +14,15 @@ describe Event do
       Event.new(category: nil).mailer_action.should be_nil
     end
   end
+
+  describe ".first_time" do
+    it "is the time of the earliest event" do
+      early_time = 2.days.ago
+      later_time = 1.day.ago
+      Event.create!(happened_at: later_time)
+      Event.create!(happened_at: early_time)
+
+      Event.first_time.should == early_time
+    end
+  end
 end

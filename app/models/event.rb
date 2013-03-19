@@ -16,6 +16,10 @@ class Event < ActiveRecord::Base
       page(page).per(per)
   end
 
+  def self.first_time
+    minimum(:happened_at)
+  end
+
   def mailer_action
     Array(category).find { |c| c.include?("#") }
   end
