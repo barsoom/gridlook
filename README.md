@@ -69,10 +69,10 @@ Non-obvious places in the app:
     rake  # Run tests
 
 ## TODO
+
 * Tests
   * Auth is applied in prod
   * Creating one event works
-* Nicer markup
-* Styling
 * Verify that migration works on a new app (was iffy on this one)
 * Ruby 2?
+* Show mailer name and args based on category/argument conventions?
