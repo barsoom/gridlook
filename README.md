@@ -83,4 +83,5 @@ Non-obvious places in the app:
   * Creating one event works
 * Verify that migration works on a new app (was iffy on this one)
 * Ruby 2?
-* Show mailer name and args based on category/argument conventions?
+* Icons
+* "Arguments" isn't a SendGrid thing
