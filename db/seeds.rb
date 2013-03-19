@@ -2,7 +2,6 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
 if Rails.env.development?
-
   def local
     %w[foo bar baz].sample
   end
