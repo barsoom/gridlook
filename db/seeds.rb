@@ -14,7 +14,7 @@ if Rails.env.development?
   def event
     %w[
       processed dropped delivered deferred bounce
-      open click spam_report unsubscribe
+      open click spamreport unsubscribe
     ].sample
   end
 
