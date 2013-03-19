@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+#
+# Command to run the specs the correct way when triggered from the turbux vim plugin.
+
+path = ARGV.first
+
+if path.start_with?('spec/javascripts')
+  spec_name = (path[/javascripts\/(.+?)\./] && $1)
+  command = "rake konacha:run SPEC=#{spec_name}"
+else
+  rails_spec = path.start_with?("spec/") || path.include?('/spec/')
+
+  command = "rspec --color --tty"
+  command += " #{path}"
+end
+
+exit(1) unless system(command)

@@ -24,4 +24,6 @@ Gridlook::Application.configure do
 
   # Debug mode disables concatenation and preprocessing of assets.
   config.assets.debug = true
+
+  config.ember.variant = :development
 end
