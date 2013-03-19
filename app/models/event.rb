@@ -17,7 +17,8 @@ class Event < ActiveRecord::Base
   end
 
   def self.first_time
-    minimum(:happened_at)
+    time = minimum(:happened_at)
+    time && time.in_time_zone
   end
 
   def mailer_action

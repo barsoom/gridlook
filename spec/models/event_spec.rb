@@ -24,5 +24,14 @@ describe Event do
 
       Event.first_time.should == early_time
     end
+
+    it "is in the app-local time zone" do
+      Event.create!(happened_at: Time.now)
+      Event.first_time.zone.should == Time.zone.name
+    end
+
+    it "handles nil" do
+      Event.first_time.should be_nil
+    end
   end
 end
