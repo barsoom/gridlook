@@ -1,14 +1,14 @@
-h2 Total events:
-p= number_with_delimiter(count)
+.stats
+  p Total events: #{number_with_delimiter(count)}
 
-= form_tag "", method: :get do
+= form_tag "", method: :get, class: "filter-form" do
   = label_tag :email, "Exact email:"
   '
-  = text_field_tag :email, email
+  = email_field_tag :email, email, class: "filter-form-email"
   = button_tag "Filter", type: :submit
 
 - if email
-  = button_to "Remove filter", {}, method: :get
+  .remove-filter= button_to "Remove filter", {}, method: :get
 
 = paginate events
 = render events
