@@ -68,7 +68,6 @@ Don't worry about deploy downtime etc. SendGrid will retry:
 * Tests
   * Auth is applied in prod
   * Creating one event works
-* Local seed data
 * Nicer markup
 * Styling
 * Verify that migration works on a new app (was iffy on this one)
