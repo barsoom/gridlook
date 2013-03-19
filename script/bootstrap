@@ -11,3 +11,5 @@ unless bundler_installed?
 end
 
 system("bundle") || exit(1)
+
+system("rake db:setup")
