@@ -44,18 +44,21 @@ footer {
 
 .stats {
   margin-top: -10px;
+  .stat {
+    margin: 5px 0;
+  }
 }
 
 h2 {
   font-weight: normal;
 }
 
+b, strong, label {
+  font-weight: 600;
+}
+
 .filter-form {
   margin: $block-vmargin 0;
-
-  label {
-    font-weight: 600;
-  }
 }
 
 .filter-form-email {

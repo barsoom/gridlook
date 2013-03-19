@@ -10,6 +10,7 @@ class EventsController < ApplicationController
       format.html {
         render locals: {
           count:  Event.count,
+          first_time: Event.minimum(:happened_at),
           email: email,
           events: events
         }
