@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
     if email
       where(email: email)
     else
-      scoped
+      all
     end
   end
 
