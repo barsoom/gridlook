@@ -50,12 +50,15 @@ That should be it. SendGrid should start sending you events and your app should 
 
 ## Notes
 
+A Ember UI is in progress, so there are parts in the project yet to hook up.
+
 Don't worry about deploy downtime etc. SendGrid will retry:
 
 > SendGrid expects a 200 HTTP response to the POST, otherwise the event notification will be retried.
 > If your URL returns a non-200 HTTP code it will be deferred and retried for 24 hours.
 
-## Non-obvious places in the app
+Non-obvious places in the app:
+
 * `config/initializers/gridhook.rb` handles incoming events.
 * `config/environments/production.rb` sets up HTTP auth.
 
