@@ -3,7 +3,11 @@ tr.main-data
   td.email
     = event.email
   td.happened-at= event.happened_at
-  td.event= event.name
+  td.event
+    - if event.mailer_action
+      b= event.mailer_action
+      '
+    = event.name
 tr.extra-data
   td colspan=4
 

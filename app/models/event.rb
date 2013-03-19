@@ -15,4 +15,8 @@ class Event < ActiveRecord::Base
     order("happened_at DESC, id DESC").
       page(page).per(per)
   end
+
+  def mailer_action
+    Array(category).find { |c| c.include?("#") }
+  end
 end

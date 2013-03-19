@@ -6,6 +6,7 @@ It improves on SendGrid's email activity page in these ways:
 
   * The history is not truncated (unless you truncate it yourself)
   * Filtering on an address is a GET with a query parameter, so you can link from internal systems
+  * Shows more useful information if you follow some conventions
 
 Uses [gridhook](https://github.com/injekt/gridhook) to parse the events.
 
@@ -50,6 +51,10 @@ The URL you configure should be something like `https://aladdin:sesame@my-gridlo
 As long as you use Heroku, you get https for free. If you use your own domain, you need to [set stuff up](https://devcenter.heroku.com/articles/ssl).
 
 That should be it. SendGrid should start sending you events and your app should start logging and showing them.
+
+## More information with conventions
+
+If you [configure your mails](http://henrik.nyh.se/2012/08/sendgrid-metadata-and-rails/) to include the mailer as a category containing a "#", e.g. "CustomerMailer#signup", that information will be shown at the top.
 
 ## Notes
 
