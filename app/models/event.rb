@@ -3,9 +3,6 @@ class Event < ActiveRecord::Base
   serialize :category
   serialize :unique_args
 
-  # TODO: remove
-  serialize :arguments
-
   def self.email(email)
     if email
       where(email: email)

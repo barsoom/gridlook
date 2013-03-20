@@ -87,5 +87,4 @@ Non-obvious places in the app:
 * Verify that migration works on a new app (was iffy on this one)
 * Ruby 2?
 * Icons
-* "Arguments" isn't a SendGrid thing
 * Kaminari causes warnings (during test run)

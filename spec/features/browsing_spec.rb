@@ -38,7 +38,7 @@ describe "Browsing" do
       email: email,
       name: "sent",
       happened_at: Time.now,
-      arguments: { hello: "there" },
+      unique_args: { hello: "there" },
       category: [ "one", "two" ],
       data: { url: "http://example.com/foo" }
     )
