@@ -77,8 +77,14 @@ b, strong, label {
     padding-top: 22px;
   }
 
-  tr.extra-data td {
-    padding-bottom: 15px;
+  tr.extra-data {
+
+    td {
+      padding-bottom: 15px;
+    }
+    h4 {
+      margin-bottom: 5px;
+    }
     p {
       margin: 5px 0;
     }

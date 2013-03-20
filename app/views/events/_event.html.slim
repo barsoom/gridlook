@@ -9,8 +9,9 @@ tr.main-data
       '
     = event.name
 tr.extra-data
-  td colspan=4
+  td
+  td colspan=3
 
-    = data_if_present event.data, "Other data"
+    = data_if_present event.data, ""
     = data_if_present event.category, "Categories"
     = data_if_present event.unique_args, "Unique arguments"
