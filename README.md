@@ -84,5 +84,4 @@ Non-obvious places in the app:
 * Verify that migration works on a new app (was iffy on this one)
 * Ruby 2?
 * Icons
-* Extract event record creation
 * "Arguments" isn't a SendGrid thing
