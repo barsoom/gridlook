@@ -17,18 +17,10 @@ describe AttributeMapper, "#to_hash" do
     actual[:category].should == ["foo", "bar"]
   end
 
-  it "ignores smtp-id (we don't see the use)" do
-    gridhook_event = Gridhook::Event.new(
-      "smtp-id" => "foo"
-    )
-
-    actual = AttributeMapper.new(gridhook_event).to_hash
-    actual.values.should_not include("foo")
-  end
-
   # http://sendgrid.com/docs/API_Reference/Webhooks/event.html
   it "puts known attributes in data" do
     attributes = {
+      :"smtp-id" => "x",
       attempt: "x",
       response: "x",
       url: "x",

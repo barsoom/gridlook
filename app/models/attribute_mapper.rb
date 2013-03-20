@@ -1,6 +1,6 @@
 class AttributeMapper
   KNOWN_ATTRIBUTES = %w[
-    attempt response url reason type status
+    smtp-id attempt response url reason type status
   ]
 
   def initialize(gridhook_event)
@@ -9,9 +9,6 @@ class AttributeMapper
 
   def to_hash
     @hash ||= begin
-      # Boring!
-      attributes.delete(:"smtp-id")
-
       {
         email:       attributes.delete(:email),
         name:        attributes.delete(:event),
