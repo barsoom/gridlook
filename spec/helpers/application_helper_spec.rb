@@ -6,8 +6,12 @@ describe ApplicationHelper do
       Rack::Utils.escape_html(x)
     end
 
-    it "inspects a non-hash" do
-      inspect_value([]).should == "[]"
+    it "inspects other values" do
+      inspect_value(1).should == "1"
+    end
+
+    it "shows an array in paragraphs" do
+      inspect_value(["foo", "bar"]).should == "<p>foo</p><p>bar</p>"
     end
 
     it "shows a hash value by value" do
