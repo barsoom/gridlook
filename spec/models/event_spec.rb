@@ -15,23 +15,43 @@ describe Event do
     end
   end
 
-  describe ".first_time" do
+  describe ".oldest_time" do
     it "is the time of the earliest event" do
       early_time = 2.days.ago
       later_time = 1.day.ago
       Event.create!(happened_at: later_time)
       Event.create!(happened_at: early_time)
 
-      Event.first_time.should == early_time
+      Event.oldest_time.should == early_time
     end
 
     it "is in the app-local time zone" do
       Event.create!(happened_at: Time.now)
-      Event.first_time.zone.should == Time.zone.name
+      Event.oldest_time.zone.should == Time.zone.name
     end
 
     it "handles nil" do
-      Event.first_time.should be_nil
+      Event.oldest_time.should be_nil
+    end
+  end
+
+  describe ".newest_time" do
+    it "is the time of the latest event" do
+      early_time = 2.days.ago
+      later_time = 1.day.ago
+      Event.create!(happened_at: later_time)
+      Event.create!(happened_at: early_time)
+
+      Event.newest_time.should == later_time
+    end
+
+    it "is in the app-local time zone" do
+      Event.create!(happened_at: Time.now)
+      Event.newest_time.zone.should == Time.zone.name
+    end
+
+    it "handles nil" do
+      Event.newest_time.should be_nil
     end
   end
 end

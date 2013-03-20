@@ -10,7 +10,8 @@ class EventsController < ApplicationController
       format.html {
         render locals: {
           count:  Event.count,
-          first_time: Event.first_time,
+          newest_time: Event.newest_time,
+          oldest_time: Event.oldest_time,
           email: email,
           events: events
         }

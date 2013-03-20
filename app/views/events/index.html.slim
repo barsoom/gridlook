@@ -1,6 +1,7 @@
 .stats
   p.stat <b>Total events:</b> #{number_with_delimiter(count)}
-  p.stat <b>Oldest event:</b> #{first_time || "-"}
+  p.stat <b>Newest event:</b> #{newest_time || "-"}
+  p.stat <b>Oldest event:</b> #{oldest_time || "-"}
 
 = form_tag "", method: :get, class: "filter-form" do
   = label_tag :email, "Exact email:"

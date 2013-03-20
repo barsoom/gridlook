@@ -16,8 +16,13 @@ class Event < ActiveRecord::Base
       page(page).per(per)
   end
 
-  def self.first_time
+  def self.oldest_time
     time = minimum(:happened_at)
+    time && time.in_time_zone
+  end
+
+  def self.newest_time
+    time = maximum(:happened_at)
     time && time.in_time_zone
   end
 
