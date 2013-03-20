@@ -84,7 +84,6 @@ Non-obvious places in the app:
 * Tests
   * Auth is applied in prod
   * Creating one event works
-* Verify that migration works on a new app (was iffy on this one)
 * Ruby 2?
 * Icons
 * Kaminari causes warnings (during test run)
