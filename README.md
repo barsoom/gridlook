@@ -85,3 +85,4 @@ Non-obvious places in the app:
 * Ruby 2?
 * Icons
 * "Arguments" isn't a SendGrid thing
+* Kaminari causes warnings (during test run)
