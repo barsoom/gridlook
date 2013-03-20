@@ -13,10 +13,11 @@
   .remove-filter= button_to "Remove filter", {}, method: :get
 
 - if events.any?
-  = paginate events
 
+  = paginate events
   table.events-table= render events
-
   = paginate events
+
 - else
+
   p No events :(
