@@ -29,4 +29,8 @@ class Event < ActiveRecord::Base
   def mailer_action
     Array(category).find { |c| c.include?("#") }
   end
+
+  def smtp_id
+    data[:"smtp-id"]
+  end
 end

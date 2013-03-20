@@ -33,7 +33,7 @@ if Rails.env.development?
       happened_at: time,
       unique_args: { hello: "there", whats: "up" },
       category: categories,
-      data: { url: "http://example.com/foo" }
+      data: { url: "http://example.com/foo", :"smtp-id" => rand(9999).to_s }
     )
   end
 end

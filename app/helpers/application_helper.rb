@@ -17,9 +17,9 @@ module ApplicationHelper
     end
   end
 
-  def data_if_present(data, title)
+  def data_if_present(data, title = nil)
     if data.present?
-      content_tag(:h4, title) + inspect_value(data)
+      (title ? content_tag(:h4, title) : "".html_safe) + inspect_value(data)
     end
   end
 end

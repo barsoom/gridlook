@@ -80,13 +80,15 @@ b, strong, label {
   tr.extra-data {
 
     td {
-      padding-bottom: 15px;
+      vertical-align: top;
+      padding: 15px 0;
     }
     h4 {
       margin-bottom: 5px;
     }
     p {
       margin: 5px 0;
+      &:first-child { margin-top: 0; }
     }
   }
 
