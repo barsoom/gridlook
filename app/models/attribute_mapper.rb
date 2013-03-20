@@ -1,4 +1,8 @@
 class AttributeMapper
+  KNOWN_ATTRIBUTES = %w[
+    attempt response url reason type status
+  ]
+
   def initialize(gridhook_event)
     @gridhook_event = gridhook_event
   end
@@ -12,9 +16,9 @@ class AttributeMapper
         email:       attributes.delete(:email),
         name:        attributes.delete(:event),
         happened_at: timestamp,
-        arguments:   arguments,
         category:    attributes.delete(:category),
-        data:        attributes  # Whatever remains.
+        data:        data,
+        unique_args: attributes.symbolize_keys  # Whatever remains.
       }
     end
   end
@@ -28,9 +32,10 @@ class AttributeMapper
     timestamp
   end
 
-  def arguments
-    raw_arguments = attributes.delete(:arguments)
-    raw_arguments && JSON.parse(raw_arguments).symbolize_keys
+  def data
+    known_attributes = attributes.slice(*KNOWN_ATTRIBUTES)
+    KNOWN_ATTRIBUTES.each { |a| attributes.delete(a) }
+    known_attributes.symbolize_keys
   end
 
   def attributes

@@ -26,25 +26,31 @@ describe AttributeMapper, "#to_hash" do
     actual.values.should_not include("foo")
   end
 
-  it "parses arguments into a symbolized hash" do
-    gridhook_event = Gridhook::Event.new(
-      arguments: '{"foo": "bar"}'
-    )
+  # http://sendgrid.com/docs/API_Reference/Webhooks/event.html
+  it "puts known attributes in data" do
+    attributes = {
+      attempt: "x",
+      response: "x",
+      url: "x",
+      reason: "x",
+      type: "x",
+      status: "x"
+    }
 
+    gridhook_event = Gridhook::Event.new(attributes)
     actual = AttributeMapper.new(gridhook_event).to_hash
-    actual[:arguments].should == { foo: "bar" }
+
+    actual[:data].should == attributes
   end
 
-  it "puts remaining unknown attributes in data" do
+  # http://sendgrid.com/docs/API_Reference/SMTP_API/unique_arguments.html
+  it "considers any additional attributes to be unique arguments" do
     gridhook_event = Gridhook::Event.new(
-      hello: "hello",
-      world: "world"
+      email: "foo@bar.com",
+      extra: "extra"
     )
 
     actual = AttributeMapper.new(gridhook_event).to_hash
-    actual[:data].should == {
-      "hello" => "hello",
-      "world" => "world"
-    }
+    actual[:unique_args].should == { extra: "extra" }
   end
 end

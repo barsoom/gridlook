@@ -11,6 +11,7 @@ tr.main-data
 tr.extra-data
   td colspan=4
 
-    = data_if_present event.category, "Categories"
-    = data_if_present event.arguments, "Arguments"
     = data_if_present event.data, "Other data"
+    = data_if_present event.category, "Categories"
+    = data_if_present event.unique_args, "Unique arguments"
+    = data_if_present event.arguments, "Arguments (TO REMOVE)"

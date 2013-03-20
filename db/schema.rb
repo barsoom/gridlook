@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130317175842) do
+ActiveRecord::Schema.define(version: 20130320083748) do
 
   create_table "events", force: true do |t|
     t.string   "email"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20130317175842) do
     t.datetime "happened_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "unique_args"
   end
 
   add_index "events", ["email"], name: "index_events_on_email"

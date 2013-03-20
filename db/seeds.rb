@@ -31,7 +31,7 @@ if Rails.env.development?
       email: "#{local}@#{host}",
       name: event,
       happened_at: time,
-      arguments: { hello: "there" },
+      unique_args: { hello: "there" },
       category: categories,
       data: { url: "http://example.com/foo" }
     )
