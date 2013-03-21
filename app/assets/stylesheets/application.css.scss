@@ -78,7 +78,6 @@ b, strong, label {
   }
 
   tr.extra-data {
-
     td {
       vertical-align: top;
       padding: 15px 0;
@@ -90,6 +89,10 @@ b, strong, label {
       margin: 5px 0;
       &:first-child { margin-top: 0; }
     }
+  }
+
+  td.image {
+    padding-right: 10px;
   }
 
   td.email {
