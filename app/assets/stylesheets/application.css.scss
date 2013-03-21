@@ -82,8 +82,12 @@ b, strong, label {
       vertical-align: top;
       padding: 15px 0;
     }
-    td.image {
+    td.identifier-image {
       padding-right: 10px;
+    }
+    td.event-image {
+      padding-left: 10px;
+      text-align: right;
     }
     h4 {
       margin-bottom: 5px;

@@ -68,6 +68,8 @@ Don't worry about deploy downtime etc. SendGrid will retry:
 > SendGrid expects a 200 HTTP response to the POST, otherwise the event notification will be retried.
 > If your URL returns a non-200 HTTP code it will be deferred and retried for 24 hours.
 
+The license for SendGrid's event icons is unclear. I asked and received no response. I will replace them if they complain.
+
 Non-obvious places in the app:
 
 * `config/initializers/gridhook.rb` handles incoming events.
