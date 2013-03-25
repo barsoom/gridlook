@@ -61,8 +61,6 @@ If you [configure your mails](http://henrik.nyh.se/2012/08/sendgrid-metadata-and
 
 ## Notes
 
-A Ember UI is in progress, so there are parts in the project yet to hook up.
-
 Don't worry about deploy downtime etc. SendGrid will retry:
 
 > SendGrid expects a 200 HTTP response to the POST, otherwise the event notification will be retried.

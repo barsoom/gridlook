@@ -10,8 +10,6 @@ GEM
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
-    active_model_serializers (0.7.0)
-      activemodel (>= 3.0)
     activemodel (4.0.0.beta1)
       activesupport (= 4.0.0.beta1)
       builder (~> 3.1.0)
@@ -29,10 +27,6 @@ GEM
       tzinfo (~> 0.3.33)
     arel (4.0.0.beta2)
     atomic (1.0.1)
-    barber (0.4.1)
-      ember-source
-      execjs
-      handlebars-source
     builder (3.1.4)
     capybara (2.0.2)
       mime-types (>= 1.16)
@@ -43,56 +37,20 @@ GEM
       xpath (~> 1.0.0)
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
-    coffee-rails (4.0.0.beta1)
-      coffee-script (>= 2.2.0)
-      railties (>= 4.0.0.beta, < 5.0)
-    coffee-script (2.2.0)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.6.1)
-    colorize (0.5.8)
-    database_cleaner (0.9.1)
     diff-lcs (1.2.1)
-    ember-data-source (0.0.5)
-      ember-source
-    ember-rails (0.11.1)
-      active_model_serializers
-      barber (>= 0.4.1)
-      ember-data-source
-      ember-source
-      execjs (>= 1.2)
-      railties (>= 3.1)
-    ember-source (0.0.2)
-      handlebars-source (>= 1.0.0.rc3, < 1.0.0.rc4)
     erubis (2.7.0)
-    eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    faye-websocket (0.4.7)
-      eventmachine (>= 0.12.0)
     ffi (1.4.0)
     gridhook (0.1.4)
       rails (>= 3.1.0)
       yajl-ruby (~> 1.1.0)
-    handlebars-source (1.0.0.rc3)
-    handlebars_assets (0.12.0)
-      execjs (>= 1.2.9)
-      sprockets (>= 2.0.3)
-      tilt
     hike (1.2.1)
-    http_parser.rb (0.5.3)
     i18n (0.6.4)
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.7.7)
-    konacha (2.5.1)
-      actionpack (>= 3.1, < 5)
-      capybara
-      colorize
-      railties (>= 3.1, < 5)
-      sprockets
-    konacha-chai-matchers (0.1.1)
     mail (2.5.3)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -102,10 +60,6 @@ GEM
     multi_json (1.7.0)
     nokogiri (1.5.7)
     pg (0.14.1)
-    poltergeist (1.1.0)
-      capybara (~> 2.0, >= 2.0.1)
-      faye-websocket (~> 0.4, >= 0.4.4)
-      http_parser.rb (~> 0.5.3)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -186,16 +140,9 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
-  coffee-rails (~> 4.0.0.beta1)
-  database_cleaner
-  ember-rails
   gridhook
-  handlebars_assets
   jquery-rails
-  konacha
-  konacha-chai-matchers
   pg
-  poltergeist
   rails (= 4.0.0.beta1)
   rspec-rails
   sass-rails (~> 4.0.0.beta1)

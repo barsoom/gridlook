@@ -2,7 +2,6 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
 if Rails.env.development?
-
   def local
     %w[fish dog cat camel horse cow capybara anteater badger badger badger badger mushroom mushroom].sample
   end

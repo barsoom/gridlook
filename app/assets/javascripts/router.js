@@ -1,3 +1,0 @@
-Gridlook.Router.map(function() {
-
-});
