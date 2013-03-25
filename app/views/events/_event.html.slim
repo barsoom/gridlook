@@ -11,7 +11,7 @@ tr.main-data
 tr.extra-data
   td.identifier-image
     - if event.smtp_id
-      img title=event.smtp_id alt="" src="http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(event.smtp_id)}?s=40&r=any&default=identicon&forcedefault=1"
+      img title=event.smtp_id alt="" src="//www.gravatar.com/avatar/#{Digest::MD5.hexdigest(event.smtp_id)}?s=40&r=any&default=identicon&forcedefault=1"
   td.extra-data-proper colspan=2
 
     = data_if_present event.data
