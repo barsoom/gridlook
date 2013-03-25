@@ -13,7 +13,7 @@ class Event < ActiveRecord::Base
 
   def self.recent(page, per)
     order("happened_at DESC, id DESC").
-      page(page).per(per)
+      page(page).per_page(per)
   end
 
   def self.oldest_time

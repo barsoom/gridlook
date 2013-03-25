@@ -6,7 +6,9 @@ gem 'rails', '4.0.0.beta1'
 
 gem 'gridhook'
 gem 'slim'
-gem 'kaminari'
+gem 'will_paginate'
+
+# Experiment. Not used for much yet.
 gem 'ember-rails'
 
 group :development do

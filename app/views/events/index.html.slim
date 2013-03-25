@@ -14,9 +14,9 @@
 
 - if events.any?
 
-  = paginate events
+  = will_paginate events
   table.events-table= render events
-  = paginate events
+  = will_paginate events
 
 - else
 

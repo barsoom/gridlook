@@ -83,7 +83,5 @@ Non-obvious places in the app:
 
 ## TODO
 
-* Tests
-  * Auth is applied in prod
+* Tests that auth is applied in prod
 * Ruby 2?
-* Kaminari causes warnings (during test run)
