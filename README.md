@@ -85,6 +85,5 @@ Non-obvious places in the app:
 
 * Tests
   * Auth is applied in prod
-  * Creating one event works
 * Ruby 2?
 * Kaminari causes warnings (during test run)
