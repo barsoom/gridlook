@@ -82,4 +82,3 @@ Non-obvious places in the app:
 ## TODO
 
 * Tests that auth is applied in prod
-* Ruby 2?
