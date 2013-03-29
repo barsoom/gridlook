@@ -61,7 +61,7 @@ If you [configure your mails](http://henrik.nyh.se/2012/08/sendgrid-metadata-and
 
 ## Notes
 
-Don't worry about deploy downtime etc. SendGrid will retry:
+Don't worry about deploy downtime etc. SendGrid [will retry](http://sendgrid.com/docs/API_Reference/Webhooks/event.html#-Requests):
 
 > SendGrid expects a 200 HTTP response to the POST, otherwise the event notification will be retried.
 > If your URL returns a non-200 HTTP code it will be deferred and retried for 24 hours.
