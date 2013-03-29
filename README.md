@@ -27,7 +27,7 @@ heroku config | grep HEROKU_POSTGRESQL  # See what ENV was used for this DB.
 heroku pg:promote HEROKU_POSTGRESQL_RED_URL  # Replace "RED" with whatever ENV was used.
 
 # Configure HTTP auth.
-heroku config:set HTTP_USER=aladdin HTTP_PASSWORD=sesame
+heroku config:set HTTP_USER=alibaba HTTP_PASSWORD=sesame
 # Configure Rails secret key (not actually used yet).
 heroku config:set SECRET_KEY_BASE=`rake secret`
 # Configure Rails time zone.
@@ -49,7 +49,7 @@ Now your app is deployed. The next step is to configure SendGrid. Follow [their 
 
 Don't forget to both configure and enable the app.
 
-The URL you configure should be something like `https://aladdin:sesame@my-gridlook.herokuapp.com/events`. Make sure to use your own values for HTTP auth username, password, and the Heroku app name.
+The URL you configure should be something like `https://alibaba:sesame@my-gridlook.herokuapp.com/events`. Make sure to use your own values for HTTP auth username, password, and the Heroku app name.
 
 As long as you use Heroku, you get https for free. If you use your own domain, you need to [set stuff up](https://devcenter.heroku.com/articles/ssl).
 
