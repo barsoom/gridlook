@@ -67,6 +67,20 @@ b, strong, label {
   width: 20em;
 }
 
+.pagination {
+  a, span, em {
+    padding: 5px 5px;
+  }
+
+  em {
+    font-style: normal;
+  }
+
+  .disabled, .current {
+    color: #888;
+  }
+}
+
 .events-table {
   width: 900px;
   margin: $block-vmargin 0;
