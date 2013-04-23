@@ -26,7 +26,7 @@ describe Event do
     end
 
     it "is in the app-local time zone" do
-      Event.create!(happened_at: Time.now)
+      Event.create!(happened_at: Time.mktime(2013, 1, 1))
       Event.oldest_time.zone.should == Time.zone.name
     end
 
@@ -46,7 +46,7 @@ describe Event do
     end
 
     it "is in the app-local time zone" do
-      Event.create!(happened_at: Time.now)
+      Event.create!(happened_at: Time.mktime(2013, 1, 1))
       Event.newest_time.zone.should == Time.zone.name
     end
 
