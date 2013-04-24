@@ -1,5 +1,5 @@
-tr.main-data
-  td.filter= link_to("filter", email: event.email)
+tr.main-data id=dom_id(event)
+  td.filter= link_to("filter", { email: event.email, name: params[:name] })
   td.email
     = event.email
   td.happened-at= event.happened_at
@@ -7,7 +7,7 @@ tr.main-data
     - if event.mailer_action
       b= event.mailer_action
       '
-    = link_to(event.name, name: event.name)
+    = link_to(event.name, { name: event.name, email: params[:email] })
 tr.extra-data
   td.identifier-image
     - if event.smtp_id

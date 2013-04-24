@@ -4,11 +4,19 @@ class Event < ActiveRecord::Base
   serialize :unique_args
 
   def self.email(email)
-    where(email: email)
+    if email
+      where(email: email)
+    else
+      all
+    end
   end
 
-  def self.filter_on_event(name)
-    where(name: name)
+  def self.filter_on(name)
+    if name
+      where(name: name)
+    else
+      all
+    end
   end
 
   def self.recent(page, per)
