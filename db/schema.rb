@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130320094652) do
+ActiveRecord::Schema.define(version: 20130423112658) do
 
   create_table "events", force: true do |t|
     t.string   "email"
@@ -26,5 +26,6 @@ ActiveRecord::Schema.define(version: 20130320094652) do
 
   add_index "events", ["email"], name: "index_events_on_email"
   add_index "events", ["happened_at"], name: "index_events_on_happened_at"
+  add_index "events", ["name"], name: "index_events_on_name"
 
 end

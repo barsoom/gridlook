@@ -7,7 +7,7 @@ tr.main-data
     - if event.mailer_action
       b= event.mailer_action
       '
-    = event.name
+    = link_to(event.name, name: event.name)
 tr.extra-data
   td.identifier-image
     - if event.smtp_id

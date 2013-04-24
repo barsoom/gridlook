@@ -9,7 +9,7 @@
   = email_field_tag :email, email, class: "filter-form-email"
   = button_tag "Filter", type: :submit
 
-- if email
+- if email || name
   .remove-filter= button_to "Remove filter", {}, method: :get
 
 - if events.any?
