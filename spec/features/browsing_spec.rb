@@ -63,17 +63,21 @@ describe "Browsing" do
     page.should list_event(bar)
     page.should list_event(baz)
 
-    within("#event_#{foo.id}") do
+    within_event(foo) do
       click_link "foo@example.com"
     end
 
-    within("#event_#{foo.id}") do
+    within_event(foo) do
       click_link "sent"
     end
 
     page.should list_event(foo)
     page.should_not list_event(bar)
     page.should_not list_event(baz)
+  end
+
+  def within_event(event, &block)
+    within("#event_#{event.id}", &block)
   end
 
   def list_event(event)
