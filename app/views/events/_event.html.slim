@@ -1,7 +1,7 @@
 tr.main-data id=dom_id(event)
-  td.filter= link_to("filter", { email: event.email, name: params[:name] })
+  td
   td.email
-    = event.email
+    = link_to(event.email, { email: event.email, name: params[:name] })
   td.happened-at= event.happened_at
   td.event
     - if event.mailer_action

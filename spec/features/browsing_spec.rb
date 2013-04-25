@@ -64,7 +64,7 @@ describe "Browsing" do
     page.should list_event(baz)
 
     within("#event_#{foo.id}") do
-      click_link "filter"
+      click_link "foo@example.com"
     end
 
     within("#event_#{foo.id}") do
