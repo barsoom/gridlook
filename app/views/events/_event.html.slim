@@ -1,13 +1,13 @@
 tr.main-data id=dom_id(event)
   td
   td.email
-    = link_to(event.email, { email: event.email, name: params[:name] })
+    = link_to(event.email, params.merge(email: event.email))
   td.happened-at= event.happened_at
   td.event
     - if event.mailer_action
       b= event.mailer_action
       '
-    = link_to(event.name, { name: event.name, email: params[:email] })
+    = link_to(event.name, params.merge(name: event.name))
 tr.extra-data
   td.identifier-image
     - if event.smtp_id
