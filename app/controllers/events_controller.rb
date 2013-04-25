@@ -5,7 +5,7 @@ class EventsController < ApplicationController
     email  = params[:email].to_s.strip.presence
     name   = params[:name].to_s.strip.presence
     page   = params[:page]
-    events = Event.email(email).filter_on(name).recent(page, PER_PAGE)
+    events = Event.email(email).named(name).recent(page, PER_PAGE)
 
     render locals: {
       count:       Event.count,

@@ -3,21 +3,8 @@ class Event < ActiveRecord::Base
   serialize :category
   serialize :unique_args
 
-  def self.email(email)
-    if email
-      where(email: email)
-    else
-      all
-    end
-  end
-
-  def self.filter_on(name)
-    if name
-      where(name: name)
-    else
-      all
-    end
-  end
+  scope :email, -> email { email ? where(email: email) : all }
+  scope :named, -> name { name ? where(name: name) : all }
 
   def self.recent(page, per)
     order("happened_at DESC, id DESC").
