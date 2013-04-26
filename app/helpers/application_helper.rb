@@ -22,4 +22,8 @@ module ApplicationHelper
       (title ? content_tag(:h4, title) : "".html_safe) + inspect_value(data)
     end
   end
+
+  def filtered?(assigns)
+    params.values_at(:email, :name).any?(&:present?)
+  end
 end

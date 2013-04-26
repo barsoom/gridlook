@@ -1,5 +1,7 @@
 .stats
-  p.stat <b>Total events:</b> #{number_with_delimiter(count)}
+  - if filtered?(local_assigns)
+    p.stat <b>Filtered events:</b> #{number_with_delimiter(filtered_count)}
+  p.stat <b>Total events:</b> #{number_with_delimiter(total_count)}
   p.stat <b>Newest event:</b> #{newest_time || "-"}
   p.stat <b>Oldest event:</b> #{oldest_time || "-"}
 
@@ -9,7 +11,7 @@
   = email_field_tag :email, email, class: "filter-form-email"
   = button_tag "Filter", type: :submit
 
-- if email || name
+- if filtered?(local_assigns)
   .remove-filter= button_to "Remove filter", {}, method: :get
 
 - if events.any?
