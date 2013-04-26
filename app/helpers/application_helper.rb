@@ -26,4 +26,10 @@ module ApplicationHelper
   def filtered?(assigns)
     params.values_at(:email, :name).any?(&:present?)
   end
+
+  def event_name_options(selected)
+    options = [["All", nil]]
+    options += Event.names
+    options_for_select(options, selected)
+  end
 end

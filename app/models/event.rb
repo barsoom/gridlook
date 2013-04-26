@@ -21,6 +21,13 @@ class Event < ActiveRecord::Base
     time && time.in_time_zone
   end
 
+  def self.names
+    %w[
+      processed dropped delivered deferred bounce
+      open click spamreport unsubscribe
+    ]
+  end
+
   def mailer_action
     Array(category).find { |c| c.include?("#") }
   end

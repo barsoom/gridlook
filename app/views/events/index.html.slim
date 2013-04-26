@@ -6,13 +6,19 @@
   p.stat <b>Oldest event:</b> #{oldest_time || "-"}
 
 = form_tag "", method: :get, class: "filter-form" do
-  = label_tag :email, "Exact email:"
-  '
-  = email_field_tag :email, email, class: "filter-form-email"
-  = button_tag "Filter", type: :submit
+
+  p
+    =' label_tag :email, "Exact email:"
+    = email_field_tag :email, email, class: "filter-form-email"
+
+  p
+    =' label_tag :name, "Event:"
+    = select_tag :name, event_name_options(name)
+
+  p= button_tag "Filter", type: :submit
 
 - if filtered?(local_assigns)
-  .remove-filter= button_to "Remove filter", {}, method: :get
+  .remove-filter= button_to "Remove filters", {}, method: :get
 
 - if events.any?
 

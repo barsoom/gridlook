@@ -26,30 +26,40 @@ describe "Browsing" do
     page.should_not list_event(foo)
     page.should list_event(bar)
 
-    click_button "Remove filter"
+    click_button "Remove filters"
 
     page.should list_event(foo)
     page.should list_event(bar)
   end
 
   it "lets you filter and unfilter by name" do
-    foo = create_event("foo@example.com", "sent")
-    bar = create_event("foo@example.com", "click")
+    bounce = create_event("foo@example.com", "bounce")
+    delivered = create_event("foo@example.com", "delivered")
 
     visit root_path
 
-    page.should list_event(foo)
-    page.should list_event(bar)
+    page.should list_event(bounce)
+    page.should list_event(delivered)
 
-    click_link "click"
+    # Clicking on event.
 
-    page.should_not list_event(foo)
-    page.should list_event(bar)
+    click_link "delivered"
 
-    click_button "Remove filter"
+    page.should_not list_event(bounce)
+    page.should list_event(delivered)
 
-    page.should list_event(foo)
-    page.should list_event(bar)
+    # Using the filter form.
+
+    select "bounce", from: "Event:"
+    click_button "Filter"
+
+    page.should list_event(bounce)
+    page.should_not list_event(delivered)
+
+    click_button "Remove filters"
+
+    page.should list_event(bounce)
+    page.should list_event(delivered)
   end
 
   it "lets you combine filters" do
