@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe "Browsing" do
   it "lists events" do
-    create_event
+    create_event("foo@example.com", "sent")
 
     visit root_path
 
@@ -11,7 +11,7 @@ describe "Browsing" do
     page.should have_content "sent"
   end
 
-  it "lets you filter and unfilter by exact email" do
+  it "filters and unfilters by exact email" do
     foo = create_event("foo@example.com")
     bar = create_event("bar@example.com")
 
@@ -32,7 +32,7 @@ describe "Browsing" do
     page.should list_event(bar)
   end
 
-  it "lets you filter and unfilter by name" do
+  it "filters and unfilters by name" do
     bounce = create_event("foo@example.com", "bounce")
     delivered = create_event("foo@example.com", "delivered")
 
@@ -56,13 +56,15 @@ describe "Browsing" do
     page.should list_event(bounce)
     page.should_not list_event(delivered)
 
+    # Removing filter.
+
     click_button "Remove filters"
 
     page.should list_event(bounce)
     page.should list_event(delivered)
   end
 
-  it "lets you combine filters" do
+  it "combines filters" do
     foo = create_event("foo@example.com", "sent")
     bar = create_event("foo@example.com", "click")
     baz = create_event("bar@example.com", "sent")
