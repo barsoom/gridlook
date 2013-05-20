@@ -2,13 +2,9 @@ require "spec_helper"
 
 describe "Browsing" do
   it "lists events" do
-    create_event("foo@example.com", "sent")
-
+    event = create_event
     visit root_path
-
-    page.should have_content "Gridlook"
-    page.should have_content "foo@example.com"
-    page.should have_content "sent"
+    page.should list_event(event)
   end
 
   it "filters and unfilters by exact email" do
