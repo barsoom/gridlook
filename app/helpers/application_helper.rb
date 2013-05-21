@@ -23,7 +23,7 @@ module ApplicationHelper
     end
   end
 
-  def filtered?(assigns)
+  def filtered?(params)
     params.values_at(:email, :name).any?(&:present?)
   end
 

@@ -20,4 +20,18 @@ describe ApplicationHelper do
       inspect_value(1).should == "1"
     end
   end
+
+  describe "#filtered?" do
+    it "is true if the params include :email" do
+      filtered?(email: "yo").should be_true
+    end
+
+    it "is true if the params include :name" do
+      filtered?(name: "yo").should be_true
+    end
+
+    it "is false otherwise" do
+      filtered?(foo: "yo").should be_false
+    end
+  end
 end
