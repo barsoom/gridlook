@@ -1,6 +1,22 @@
 require "spec_helper"
 
 describe Event do
+  describe "#email=" do
+    it "downcases email" do
+      event = Event.new(email: "FoO@ExAmplE.cOm")
+
+      event.email.should == "foo@example.com"
+    end
+  end
+
+  describe ".email" do
+    it "is case insensitive" do
+      foo = Event.create!(email: "foo@example.com")
+
+      Event.email("FOO@example.com").should include(foo)
+    end
+  end
+
   describe "#mailer_action" do
     it "finds the first matching category" do
       Event.new(category: ["hello#world", "x#y"]).mailer_action.should == "hello#world"

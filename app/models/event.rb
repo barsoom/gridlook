@@ -3,8 +3,13 @@ class Event < ActiveRecord::Base
   serialize :category
   serialize :unique_args
 
-  scope :email, -> email { email ? where(email: email) : all }
+  # Since we save email downcased, we make sure that all email query data also are downcased.
+  scope :email, -> email { email ? where(email: email.downcase) : all }
   scope :named, -> name { name ? where(name: name) : all }
+
+  def email=(value)
+    super(value.to_s.downcase.presence)
+  end
 
   def self.recent(page, per)
     order("happened_at DESC, id DESC").
