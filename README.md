@@ -34,7 +34,7 @@ heroku config:set SECRET_KEY_BASE=`rake secret`
 heroku config:set RAILS_TZ=CET  # Whatever you prefer.
 
 # Deploy app.
-heroku push
+git push heroku
 
 # Load DB schema.
 heroku run db:schema:load
