@@ -7,13 +7,9 @@ gem 'rails', '4.0.0.rc2'
 gem 'gridhook'
 gem 'slim'
 gem 'will_paginate'
-
-group :production do
-  gem 'pg'
-end
+gem 'pg'
 
 group :test, :development do
-  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'capybara'
 end
