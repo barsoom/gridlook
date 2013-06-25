@@ -13,6 +13,7 @@ class AttributeMapper
         email:       attributes.delete(:email),
         name:        attributes.delete(:event),
         happened_at: timestamp,
+        mailer_action: mailer_action(attributes[:category]),
         category:    attributes.delete(:category),
         data:        data,
         unique_args: attributes.symbolize_keys  # Whatever remains.
@@ -37,5 +38,9 @@ class AttributeMapper
 
   def attributes
     @attributes ||= @gridhook_event.attributes
+  end
+
+  def mailer_action(categories)
+     categories.find { |c| c.include?("#") } if categories
   end
 end

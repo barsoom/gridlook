@@ -9,6 +9,14 @@ describe Event do
     end
   end
 
+  describe ".mailer_action" do
+    it "finds an mailer action" do
+      foo = Event.create!(mailer_action: "FooMailer#baz")
+
+      Event.mailer_action("FooMailer#baz").should include(foo)
+    end
+  end
+
   describe ".email" do
     it "is case insensitive" do
       foo = Event.create!(email: "foo@example.com")

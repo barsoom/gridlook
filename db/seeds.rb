@@ -18,17 +18,17 @@ if Rails.env.development?
     rand(1_000).minutes.ago
   end
 
-  def categories
-    %w[FooMailer#fooed BarMailer#bared BazMailer#bazed].sample(1)
+  def mailer_action
+    %w[FooMailer#fooed BarMailer#baared BazMailer#baazed].sample(1)[0]
   end
 
   250.times do |i|
     Event.create!(
       email: "#{local}@#{host}",
       name: event,
+      mailer_action: mailer_action,
       happened_at: time,
       unique_args: { hello: "there", whats: "up" },
-      category: categories,
       data: { url: "http://example.com/foo", :"smtp-id" => rand(9999).to_s }
     )
   end

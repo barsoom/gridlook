@@ -60,6 +60,23 @@ describe "Browsing" do
     page.should list_event(delivered)
   end
 
+  it "filters and unfilters by mailer" do
+    foo_mailer = create_event("foo@example.com", "bounce", "FooMailer#baz")
+    bar_mailer = create_event("foo@example.com", "delivered", "BarMailer#baz")
+
+    visit root_path
+
+    page.should list_event(foo_mailer)
+    page.should list_event(bar_mailer)
+
+    # Clicking on event.
+
+    click_link "FooMailer#baz"
+
+    page.should_not list_event(bar_mailer)
+    page.should list_event(foo_mailer)
+  end
+
   it "combines filters" do
     foo = create_event("foo@example.com", "sent")
     bar = create_event("foo@example.com", "click")
@@ -92,13 +109,13 @@ describe "Browsing" do
     have_selector("#event_#{event.id}")
   end
 
-  def create_event(email = "foo@example.com", name = "sent")
+  def create_event(email = "foo@example.com", name = "sent", mailer = "FooMailer#baz")
     Event.create!(
       email: email,
       name: name,
       happened_at: Time.now,
       unique_args: { hello: "there" },
-      category: [ "one", "two" ],
+      category: [ mailer.split("#")[0], mailer ],
       data: { url: "http://example.com/foo" }
     )
   end

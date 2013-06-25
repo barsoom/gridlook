@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130423112658) do
+ActiveRecord::Schema.define(version: 20130625110032) do
 
   create_table "events", force: true do |t|
     t.string   "email"
@@ -22,10 +22,12 @@ ActiveRecord::Schema.define(version: 20130423112658) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "unique_args"
+    t.string   "mailer_action"
   end
 
-  add_index "events", ["email"], name: "index_events_on_email"
-  add_index "events", ["happened_at"], name: "index_events_on_happened_at"
-  add_index "events", ["name"], name: "index_events_on_name"
+  add_index "events", ["email"], name: "index_events_on_email", using: :btree
+  add_index "events", ["happened_at"], name: "index_events_on_happened_at", using: :btree
+  add_index "events", ["mailer_action"], name: "index_events_on_mailer_action", using: :btree
+  add_index "events", ["name"], name: "index_events_on_name", using: :btree
 
 end

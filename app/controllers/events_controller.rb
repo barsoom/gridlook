@@ -2,12 +2,16 @@ class EventsController < ApplicationController
   PER_PAGE = 100
 
   def index
-    email  = params[:email].to_s.strip.presence
-    name   = params[:name].to_s.strip.presence
-    page   = params[:page]
+    email         = params[:email].to_s.strip.presence
+    name          = params[:name].to_s.strip.presence
+    mailer_action = params[:mailer_action].to_s.strip.presence
+    page          = params[:page]
 
-    filtered_events = Event.email(email).named(name)
-    filtered_count  = filtered_events.count
+    filtered_events = Event.
+      email(email).
+      named(name).
+      mailer_action(mailer_action)
+    filtered_count = filtered_events.count
     events_on_page = filtered_events.recent(page, PER_PAGE)
 
     render locals: {
@@ -17,6 +21,7 @@ class EventsController < ApplicationController
       oldest_time:    Event.oldest_time,
       email:          email,
       name:           name,
+      mailer_action:  mailer_action,
       events:         events_on_page
     }
   end

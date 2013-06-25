@@ -30,6 +30,10 @@ describe ApplicationHelper do
       filtered?(name: "yo").should be_true
     end
 
+    it "is true if the params include :mailer_action" do
+      filtered?(mailer_action: "yo").should be_true
+    end
+
     it "is false otherwise" do
       filtered?(foo: "yo").should be_false
     end

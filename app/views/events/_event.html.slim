@@ -5,7 +5,7 @@ tr.main-data id=dom_id(event)
   td.happened-at= event.happened_at
   td.event
     - if event.mailer_action
-      b= event.mailer_action
+      b= link_to(event.mailer_action, params.merge(mailer_action: event.mailer_action))
       '
     = link_to(event.name, params.merge(name: event.name))
 tr.extra-data
@@ -15,7 +15,6 @@ tr.extra-data
   td.extra-data-proper colspan=2
 
     = data_if_present event.data
-    = data_if_present event.category, "Categories"
     = data_if_present event.unique_args, "Unique arguments"
   td.event-image
     img alt="" src="/events/#{event.name}.png"

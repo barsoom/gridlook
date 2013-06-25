@@ -24,7 +24,7 @@ module ApplicationHelper
   end
 
   def filtered?(params)
-    params.values_at(:email, :name).any?(&:present?)
+    params.values_at(:email, :name, :mailer_action).any?(&:present?)
   end
 
   def event_name_options(selected)

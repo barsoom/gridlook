@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
   # Since we save email downcased, we make sure that all email query data also are downcased.
   scope :email, -> email { email ? where(email: email.downcase) : all }
   scope :named, -> name { name ? where(name: name) : all }
+  scope :mailer_action, -> mailer_action { mailer_action ? where(mailer_action: mailer_action) : all }
 
   def category=(value)
     self.mailer_action = Array(value).find { |c| c.include?("#") }
@@ -36,10 +37,6 @@ class Event < ActiveRecord::Base
       processed dropped delivered deferred bounce
       open click spamreport unsubscribe
     ]
-  end
-
-  def mailer_action
-    Array(category).find { |c| c.include?("#") }
   end
 
   def smtp_id
