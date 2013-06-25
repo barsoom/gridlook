@@ -8,11 +8,6 @@ class Event < ActiveRecord::Base
   scope :named, -> name { name ? where(name: name) : all }
   scope :mailer_action, -> mailer_action { mailer_action ? where(mailer_action: mailer_action) : all }
 
-  def category=(value)
-    self.mailer_action = Array(value).find { |c| c.include?("#") }
-    super
-  end
-
   def email=(value)
     super(value.to_s.downcase.presence)
   end
