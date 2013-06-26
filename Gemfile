@@ -8,6 +8,7 @@ gem 'gridhook'
 gem 'slim'
 gem 'will_paginate'
 gem 'pg'
+gem 'rails_12factor', group: :production
 
 group :test, :development do
   gem 'rspec-rails'
