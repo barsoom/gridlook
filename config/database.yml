@@ -32,7 +32,7 @@ test:
   encoding: unicode
   database: gridlook_test
   pool: 5
-  username: gridlook
+  username: postgres
 
 production:
   adapter: postgresql
