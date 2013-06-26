@@ -82,6 +82,7 @@ Non-obvious places in the app:
 ## TODO
 
 * Tests that auth is applied in prod
+* Drop down list for mailer actions
 
 ## Contributors
 
