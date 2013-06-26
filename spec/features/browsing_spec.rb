@@ -115,6 +115,7 @@ describe "Browsing" do
       name: name,
       happened_at: Time.now,
       unique_args: { hello: "there" },
+      mailer_action: mailer,
       category: [ mailer.split("#")[0], mailer ],
       data: { url: "http://example.com/foo" }
     )
