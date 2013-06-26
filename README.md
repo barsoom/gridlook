@@ -83,6 +83,10 @@ Non-obvious places in the app:
 
 * Tests that auth is applied in prod
 
+## Contributors
+
+[Johan Lundström](https://github.com/johanlunds)
+
 ## Credits and license
 
 By [Barsoom](http://barsoom.se) under the MIT license:
