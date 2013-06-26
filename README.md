@@ -86,6 +86,7 @@ Non-obvious places in the app:
 ## Contributors
 
 [Barsoom](http://barsoom.se)
+
 [Johan Lundström](https://github.com/johanlunds)
 
 ## Credits and license
