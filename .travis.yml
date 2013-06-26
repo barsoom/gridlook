@@ -3,4 +3,4 @@ rvm:
   # 2.0 rubies
   - 2.0.0
 before_script:
-  - psql -c 'create database gridlook_test;' -U postgress
+  - psql -c 'create database gridlook_test;' -U postgres
