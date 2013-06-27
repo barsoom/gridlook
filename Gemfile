@@ -8,11 +8,15 @@ gem 'gridhook'
 gem 'slim'
 gem 'will_paginate'
 gem 'pg'
-gem 'rails_12factor', group: :production
 
 group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'
+end
+
+group :production do
+  gem 'unicorn'
+  gem 'rails_12factor'
 end
 
 # Gems used only for assets and not required
