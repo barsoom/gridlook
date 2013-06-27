@@ -30,11 +30,8 @@ describe Event do
       early_time = 2.days.ago
       later_time = 1.day.ago
 
-      p early_time.strftime("%F %T:%N %z")
       Event.create!(happened_at: later_time)
       Event.create!(happened_at: early_time)
-
-      p Event.oldest_time.strftime("%F %T:%N %z")
 
       Event.oldest_time.to_i.should == early_time.to_i
     end
@@ -53,10 +50,11 @@ describe Event do
     it "is the time of the latest event" do
       early_time = 2.days.ago
       later_time = 1.day.ago
+
       Event.create!(happened_at: later_time)
       Event.create!(happened_at: early_time)
 
-      Event.newest_time.should == later_time
+      Event.newest_time.to_i.should == later_time.to_i
     end
 
     it "is in the app-local time zone" do
