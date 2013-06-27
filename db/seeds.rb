@@ -19,7 +19,9 @@ if Rails.env.development?
   end
 
   def mailer_action
-    %w[FooMailer#fooed BarMailer#baared BazMailer#baazed].sample(1)[0]
+    %w[
+        SellerMailer#contract SellerMailer#deliver_published SellerReportMailer#build
+      ].sample(1)[0]
   end
 
   250.times do |i|

@@ -32,4 +32,10 @@ module ApplicationHelper
     options += Event.names
     options_for_select(options, selected)
   end
+
+  def event_mailer_options(selected)
+    options = [["All", nil]]
+    options += Event.action_mailers
+    options_for_select(options, selected)
+  end
 end

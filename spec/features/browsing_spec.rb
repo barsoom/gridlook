@@ -61,20 +61,35 @@ describe "Browsing" do
   end
 
   it "filters and unfilters by mailer" do
-    foo_mailer = create_event("foo@example.com", "bounce", "FooMailer#baz")
-    bar_mailer = create_event("foo@example.com", "delivered", "BarMailer#baz")
+    seller_mailer = create_event("foo@example.com", "bounce", "SellerMailer#contract")
+    seller_report_mailer = create_event("foo@example.com", "delivered", "SellerReportMailer#build")
 
     visit root_path
 
-    page.should list_event(foo_mailer)
-    page.should list_event(bar_mailer)
+    page.should list_event(seller_mailer)
+    page.should list_event(seller_report_mailer)
 
-    # Clicking on event.
+    # Clicking on mailer action.
 
-    click_link "FooMailer#baz"
+    click_link "SellerMailer#contract"
 
-    page.should_not list_event(bar_mailer)
-    page.should list_event(foo_mailer)
+    page.should_not list_event(seller_report_mailer)
+    page.should list_event(seller_mailer)
+
+    # Using the filter form.
+
+    select "SellerMailer#contract", from: "Mailer:"
+    click_button "Filter"
+
+    page.should list_event(seller_mailer)
+    page.should_not list_event(seller_report_mailer)
+
+    # Removing filter.
+
+    click_button "Remove filters"
+
+    page.should list_event(seller_mailer)
+    page.should list_event(seller_report_mailer)
   end
 
   it "combines filters" do
@@ -109,7 +124,7 @@ describe "Browsing" do
     have_selector("#event_#{event.id}")
   end
 
-  def create_event(email = "foo@example.com", name = "sent", mailer = "FooMailer#baz")
+  def create_event(email = "foo@example.com", name = "sent", mailer = "SellerMailer#contract")
     Event.create!(
       email: email,
       name: name,

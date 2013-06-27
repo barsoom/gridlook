@@ -15,6 +15,10 @@
     =' label_tag :name, "Event:"
     = select_tag :name, event_name_options(name)
 
+  p
+    =' label_tag :mailer_action, "Mailer:"
+    = select_tag :mailer_action, event_mailer_options(mailer_action)
+
   p= button_tag "Filter", type: :submit
 
 - if filtered?(local_assigns)
