@@ -29,10 +29,14 @@ describe Event do
     it "is the time of the earliest event" do
       early_time = 2.days.ago
       later_time = 1.day.ago
+
+      p early_time.strftime("%F %T:%N %z")
       Event.create!(happened_at: later_time)
       Event.create!(happened_at: early_time)
 
-      Event.oldest_time.should == early_time
+      p Event.oldest_time.strftime("%F %T:%N %z")
+
+      Event.oldest_time.to_i.should == early_time.to_i
     end
 
     it "is in the app-local time zone" do
