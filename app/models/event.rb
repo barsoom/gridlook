@@ -35,7 +35,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.mailer_actions
-    uniq.pluck(:mailer_action).sort
+    uniq.pluck(:mailer_action).compact.sort
   end
 
   def smtp_id
