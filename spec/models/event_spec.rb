@@ -17,6 +17,16 @@ describe Event do
     end
   end
 
+  describe ".mailer_actions" do
+    it "finds sorted unique mailer actions" do
+      Event.create!(mailer_action: "FooMailer#baz")
+      Event.create!(mailer_action: "BarMailer#foo")
+      Event.create!(mailer_action: "FooMailer#baz")
+
+      Event.mailer_actions.should == ["BarMailer#foo", "FooMailer#baz" ]
+    end
+  end
+
   describe ".email" do
     it "is case insensitive" do
       foo = Event.create!(email: "foo@example.com")
