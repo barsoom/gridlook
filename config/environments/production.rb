@@ -46,8 +46,10 @@ Gridlook::Application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
-  # Set to :debug to see everything in the log.
-  config.log_level = :info
+  # Be able to change level of logging in production (Heroku)
+  # Use: heroku config:add LOG_LEVEL="debug" -> Set heroku logs to use debug level of logging
+  config.logger = Logger.new(STDOUT)
+  config.logger.level = Logger.const_get(ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'INFO')
 
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
