@@ -18,13 +18,21 @@ describe Event do
   end
 
   describe ".mailer_actions" do
-    it "finds sorted unique mailer actions" do
+    before { Event.clear_cached_mailer_actions }
+
+    it "lists sorted unique mailer actions" do
       Event.create!(mailer_action: "FooMailer#baz")
       Event.create!(mailer_action: "BarMailer#foo")
-      Event.create!(mailer_action: nil)
       Event.create!(mailer_action: "FooMailer#baz")
 
       Event.mailer_actions.should == ["BarMailer#foo", "FooMailer#baz" ]
+    end
+
+    it "ignores nil actions" do
+      Event.create!(mailer_action: "FooMailer#baz")
+      Event.create!(mailer_action: nil)
+
+      Event.mailer_actions.should == [ "FooMailer#baz" ]
     end
   end
 

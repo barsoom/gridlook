@@ -8,10 +8,6 @@ class Event < ActiveRecord::Base
   scope :named, -> name { name ? where(name: name) : all }
   scope :mailer_action, -> mailer_action { mailer_action ? where(mailer_action: mailer_action) : all }
 
-  def email=(value)
-    super(value.to_s.downcase.presence)
-  end
-
   def self.recent(page, per)
     order("happened_at DESC, id DESC").
       page(page).per_page(per)
@@ -36,6 +32,14 @@ class Event < ActiveRecord::Base
 
   def self.mailer_actions
     @mailer_actions ||= uniq.pluck(:mailer_action).compact.sort
+  end
+
+  def self.clear_cached_mailer_actions
+    @mailer_actions = nil
+  end
+
+  def email=(value)
+    super(value.to_s.downcase.presence)
   end
 
   def smtp_id
