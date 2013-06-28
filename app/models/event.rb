@@ -34,23 +34,8 @@ class Event < ActiveRecord::Base
     ]
   end
 
-  def self.action_mailers
-    %w[
-      SellerMailer#contract SellerReportMailer#build
-      SingleSellerReportMailer#build
-      Online::UnsoldMailer#build Online::UnsoldNotRelistableMailer#build
-      Seller::OverdueReminderMailer#build PayoutMailer#build
-      BuyerMailer#welcome BuyerMailer#welcome_by_company
-      Buyer::PasswordResetMailer#build Employee::PasswordResetMailer#build
-      Online::AuctionReminderMailer#build Online::AuctionWonMailer#build
-      Online::OutbidMailer#build Hammer::AuctionsWonMailer#build
-      SavedSearchMailer#build Buyer::TransportInvoiceMailer#build
-      TransportOrder::UnloadedMailer#build TransportOrder::PostedMailer#build
-      TransportOrder::ConfirmedMailer#build TransportOrder::CancelledMailer#build
-      Buyer::OverdueTransportWarehouseReminderMailer#build
-      Buyer::OverdueReminderMailer#build WeaponLicenseConfirmedMailer#build
-      PaymentReceiptMailer#build VatExemptionMailer#build
-    ].sort
+  def self.mailer_actions
+    uniq.pluck(:mailer_action).sort
   end
 
   def smtp_id

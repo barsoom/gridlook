@@ -61,35 +61,35 @@ describe "Browsing" do
   end
 
   it "filters and unfilters by mailer" do
-    seller_mailer = create_event("foo@example.com", "bounce", "SellerMailer#contract")
-    seller_report_mailer = create_event("foo@example.com", "delivered", "SellerReportMailer#build")
+    foo_mailer = create_event("foo@example.com", "bounce", "FooMailer#baz")
+    bar_mailer = create_event("foo@example.com", "delivered", "BarMailer#foo")
 
     visit root_path
 
-    page.should list_event(seller_mailer)
-    page.should list_event(seller_report_mailer)
+    page.should list_event(foo_mailer)
+    page.should list_event(bar_mailer)
 
     # Clicking on mailer action.
 
-    click_link "SellerMailer#contract"
+    click_link "FooMailer#baz"
 
-    page.should_not list_event(seller_report_mailer)
-    page.should list_event(seller_mailer)
+    page.should_not list_event(bar_mailer)
+    page.should list_event(foo_mailer)
 
     # Using the filter form.
 
-    select "SellerMailer#contract", from: "Mailer:"
+    select "FooMailer#baz", from: "Mailer:"
     click_button "Filter"
 
-    page.should list_event(seller_mailer)
-    page.should_not list_event(seller_report_mailer)
+    page.should list_event(foo_mailer)
+    page.should_not list_event(bar_mailer)
 
     # Removing filter.
 
     click_button "Remove filters"
 
-    page.should list_event(seller_mailer)
-    page.should list_event(seller_report_mailer)
+    page.should list_event(foo_mailer)
+    page.should list_event(bar_mailer)
   end
 
   it "combines filters" do
@@ -124,14 +124,13 @@ describe "Browsing" do
     have_selector("#event_#{event.id}")
   end
 
-  def create_event(email = "foo@example.com", name = "sent", mailer = "SellerMailer#contract")
+  def create_event(email = "foo@example.com", name = "sent", mailer = "FooMailer#baz")
     Event.create!(
       email: email,
       name: name,
       happened_at: Time.now,
       unique_args: { hello: "there" },
       mailer_action: mailer,
-      category: [ mailer.split("#")[0], mailer ],
       data: { url: "http://example.com/foo" }
     )
   end
