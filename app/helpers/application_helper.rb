@@ -38,4 +38,14 @@ module ApplicationHelper
     options += Event.mailer_actions
     options_for_select(options, selected)
   end
+
+  def prev_page_link(page)
+    if page && page > 1
+      link_to("← Previous", params.merge(page: page - 1))
+    end
+  end
+
+  def next_page_link(records, page)
+    link_to("Next →", params.merge(page: page + 1)) if records.any?
+  end
 end

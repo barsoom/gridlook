@@ -6,7 +6,7 @@ gem 'rails', '4.0.0'
 
 gem 'gridhook'
 gem 'slim'
-gem 'will_paginate'
+gem 'kaminari'
 gem 'pg'
 
 group :test, :development do

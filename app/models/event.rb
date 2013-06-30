@@ -8,9 +8,13 @@ class Event < ActiveRecord::Base
   scope :named, -> name { name ? where(name: name) : all }
   scope :mailer_action, -> mailer_action { mailer_action ? where(mailer_action: mailer_action) : all }
 
+  def self.total_entries
+    count_by_sql("SELECT (reltuples)::integer FROM pg_class r WHERE relkind = 'r' AND relname = '#{self.table_name}';")
+  end
+
   def self.recent(page, per)
     order("happened_at DESC, id DESC").
-      page(page).per_page(per)
+      page(page).per(per)
   end
 
   def self.oldest_time

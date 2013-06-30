@@ -1,6 +1,4 @@
 .stats
-  - if filtered?(local_assigns)
-    p.stat <b>Filtered events:</b> #{number_with_delimiter(filtered_count)}
   p.stat <b>Total events:</b> #{number_with_delimiter(total_count)}
   p.stat <b>Newest event:</b> #{newest_time || "-"}
   p.stat <b>Oldest event:</b> #{oldest_time || "-"}
@@ -24,12 +22,16 @@
 - if filtered?(local_assigns)
   .remove-filter= button_to "Remove filters", {}, method: :get
 
+p
+  = prev_page_link(page)
+  = " "
+  = next_page_link(events, page)
+
 - if events.any?
 
-  = will_paginate events
   table.events-table= render events
-  = will_paginate events
 
 - else
 
-  p No events :(
+  p
+    = params[:page] ? 'No more events' : 'No events :('
