@@ -35,3 +35,9 @@ p
 
   p
     = params[:page] ? 'No more events' : 'No events :('
+
+p
+  = prev_page_link(page)
+  = " "
+  = next_page_link(events, page)
+

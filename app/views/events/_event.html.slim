@@ -1,13 +1,13 @@
 tr.main-data id=dom_id(event)
   td
   td.email
-    = link_to(event.email, params.merge(email: event.email))
+    = link_to(event.email, params.merge(email: event.email).except(:page))
   td.happened-at= event.happened_at
   td.event
     - if event.mailer_action
-      b= link_to(event.mailer_action, params.merge(mailer_action: event.mailer_action))
+      b= link_to(event.mailer_action, params.merge(mailer_action: event.mailer_action).except(:page))
       '
-    = link_to(event.name, params.merge(name: event.name))
+    = link_to(event.name, params.merge(name: event.name).except(:page))
 tr.extra-data
   td.identifier-image
     - if event.smtp_id
