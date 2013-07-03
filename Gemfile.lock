@@ -60,6 +60,7 @@ GEM
     mime-types (1.23)
     minitest (4.7.5)
     multi_json (1.7.7)
+    newrelic_rpm (3.6.5.130)
     nokogiri (1.5.7)
     pg (0.14.1)
     polyglot (0.3.3)
@@ -149,6 +150,7 @@ DEPENDENCIES
   gridhook
   jquery-rails
   kaminari
+  newrelic_rpm
   pg
   rails (= 4.0.0)
   rails_12factor

@@ -8,6 +8,7 @@ gem 'gridhook'
 gem 'slim'
 gem 'kaminari'
 gem 'pg'
+gem 'jquery-rails'
 
 group :test, :development do
   gem 'rspec-rails'
@@ -17,6 +18,7 @@ end
 group :production do
   gem 'unicorn'
   gem 'rails_12factor'
+  gem 'newrelic_rpm'
 end
 
 # Gems used only for assets and not required
@@ -29,8 +31,3 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
-gem 'jquery-rails'
-
-# Use unicorn as the app server
-# gem 'unicorn'
