@@ -58,7 +58,7 @@ That should be it. SendGrid should start sending you events and your app should 
 
 ## More information with conventions
 
-If you [configure your mails](http://henrik.nyh.se/2012/08/sendgrid-metadata-and-rails/) to include the mailer as a category containing a "#", e.g. "CustomerMailer#signup", that information will be shown at the top.
+If you [configure your mails](http://henrik.nyh.se/2012/08/sendgrid-metadata-and-rails/) to include the mailer as a category containing a "#", e.g. "CustomerMailer#signup", that information will be shown at the top and can be filtered.
 
 ## Notes
 
@@ -67,7 +67,7 @@ Don't worry about deploy downtime etc. SendGrid [will retry](http://sendgrid.com
 > SendGrid expects a 200 HTTP response to the POST, otherwise the event notification will be retried.
 > If your URL returns a non-200 HTTP code it will be deferred and retried for 24 hours.
 
-The license for SendGrid's event icons is unclear. I asked and received no response. I will replace them if they complain.
+The license for SendGrid's event icons is unclear. We asked and received no response. We will replace them if they complain.
 
 Non-obvious places in the app:
 
@@ -80,6 +80,23 @@ Non-obvious places in the app:
     rake db:setup
     rake  # Run tests
 
+## Maintenance
+
+Some useful commands working with heroku:
+```
+heroku pg:psql # database console
+
+# Needs to be installed as a heroku addon (pgbackups)
+heroku pgbackups:capture # database backup
+heroku pgbackups:url # get an download url to the latest backup
+curl -L <url> -o $(date +%y-%m-%d)\_gridlook_db # Download <url> (url given by heroku pgbackups:url) with format: year-month-day_gridlook_db
+
+# Sometimes it's nice to get more info in the production server log.
+heroku config:add LOG_LEVEL="<level>" # level = info/debug
+heroku logs -t # Show log tailed
+
+heroku run console # Rails console
+```
 ## TODO
 
 * Tests that auth is applied in prod
