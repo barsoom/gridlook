@@ -1,13 +1,6 @@
----
 language: ruby
 rvm:
-- 2.0.0
+  # 2.0 rubies
+  - 2.0.0
 before_script:
-- psql -c 'create database gridlook_test;' -U postgres
-deploy:
-  provider: heroku
-  api_key:
-    secure: |-
-      kXmtpyTHlyw8prKujzMtru3xmLebCBb7B4mWgD3BJB8EA/ffcKPdTZLLXp2/
-      WTh6DRyfv0FBO+PTNYkNwwPRahgJR4Sy0gTciaBr7jKSEePbpuCQaGZd9AQG
-      5ry2lMLoZVVf49h4p2rRflpEr3sdy2ZyamndfXk2JglDbCMCwNo=
+  - psql -c 'create database gridlook_test;' -U postgres
