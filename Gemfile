@@ -19,6 +19,8 @@ group :production do
   gem 'unicorn'
   gem 'rails_12factor'
   gem 'newrelic_rpm'
+  gem 'dalli'
+  gem 'memcachier'
 end
 
 # Gems used only for assets and not required
