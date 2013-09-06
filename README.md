@@ -38,7 +38,7 @@ heroku config:set RAILS_TZ=CET  # Whatever you prefer.
 git push heroku
 
 # Load DB schema.
-heroku run db:schema:load
+heroku run rake db:schema:load
 
 # Open app in browser.
 heroku open
