@@ -34,8 +34,21 @@ class Event < ActiveRecord::Base
     ]
   end
 
+  # We use a recursive sql query to optimize picking unique mailer actions
+  # Read more about it: http://zogovic.com/post/44856908222/optimizing-postgresql-query-for-distinct-values
+
   def self.mailer_actions
-    @mailer_actions ||= uniq.pluck(:mailer_action).compact.sort
+    sql = %q(
+    WITH RECURSIVE t(n) AS (
+        SELECT MIN(mailer_action) FROM events
+      UNION
+        SELECT (SELECT mailer_action FROM events WHERE mailer_action > n ORDER BY mailer_action LIMIT 1)
+        FROM t WHERE n IS NOT NULL
+    )
+    SELECT n FROM t;
+    )
+
+    @mailer_actions ||= Event.connection.execute(sql).map { |mailer| mailer.flatten.last }.compact
   end
 
   def self.clear_cached_mailer_actions
