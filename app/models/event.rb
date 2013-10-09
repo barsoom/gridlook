@@ -48,7 +48,7 @@ class Event < ActiveRecord::Base
     SELECT n FROM t;
     )
 
-    @mailer_actions ||= Event.connection.execute(sql).map { |mailer| mailer.flatten.last }.compact
+    @mailer_actions ||= Event.connection.execute(sql).map { |mailer_action| mailer_action.flatten.last }.compact
   end
 
   def self.clear_cached_mailer_actions
