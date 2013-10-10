@@ -17,7 +17,7 @@ Check out this repo (clone it first if you like).
 
 Create and set up a Heroku app:
 
-```
+```bash
 heroku create my-gridlook  # Choose a better name.
 
 # Set up DB per https://devcenter.heroku.com/articles/heroku-postgresql
@@ -77,15 +77,15 @@ Non-obvious places in the app:
 * `config/environments/production.rb` sets up HTTP auth.
 
 ## Development
-
-    script/bootstrap
-    rake db:setup
-    rake  # Run tests
-
+```bash
+script/bootstrap
+rake db:setup
+rake  # Run tests
+```
 ## Maintenance
 
 Some useful commands working with heroku:
-```
+```bash
 heroku pg:psql # database console
 
 # Needs to be installed as a heroku addon (pgbackups)
