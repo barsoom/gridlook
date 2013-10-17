@@ -19,6 +19,7 @@ group :production do
   gem 'unicorn'
   gem 'rails_12factor'
   gem 'newrelic_rpm'
+  gem 'rack-cache'
   gem 'dalli'
   gem 'memcachier'
 end

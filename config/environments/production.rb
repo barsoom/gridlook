@@ -61,6 +61,15 @@ Gridlook::Application.configure do
   # config.cache_store = :mem_cache_store
 
   config.assets.cache_store = :dalli_store
+  client = Dalli::Client.new(
+    ENV["MEMCACHIER_SERVERS"],
+    :value_max_bytes => 10485760
+  )
+  config.action_dispatch.rack_cache = {
+    metastore: client,
+    entitystore: client
+  }
+  config.static_cache_control = "public, max-age=2592000"
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = "http://assets.example.com"
