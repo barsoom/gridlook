@@ -1,1 +1,1 @@
-rvm ruby-2.0.0-p247@gridlook --create
+rvm ruby-2.1.0@gridlook --create
