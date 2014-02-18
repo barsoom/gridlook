@@ -103,6 +103,10 @@ heroku run console # Rails console
 
 * Tests that auth is applied in prod
 
+## Also see
+
+* [Postman](https://github.com/mynewsdesk/postman), backed by [keen.io](https://keen.io). May cost significantly more than Gridlook/Heroku Postgres for large event volumes.
+
 ## Contributors
 
 [Barsoom](http://barsoom.se)
