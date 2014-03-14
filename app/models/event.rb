@@ -8,8 +8,10 @@ class Event < ActiveRecord::Base
   scope :named, -> name { name ? where(name: name) : all }
   scope :mailer_action, -> mailer_action { mailer_action ? where(mailer_action: mailer_action) : all }
 
+  # Track total event rows by implementing a trigger that keeps track on inserts/delets
+  # Read more about it: http://www.varlena.com/GeneralBits/49.php
   def self.total_entries
-    count_by_sql("SELECT (reltuples)::integer FROM pg_class r WHERE relkind = 'r' AND relname = '#{self.table_name}';")
+    ActiveRecord::Base.connection.select_all("select total_rows from rowcount").rows.flatten.first.to_i
   end
 
   def self.recent(page, per)

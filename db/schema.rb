@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130629203432) do
+ActiveRecord::Schema.define(version: 20140314222224) do
 
   create_table "events", force: true do |t|
     t.string   "email"
@@ -30,5 +30,10 @@ ActiveRecord::Schema.define(version: 20130629203432) do
   add_index "events", ["happened_at"], name: "index_events_on_happened_at", using: :btree
   add_index "events", ["mailer_action"], name: "index_events_on_mailer_action", using: :btree
   add_index "events", ["name"], name: "index_events_on_name", using: :btree
+
+  create_table "rowcount", id: false, force: true do |t|
+    t.text    "table_name",           null: false
+    t.integer "total_rows", limit: 8
+  end
 
 end
