@@ -76,9 +76,7 @@ Non-obvious places in the app:
 * `config/initializers/gridhook.rb` handles incoming events.
 * `config/environments/production.rb` sets up HTTP auth.
 
-Another thing to note is that Gridlook uses db triggers. They do work with postgres, but might not work with other SQL databases.
-
-If you like to use something else than postgres you need to be aware of that.
+Also note that Gridlook uses Postgres-specific DB triggers (to show an accurate event count).
 
 ## Development
 ```bash
