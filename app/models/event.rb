@@ -11,7 +11,7 @@ class Event < ActiveRecord::Base
   # Track total event rows by implementing a trigger that keeps track on inserts/delets
   # Read more about it: http://www.varlena.com/GeneralBits/49.php
   def self.total_entries
-    connection.select_value("SELECT total_rows FROM rowcount").to_i
+    connection.select_value("SELECT total_rows FROM rowcount WHERE table_name='events'").to_i
   end
 
   def self.recent(page, per)

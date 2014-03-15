@@ -85,4 +85,12 @@ describe Event do
       Event.newest_time.should be_nil
     end
   end
+
+  describe ".total_entries" do
+    it "counts total events" do
+      Event.create!
+
+      expect(Event.total_entries).to eq(1)
+    end
+  end
 end
