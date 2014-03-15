@@ -12,8 +12,4 @@ end
 
 system("bundle") || exit(1)
 
-system("rake db:create")
-
-system("rake db:migrate")
-
-system("rake db:seed")
+system("rake db:setup")
