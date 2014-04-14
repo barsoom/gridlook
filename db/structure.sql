@@ -198,8 +198,3 @@ INSERT INTO schema_migrations (version) VALUES ('20130629203432');
 
 INSERT INTO schema_migrations (version) VALUES ('20140314222224');
 
---
--- Initialize events counter
---
-
-INSERT INTO rowcount (table_name, total_rows) VALUES ('events', 0)
