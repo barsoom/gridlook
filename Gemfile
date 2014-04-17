@@ -10,6 +10,8 @@ gem 'kaminari'
 gem 'pg'
 gem 'jquery-rails'
 
+gem 'fog'
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'
