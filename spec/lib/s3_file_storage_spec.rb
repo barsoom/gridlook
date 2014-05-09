@@ -1,8 +1,9 @@
 require "spec_helper"
 require "tempfile"
 
+# TODO: Need to fix fog_credentials, as it works now it's not parsing erb. We could use the new rails configuration thing.
 describe S3FileStorage, "#upload_file" do
-  before do
+  before(:all) do
     Fog.mock!
     Fog.credentials_path = Rails.root.join('config/fog_credentials.yml')
     connection = Fog::Storage.new(provider: "AWS")
@@ -11,6 +12,7 @@ describe S3FileStorage, "#upload_file" do
   end
 
   it "is possible to upload a file to S3" do
+    raise Fog.credentials.inspect
     storage.upload_file(full_path)
 
     expect(files_in_bucket.first).to include("kalle", ".txt")
