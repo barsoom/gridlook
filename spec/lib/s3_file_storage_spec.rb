@@ -12,7 +12,6 @@ describe S3FileStorage, "#upload_file" do
   end
 
   it "is possible to upload a file to S3" do
-    raise Fog.credentials.inspect
     storage.upload_file(full_path)
 
     expect(files_in_bucket.first).to include("kalle", ".txt")
