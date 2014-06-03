@@ -3,17 +3,24 @@
 --
 
 SET statement_timeout = 0;
+SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
-SET standard_conforming_strings = off;
+SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET escape_string_warning = off;
 
 --
--- Name: plpgsql; Type: PROCEDURAL LANGUAGE; Schema: -; Owner: -
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
 --
 
-CREATE OR REPLACE PROCEDURAL LANGUAGE plpgsql;
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
 SET search_path = public, pg_catalog;
@@ -104,7 +111,7 @@ CREATE TABLE schema_migrations (
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE events ALTER COLUMN id SET DEFAULT nextval('events_id_seq'::regclass);
+ALTER TABLE ONLY events ALTER COLUMN id SET DEFAULT nextval('events_id_seq'::regclass);
 
 
 --
@@ -128,48 +135,6 @@ ALTER TABLE ONLY rowcount
 --
 
 CREATE INDEX index_events_on_email ON events USING btree (email);
-
-
---
--- Name: index_events_on_happened_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_events_on_happened_at ON events USING btree (happened_at);
-
-
---
--- Name: index_events_on_happened_at_and_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_events_on_happened_at_and_id ON events USING btree (happened_at, id);
-
-
---
--- Name: index_events_on_mailer_action; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_events_on_mailer_action ON events USING btree (mailer_action);
-
-
---
--- Name: index_events_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_events_on_name ON events USING btree (name);
-
-
---
--- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
-
-
---
--- Name: countrows; Type: TRIGGER; Schema: public; Owner: -
---
-
-CREATE TRIGGER countrows AFTER INSERT OR DELETE ON events FOR EACH ROW EXECUTE PROCEDURE count_rows();
 
 
 --
@@ -198,8 +163,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130629203432');
 
 INSERT INTO schema_migrations (version) VALUES ('20140314222224');
 
---
--- Initialize events counter
---
+INSERT INTO schema_migrations (version) VALUES ('20140603114446');
 
-INSERT INTO rowcount (table_name, total_rows) VALUES ('events', 0)
