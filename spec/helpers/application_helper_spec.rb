@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe ApplicationHelper do
   describe "#inspect_value" do
@@ -7,35 +7,35 @@ describe ApplicationHelper do
     end
 
     it "shows an array in paragraphs" do
-      inspect_value(["foo", "bar"]).should == "<p>foo</p><p>bar</p>"
+      expect(inspect_value(["foo", "bar"])).to eq("<p>foo</p><p>bar</p>")
     end
 
     it "shows a hash value by value" do
       actual = inspect_value({ foo: "1", bar: ["2"] })
-      actual.should == '<p>foo = 1</p>'+
-                       '<p>bar = [&quot;2&quot;]</p>'
+      expect(actual).to eq('<p>foo = 1</p>'+
+                       '<p>bar = [&quot;2&quot;]</p>')
     end
 
     it "inspects scalars" do
-      inspect_value(1).should == "1"
+      expect(inspect_value(1)).to eq("1")
     end
   end
 
   describe "#filtered?" do
     it "is true if the params include :email" do
-      filtered?(email: "yo").should be_true
+      expect(filtered?(email: "yo")).to be_truthy
     end
 
     it "is true if the params include :name" do
-      filtered?(name: "yo").should be_true
+      expect(filtered?(name: "yo")).to be_truthy
     end
 
     it "is true if the params include :mailer_action" do
-      filtered?(mailer_action: "yo").should be_true
+      expect(filtered?(mailer_action: "yo")).to be_truthy
     end
 
     it "is false otherwise" do
-      filtered?(foo: "yo").should be_false
+      expect(filtered?(foo: "yo")).to be_falsey
     end
   end
 end

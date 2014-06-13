@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe AttributeMapper, "#to_hash" do
   it "builds up an attribute hash from a Gridhook::Event" do
@@ -11,11 +11,11 @@ describe AttributeMapper, "#to_hash" do
 
     actual = AttributeMapper.new(gridhook_event).to_hash
 
-    actual[:email].should == "foo@bar.com"
-    actual[:name].should == "sent"
-    actual[:happened_at].should == Time.utc(2011,11,22, 22,14,55)
-    actual[:mailer_action].should == "FooMailer#bar"
-    actual[:category].should == ["FooMailer#bar", "FooMailer"]
+    expect(actual[:email]).to eq("foo@bar.com")
+    expect(actual[:name]).to eq("sent")
+    expect(actual[:happened_at]).to eq(Time.utc(2011,11,22, 22,14,55))
+    expect(actual[:mailer_action]).to eq("FooMailer#bar")
+    expect(actual[:category]).to eq(["FooMailer#bar", "FooMailer"])
   end
 
   # http://sendgrid.com/docs/API_Reference/Webhooks/event.html
@@ -33,7 +33,7 @@ describe AttributeMapper, "#to_hash" do
     gridhook_event = Gridhook::Event.new(attributes)
     actual = AttributeMapper.new(gridhook_event).to_hash
 
-    actual[:data].should == attributes
+    expect(actual[:data]).to eq(attributes)
   end
 
   # http://sendgrid.com/docs/API_Reference/SMTP_API/unique_arguments.html
@@ -44,6 +44,6 @@ describe AttributeMapper, "#to_hash" do
     )
 
     actual = AttributeMapper.new(gridhook_event).to_hash
-    actual[:unique_args].should == { extra: "extra" }
+    expect(actual[:unique_args]).to eq({ extra: "extra" })
   end
 end

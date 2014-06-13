@@ -1,10 +1,10 @@
-require "spec_helper"
+require "rails_helper"
 
 describe "Browsing" do
   it "lists events" do
     event = create_event
     visit root_path
-    page.should list_event(event)
+    expect(page).to list_event(event)
   end
 
   it "filters and unfilters by exact email" do
@@ -13,19 +13,19 @@ describe "Browsing" do
 
     visit root_path
 
-    page.should list_event(foo)
-    page.should list_event(bar)
+    expect(page).to list_event(foo)
+    expect(page).to list_event(bar)
 
     fill_in "Exact email", with: "bar@example.com"
     click_button "Filter"
 
-    page.should_not list_event(foo)
-    page.should list_event(bar)
+    expect(page).not_to list_event(foo)
+    expect(page).to list_event(bar)
 
     click_button "Remove filters"
 
-    page.should list_event(foo)
-    page.should list_event(bar)
+    expect(page).to list_event(foo)
+    expect(page).to list_event(bar)
   end
 
   it "filters and unfilters by name" do
@@ -34,30 +34,30 @@ describe "Browsing" do
 
     visit root_path
 
-    page.should list_event(bounce)
-    page.should list_event(delivered)
+    expect(page).to list_event(bounce)
+    expect(page).to list_event(delivered)
 
     # Clicking on event.
 
     click_link "delivered"
 
-    page.should_not list_event(bounce)
-    page.should list_event(delivered)
+    expect(page).not_to list_event(bounce)
+    expect(page).to list_event(delivered)
 
     # Using the filter form.
 
     select "bounce", from: "Event:"
     click_button "Filter"
 
-    page.should list_event(bounce)
-    page.should_not list_event(delivered)
+    expect(page).to list_event(bounce)
+    expect(page).not_to list_event(delivered)
 
     # Removing filter.
 
     click_button "Remove filters"
 
-    page.should list_event(bounce)
-    page.should list_event(delivered)
+    expect(page).to list_event(bounce)
+    expect(page).to list_event(delivered)
   end
 
   it "filters and unfilters by mailer" do
@@ -66,30 +66,30 @@ describe "Browsing" do
 
     visit root_path
 
-    page.should list_event(foo_mailer)
-    page.should list_event(bar_mailer)
+    expect(page).to list_event(foo_mailer)
+    expect(page).to list_event(bar_mailer)
 
     # Clicking on mailer action.
 
     click_link "FooMailer#baz"
 
-    page.should_not list_event(bar_mailer)
-    page.should list_event(foo_mailer)
+    expect(page).not_to list_event(bar_mailer)
+    expect(page).to list_event(foo_mailer)
 
     # Using the filter form.
 
     select "FooMailer#baz", from: "Mailer:"
     click_button "Filter"
 
-    page.should list_event(foo_mailer)
-    page.should_not list_event(bar_mailer)
+    expect(page).to list_event(foo_mailer)
+    expect(page).not_to list_event(bar_mailer)
 
     # Removing filter.
 
     click_button "Remove filters"
 
-    page.should list_event(foo_mailer)
-    page.should list_event(bar_mailer)
+    expect(page).to list_event(foo_mailer)
+    expect(page).to list_event(bar_mailer)
   end
 
   it "combines filters" do
@@ -99,9 +99,9 @@ describe "Browsing" do
 
     visit root_path
 
-    page.should list_event(foo)
-    page.should list_event(bar)
-    page.should list_event(baz)
+    expect(page).to list_event(foo)
+    expect(page).to list_event(bar)
+    expect(page).to list_event(baz)
 
     within_event(foo) do
       click_link "foo@example.com"
@@ -111,9 +111,9 @@ describe "Browsing" do
       click_link "sent"
     end
 
-    page.should list_event(foo)
-    page.should_not list_event(bar)
-    page.should_not list_event(baz)
+    expect(page).to list_event(foo)
+    expect(page).not_to list_event(bar)
+    expect(page).not_to list_event(baz)
   end
 
   def within_event(event, &block)

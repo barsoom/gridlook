@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe "The webhook" do
   it "creates events" do
@@ -7,6 +7,6 @@ describe "The webhook" do
     }.to change(Event, :count).by(1)
 
     event = Event.last
-    event.email.should == "foo@example.com"
+    expect(event.email).to eq("foo@example.com")
   end
 end
