@@ -157,7 +157,7 @@ DEPENDENCIES
   rails (= 4.1.1)
   rails_12factor
   rspec-rails
-  sass-rails
+  sass-rails (= 4.0.3)
   slim
   uglifier (>= 1.0.3)
   unicorn
