@@ -131,13 +131,6 @@ CREATE INDEX index_events_on_email ON events USING btree (email);
 
 
 --
--- Name: index_events_on_happened_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_events_on_happened_at ON events USING btree (happened_at);
-
-
---
 -- Name: index_events_on_happened_at_and_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -145,10 +138,10 @@ CREATE INDEX index_events_on_happened_at_and_id ON events USING btree (happened_
 
 
 --
--- Name: index_events_on_mailer_action; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_events_on_mailer_action_and_happened_at_and_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_events_on_mailer_action ON events USING btree (mailer_action);
+CREATE INDEX index_events_on_mailer_action_and_happened_at_and_id ON events USING btree (mailer_action, happened_at, id);
 
 
 --
@@ -200,8 +193,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140314222224');
 
 INSERT INTO schema_migrations (version) VALUES ('20140603114446');
 
---
--- Initialize events counter
---
+INSERT INTO schema_migrations (version) VALUES ('20140710091549');
 
-INSERT INTO rowcount (table_name, total_rows) VALUES ('events', 0)
