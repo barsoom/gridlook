@@ -166,6 +166,13 @@ CREATE TRIGGER countrows AFTER INSERT OR DELETE ON events FOR EACH ROW EXECUTE P
 
 
 --
+-- Initialize events counter
+--
+
+INSERT INTO rowcount (table_name, total_rows) VALUES ('events', 0)
+
+
+--
 -- PostgreSQL database dump complete
 --
 
