@@ -96,9 +96,15 @@ describe Event do
 
   describe "#description" do
     it "returns the description of an event type" do
-      event = Event.new(email: "FoO@ExAmplE.cOm", name: "open")
+      event = Event.new(name: "open")
 
-      expect(event.description).to include("Recipient has opened the HTML message.")
+      expect(event.description).to eq("Recipient has opened the HTML message.")
+    end
+
+    it "returns 'no description' when missing description" do
+      event = Event.new(name: "foo")
+
+      expect(event.description).to eq("No description")
     end
   end
 end
