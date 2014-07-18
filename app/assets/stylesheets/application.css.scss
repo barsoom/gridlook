@@ -14,6 +14,7 @@
 
 $block-vmargin: 30px;
 $gray: #ccc;
+$black: #000;
 
 body {
   font-family: 'Helvetica Neue', Helvetica, sans-serif;
@@ -127,9 +128,9 @@ b, strong, label {
   position: relative;
 }
 
-.tooltip:hover:before{
+.tooltip:hover:before {
   bottom: 26px;
-  color: #000;
+  color: $black;
   content: attr(data-tooltip);
   padding: 5px 15px;
   position: absolute;
@@ -139,3 +140,9 @@ b, strong, label {
   font-weight: bold;
 }
 
+.help-block {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: lighten($black, 25%);
+}

@@ -16,6 +16,8 @@
   p
     =' label_tag :mailer_action, "Mailer:"
     = select_tag :mailer_action, event_mailer_options(mailer_action)
+    span.help-block
+      small= "This is a cached list that is not updated automatically."
 
   p= button_tag "Filter", type: :submit
 
