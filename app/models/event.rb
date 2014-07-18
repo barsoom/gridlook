@@ -8,6 +8,19 @@ class Event < ActiveRecord::Base
   scope :named, -> name { name ? where(name: name) : all }
   scope :mailer_action, -> mailer_action { mailer_action ? where(mailer_action: mailer_action) : all }
 
+  EVENT_TYPES_WITH_DESCRIPTION =
+    {
+      processed:   "Message has been received and is ready to be delivered.",
+      dropped:     "You may see the following drop reasons: invalid SMTPAPI header, spam content (if spam checker app enabled), unsubscribed address, bounced address, spam reporting address, invalid.",
+      delivered:   "Message has been successfully delivered to the receiving server.",
+      deferred:    "Recipient’s email server temporarily rejected message.",
+      bounce:      "Receiving server could not or would not accept message.",
+      open:        "Recipient has opened the HTML message.",
+      click:       "Recipient clicked on a link within the message.",
+      spamreport:  "Recipient marked message as spam.",
+      unsubscribe: "Recipient clicked on message’s subscription management link.",
+    }
+
   # Track total event rows by implementing a trigger that keeps track on inserts/delets
   # Read more about it: http://www.varlena.com/GeneralBits/49.php
   def self.total_entries
@@ -30,10 +43,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.names
-    %w[
-      processed dropped delivered deferred bounce
-      open click spamreport unsubscribe
-    ]
+    EVENT_TYPES_WITH_DESCRIPTION.keys.map(&:to_s)
   end
 
   # We use a recursive sql query to optimize picking unique mailer actions
@@ -63,5 +73,9 @@ class Event < ActiveRecord::Base
 
   def smtp_id
     data[:"smtp-id"]
+  end
+
+  def description
+    EVENT_TYPES_WITH_DESCRIPTION.fetch(name.to_sym, "No description")
   end
 end

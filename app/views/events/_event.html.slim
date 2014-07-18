@@ -7,7 +7,7 @@ tr.main-data id=dom_id(event)
     - if event.mailer_action
       b= link_to(event.mailer_action, params.merge(mailer_action: event.mailer_action).except(:page))
       '
-    = link_to(event.name, params.merge(name: event.name).except(:page))
+    = link_to(event.name, params.merge(name: event.name).except(:page), data: { tooltip: event.description }, class: "tooltip")
 tr.extra-data
   td.identifier-image
     - if event.smtp_id

@@ -121,3 +121,22 @@ b, strong, label {
     text-align: right;
   }
 }
+
+.tooltip {
+  display: inline;
+  position: relative;
+}
+
+.tooltip:hover:before{
+  background: #fff;
+  bottom: 26px;
+  color: #000;
+  content: attr(data-tooltip);
+  padding: 5px 15px;
+  position: absolute;
+  width: 200px;
+  white-space: normal;
+  text-align: left;
+  font-weight: bold;
+}
+

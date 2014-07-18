@@ -93,4 +93,12 @@ describe Event do
       expect(Event.total_entries).to eq(1)
     end
   end
+
+  describe "#description" do
+    it "returns the description of an event type" do
+      event = Event.new(email: "FoO@ExAmplE.cOm", name: "open")
+
+      expect(event.description).to include("Recipient has opened the HTML message.")
+    end
+  end
 end
