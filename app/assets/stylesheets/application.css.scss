@@ -126,18 +126,18 @@ b, strong, label {
 .tooltip {
   display: inline;
   position: relative;
-}
 
-.tooltip:hover:before {
-  bottom: 26px;
-  color: $black;
-  content: attr(data-tooltip);
-  padding: 5px 15px;
-  position: absolute;
-  width: 200px;
-  white-space: normal;
-  text-align: left;
-  font-weight: bold;
+  &:hover:before {
+    bottom: 26px;
+    color: $black;
+    content: attr(data-tooltip);
+    padding: 5px 15px;
+    position: absolute;
+    width: 200px;
+    white-space: normal;
+    text-align: left;
+    font-weight: bold;
+  }
 }
 
 .help-block {
