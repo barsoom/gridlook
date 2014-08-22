@@ -7,5 +7,8 @@ describe EventProcessor, "#call" do
 
     expect(event).to be_persisted
     expect(event.name).to eq("sent")
+
+    # Make sure that we increment the number of events when we create an event
+    expect(EventsData.total_events).to eq(1)
   end
 end

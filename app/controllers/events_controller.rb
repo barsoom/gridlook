@@ -14,7 +14,7 @@ class EventsController < ApplicationController
     events_on_page = filtered_events.recent(page, PER_PAGE)
 
     render locals: {
-      total_count:    Event.total_entries,
+      total_count:    Event.total_events,
       newest_time:    Event.newest_time,
       oldest_time:    Event.oldest_time,
       email:          email,

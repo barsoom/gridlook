@@ -86,11 +86,11 @@ describe Event do
     end
   end
 
-  describe ".total_entries" do
+  describe ".total_events" do
     it "counts total events" do
       Event.create!
 
-      expect(Event.total_entries).to eq(1)
+      expect(Event.total_events).to eq(1)
     end
   end
 

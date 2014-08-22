@@ -8,6 +8,8 @@ class Event < ActiveRecord::Base
   scope :named, -> name { name ? where(name: name) : all }
   scope :mailer_action, -> mailer_action { mailer_action ? where(mailer_action: mailer_action) : all }
 
+  after_save :increment_events_counter
+
   EVENT_TYPES_WITH_DESCRIPTION =
     {
       processed:   "Message has been received and is ready to be delivered.",
@@ -21,10 +23,10 @@ class Event < ActiveRecord::Base
       unsubscribe: "Recipient clicked on message’s subscription management link.",
     }
 
-  # Track total event rows by implementing a trigger that keeps track on inserts/delets
-  # Read more about it: http://www.varlena.com/GeneralBits/49.php
-  def self.total_entries
-    connection.select_value("SELECT total_rows FROM rowcount WHERE table_name='events'").to_i
+  # We have a separate table for counting number or events,
+  # this due to the fact that PostgreSQL is slow on counting large amounts of rows in a single table.
+  def self.total_events
+    EventsData.total_events
   end
 
   def self.recent(page, per)
@@ -48,7 +50,6 @@ class Event < ActiveRecord::Base
 
   # We use a recursive sql query to optimize picking unique mailer actions
   # Read more about it: http://zogovic.com/post/44856908222/optimizing-postgresql-query-for-distinct-values
-
   def self.mailer_actions
     sql = %q(
     WITH RECURSIVE t(n) AS (
@@ -77,5 +78,11 @@ class Event < ActiveRecord::Base
 
   def description
     EVENT_TYPES_WITH_DESCRIPTION.fetch(name.to_sym, "No description")
+  end
+
+  private
+
+  def increment_events_counter
+    EventsData.increment
   end
 end
