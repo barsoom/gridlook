@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
   scope :named, -> name { name ? where(name: name) : all }
   scope :mailer_action, -> mailer_action { mailer_action ? where(mailer_action: mailer_action) : all }
 
-  after_save :increment_events_counter
+  after_create :increment_events_counter
 
   EVENT_TYPES_WITH_DESCRIPTION =
     {
