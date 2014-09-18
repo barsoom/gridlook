@@ -6,4 +6,4 @@ deployment:
   deploy:
     branch: master
     commands:
-      - sh -c "$DEPLOY_COMMAND"
+      - sh tmp/deploy.sh
