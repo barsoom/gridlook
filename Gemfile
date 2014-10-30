@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+
+# If you change this, also update .travis.yml.
 ruby '2.1.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
