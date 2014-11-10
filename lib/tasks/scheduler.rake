@@ -1,4 +1,4 @@
-# This file contains all the heroku schedualer rake tasks.
+# This file contains all the heroku scheduler rake tasks.
 # See: https://devcenter.heroku.com/articles/scheduler
 
 desc "Postgres database tuning"
