@@ -105,7 +105,7 @@ heroku run console # Rails console
 
 If you find that some queries are slow or that you have other db issues it could be smart to set up some auto tuning of the postgres db. To do that you could use the heroku scheduler. Follow the the [heroku scheduler](https://devcenter.heroku.com/articles/scheduler) guide. You find the specific task [here](https://github.com/barsoom/gridlook/blob/master/lib/tasks/scheduler.rake).
 
-Auto tuning is done to clean the postgres database and also help the db planner (cashing and so on).
+Auto tuning is done to clean the postgres database and also help the db planner (caching and so on).
 Read more about it [here](https://devcenter.heroku.com/articles/heroku-postgres-database-tuning).
 
 ## TODO
