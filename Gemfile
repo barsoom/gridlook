@@ -11,10 +11,12 @@ gem 'slim'
 gem 'kaminari'
 gem 'pg'
 gem 'jquery-rails'
+gem 'attr_extras'
 
 group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'timecop'
 end
 
 group :production do

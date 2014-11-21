@@ -28,6 +28,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    attr_extras (3.1.0)
     builder (3.2.2)
     capybara (2.4.4)
       mime-types (>= 1.16)
@@ -128,6 +129,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
+    timecop (0.7.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.5.3)
@@ -144,6 +146,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  attr_extras
   capybara
   dalli
   gridhook
@@ -158,5 +161,6 @@ DEPENDENCIES
   rspec-rails
   sass-rails
   slim
+  timecop
   uglifier (>= 1.0.3)
   unicorn
