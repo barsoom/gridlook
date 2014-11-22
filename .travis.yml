@@ -1,9 +1,5 @@
 language: ruby
 rvm:
-  # This is an unsupported feature in travis ci to use the current
-  # ruby version set by the ruby directive in the Gemfile
-  #
-  # See: https://github.com/travis-ci/travis-ci/issues/2976
-  - '.'
+  - 2.1.5
 before_script:
   - psql -c 'create database gridlook_test;' -U postgres
