@@ -1,4 +1,7 @@
 class Event < ActiveRecord::Base
+  # NOTE: We have a rake task (rake scheduler:remove_events) that uses delete_all, so if you introduce a relation that does not work with that
+  # make sure that you change the rake task as well.
+
   serialize :data
   serialize :category
   serialize :unique_args
