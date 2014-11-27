@@ -14,8 +14,7 @@ describe RemoveEvents, ".run" do
     RemoveEvents.run
 
     expect { event_older_than_six_months.reload }.to raise_error(ActiveRecord::RecordNotFound)
-    expect(Event.find(event_newer_than_six_months).id).to eq(event_newer_than_six_months.id)
-    expect(Event.count).to eq(1)
+    expect { event_newer_than_six_months.reload }.not_to raise_error
     expect(EventsData.total_events).to eq(1)
   end
 
