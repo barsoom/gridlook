@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/barsoom/gridlook.png)](http://travis-ci.org/barsoom/gridlook)
+[![CircleCi](https://circleci.com/gh/barsoom/gridlook.svg?style=shield)](https://circleci.com/gh/barsoom/gridlook)
 # gridlook
 
 Rails 4 app on Heroku to log SendGrid webhook events.
