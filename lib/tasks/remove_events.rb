@@ -1,7 +1,7 @@
 class RemoveEvents
-  method_object :run
+  method_object
 
-  def run
+  def call
     destroy_events_older_than_six_months
   end
 

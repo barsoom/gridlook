@@ -1,7 +1,7 @@
 require "rails_helper"
 require "tasks/remove_events"
 
-describe RemoveEvents, ".run" do
+describe RemoveEvents, ".call" do
   it "removes data older than six months and updates total events" do
     # No need for the logging output in the test
     allow_any_instance_of(RemoveEvents).to receive(:puts)
@@ -11,7 +11,7 @@ describe RemoveEvents, ".run" do
     expect(Event.count).to eq(2)  # Sanity
     expect(EventsData.total_events).to eq(2)  # Sanity
 
-    RemoveEvents.run
+    RemoveEvents.call
 
     expect { event_older_than_six_months.reload }.to raise_error(ActiveRecord::RecordNotFound)
     expect { event_newer_than_six_months.reload }.not_to raise_error
