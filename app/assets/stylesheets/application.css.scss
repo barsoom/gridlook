@@ -109,6 +109,8 @@ b, strong, label {
     }
     p {
       margin: 5px 0;
+      // Make sure we force line breaks to lines that are too long.
+      // Why use word-break:break-all See: http://stackoverflow.com/a/19282567
       word-break: break-all;
       &:first-child { margin-top: 0; }
     }
