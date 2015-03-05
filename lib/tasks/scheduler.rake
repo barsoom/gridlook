@@ -12,6 +12,6 @@ namespace :scheduler do
 
   desc "Remove events older than six months"
   task remove_events: :environment do
-    RemoveEvents.run
+    RemoveEvents.call
   end
 end
