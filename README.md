@@ -90,9 +90,9 @@ Some useful commands working with heroku:
 heroku pg:psql # database console
 
 # Needs to be installed as a heroku addon (pgbackups)
-heroku pgbackups:capture # database backup
-heroku pgbackups:url # get an download url to the latest backup
-curl -L <url> -o $(date +%y-%m-%d)\_gridlook_db # Download <url> (url given by heroku pgbackups:url) with format: year-month-day_gridlook_db
+heroku pg:backups capture # database backup
+heroku pg:backups public-url # get an download url to the latest backup
+curl -L <url> -o $(date +%y-%m-%d)\_gridlook_db # Download <url> (url given by heroku pg:backups public-url) with format: year-month-day_gridlook_db
 
 # Sometimes it's nice to get more info in the production server log.
 heroku config:add LOG_LEVEL="<level>" # level = info/debug
