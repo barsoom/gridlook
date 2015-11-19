@@ -101,18 +101,30 @@ heroku logs -t # Show log tailed
 heroku run console # Rails console
 ```
 
-### Heroku scheduler
+### Heroku Scheduler
+
+You can use [Heroku Scheduler](https://devcenter.heroku.com/articles/scheduler) for some recurring tasks.
+
+You find the scheduler dashboard [here](https://scheduler.heroku.com/dashboard).
+
+Gridlook defines some Rake task suitable for scheduling, [here](https://github.com/barsoom/gridlook/blob/master/lib/tasks/scheduler.rake).
 
 #### Auto tuning
 
-If you find that some queries are slow or that you have other db issues it could be smart to set up some auto tuning of the postgres db. To do that you could use the heroku scheduler. Follow the the [heroku scheduler](https://devcenter.heroku.com/articles/scheduler) guide. You find the specific task [here](https://github.com/barsoom/gridlook/blob/master/lib/tasks/scheduler.rake).
+If you find that some queries are slow or that you have other db issues it could be smart to set up some auto tuning of the postgres db.
 
-Auto tuning is done to clean the postgres database and also help the db planner (caching and so on).
-Read more about it [here](https://devcenter.heroku.com/articles/heroku-postgres-database-tuning).
+Auto tuning is done to clean the postgres database and also help the db planner (caching and so on). Read more about it [here](https://devcenter.heroku.com/articles/heroku-postgres-database-tuning).
+
+If you want this, you may schedule `rake scheduler:database_tuning` to run e.g. daily.
+
 
 #### Remove events older than five month
 
-If you have a limited heroku db plan and a lot of events coming in, you will sooner or later need to delete old events. You can do that by adding a task to the scheduler (see links above).
+If you have a limited heroku db plan and a lot of events coming in, you will sooner or later need to delete old events.
+
+To automate that, you may schedule `rake scheduler:remove_events` to run e.g. hourly.
+
+Currently, you must edit the source code of the task to tweak the event limit.
 
 ## TODO
 
