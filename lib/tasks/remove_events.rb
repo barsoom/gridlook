@@ -8,7 +8,7 @@ class RemoveEvents
   private
 
   def destroy_events_older_than_six_months
-    time = 6.months.ago
+    time = 5.months.ago
     # We have no associated relations so we can use delete_all
     number_of_events_deleted = Event.where("created_at < ?", time).delete_all
     EventsData.instance.decrement!(:total_events, number_of_events_deleted)

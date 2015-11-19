@@ -110,7 +110,7 @@ If you find that some queries are slow or that you have other db issues it could
 Auto tuning is done to clean the postgres database and also help the db planner (caching and so on).
 Read more about it [here](https://devcenter.heroku.com/articles/heroku-postgres-database-tuning).
 
-#### Remove events older than six month
+#### Remove events older than five month
 
 If you have a limited heroku db plan and a lot of events coming in, you will sooner or later need to delete old events. You can do that by adding a task to the scheduler (see links above).
 
