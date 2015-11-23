@@ -118,7 +118,7 @@ Auto tuning is done to clean the postgres database and also help the db planner 
 If you want this, you may schedule `rake scheduler:database_tuning` to run e.g. daily.
 
 
-#### Remove events older than five month
+#### Remove events older than a limit
 
 If you have a limited heroku db plan and a lot of events coming in, you will sooner or later need to delete old events.
 
