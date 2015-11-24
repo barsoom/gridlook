@@ -60,7 +60,7 @@ That should be it. SendGrid should start sending you events and your app should 
 
 ## More information with conventions
 
-If you [configure your mails](http://henrik.nyh.se/2012/08/sendgrid-metadata-and-rails/) to include the mailer as a category containing a "#", e.g. "CustomerMailer#signup", that information will be shown at the top and can be filtered.
+If you [configure your mails](http://thepugautomatic.com/2012/08/sendgrid-metadata-and-rails/) to include the mailer as a category containing a "#", e.g. "CustomerMailer#signup", that information will be shown at the top and can be filtered.
 
 ## Notes
 
