@@ -1,6 +1,6 @@
 test:
   override:
-    - script/ci/pipeline.sh gridlook_tests "bundle exec test"
+    - script/ci/pipeline.sh gridlook_tests "bundle exec rake"
 
 deployment:
   apps:
