@@ -1,9 +1,9 @@
 test:
   override:
-    - bundle exec rake
+    - script/ci/pipeline.sh gridlook_tests "bundle exec test"
 
 deployment:
-  deploy:
+  apps:
     branch: master
     commands:
-      - sh tmp/deploy.sh
+      - echo $HEROKU_APP_NAMES | sed s/,/\\n/g | xargs -I {} script/ci/pipeline.sh {}_deploy "script/ci/deploy.sh {}"
