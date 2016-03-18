@@ -1,8 +1,4 @@
 Gridlook::Application.configure do
-  config.middleware.use(::Rack::Auth::Basic, "Secret") do |u, pw|
-    u == ENV['HTTP_USER'] && pw == ENV['HTTP_PASSWORD']
-  end
-
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
