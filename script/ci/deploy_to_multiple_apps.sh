@@ -6,6 +6,4 @@
 # - sed splits the list into one line per app, e.g. "foo", then "bar", then "baz"
 # - xargs runs the deploy script for each app (the name of the current app is the variable "{}")
 
-echo $HEROKU_APP_NAMES |
-  sed s/,/\\n/g |
-  xargs -I {} script/ci/pipeline.sh {}_deploy "script/ci/deploy.sh {}"
+echo $HEROKU_APP_NAMES | sed s/,/\\n/g | xargs -I {} script/ci/pipeline.sh {}_deploy "script/ci/deploy.sh {}"
