@@ -6,4 +6,4 @@ deployment:
   apps:
     branch: master
     commands:
-      - echo $HEROKU_APP_NAMES | sed s/,/\\n/g | xargs -I {} script/ci/pipeline.sh {}_deploy "script/ci/deploy.sh {}"
+      - script/ci/deploy_to_multiple_apps.sh
