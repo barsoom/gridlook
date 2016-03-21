@@ -1,3 +1,4 @@
+#!/bin/bash
 # Deploys all apps listed in HEROKU_APP_NAMES
 
 # How it works:
