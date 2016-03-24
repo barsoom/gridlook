@@ -21,7 +21,7 @@ function _deploy_to_heroku {
   heroku git:remote --app $app_name
 
   # Workaround for https://github.com/travis-ci/dpl/issues/127#issuecomment-42397378
-  git fetch --unshallow 2> /dev/null; true
+  git fetch --unshallow 2> /dev/null && true
 
   git push heroku master
 
