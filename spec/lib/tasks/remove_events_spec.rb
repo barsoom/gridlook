@@ -7,8 +7,8 @@ describe RemoveEvents, ".call" do
     limit = RemoveEvents::LIMIT
     allow_any_instance_of(RemoveEvents).to receive(:puts)
 
-    event_older_than_the_limit = create_event_at(limit - 1.second)
-    event_newer_than_the_limit = create_event_at(limit + 1.second)
+    event_older_than_the_limit = Event.create!(happened_at: limit - 1.second)
+    event_newer_than_the_limit = Event.create!(happened_at: limit + 1.second)
     expect(Event.count).to eq(2)  # Sanity
     expect(EventsData.total_events).to eq(2)  # Sanity
 
@@ -17,13 +17,5 @@ describe RemoveEvents, ".call" do
     expect { event_older_than_the_limit.reload }.to raise_error(ActiveRecord::RecordNotFound)
     expect { event_newer_than_the_limit.reload }.not_to raise_error
     expect(EventsData.total_events).to eq(1)
-  end
-
-  private
-
-  def create_event_at(time)
-    Timecop.freeze(time) do
-      Event.create!
-    end
   end
 end
