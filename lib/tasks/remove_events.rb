@@ -1,7 +1,7 @@
 class RemoveEvents
   method_object
 
-  LIMIT = 4.months.ago
+  LIMIT = 3.months.ago
 
   def call
     destroy_events_older_than_the_limit
