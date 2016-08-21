@@ -11,6 +11,7 @@ gem "kaminari"
 gem "pg"
 gem "jquery-rails"
 gem "attr_extras"
+gem "jwt"
 
 group :test, :development do
   gem "rspec-rails"
