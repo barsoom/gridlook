@@ -29,6 +29,8 @@ heroku pg:promote HEROKU_POSTGRESQL_RED_URL  # Replace "RED" with whatever ENV w
 
 # Configure HTTP auth.
 heroku config:set HTTP_USER=alibaba HTTP_PASSWORD=sesame
+# ^ there is also JWT (Json Web Token) auth, see spec/features/jwt_authentication_spec.rb
+
 # Configure Rails secret key (not actually used yet).
 heroku config:set SECRET_KEY_BASE=`rake secret`
 # Configure Rails time zone.
