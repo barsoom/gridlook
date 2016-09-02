@@ -6,7 +6,9 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate
 
   def authenticate
-    if Rails.env.production? && !ENV["JWT_KEY"]
+    if ENV["JWT_KEY"]
+      # authenticate using jwt_authentication gem
+    elsif Rails.env.production?
       authenticate_with_basic_auth
     elsif Rails.env.development? || Rails.env.test?
       # no auth in dev or test by default
