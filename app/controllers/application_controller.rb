@@ -27,32 +27,6 @@ class ApplicationController < ActionController::Base
 
   # Support for JWT token based authentication
   def authenticate_with_jwt_token
-    JwtAuthentication.call(jwt_token, session, self)
-  end
-
-  def jwt_auth_missing
-    if Rails.env.test?
-      render text: "Would redirect to: #{request_auth_url}"
-    else
-      redirect_to(request_auth_url)
-    end
-  end
-
-  def jwt_auth_successful
-    redirect_to "/"
-  end
-
-  def jwt_auth_failed
-    render text: "Could not verify your JWT token. Unauthorized.", status: 403
-  end
-
-  private
-
-  def jwt_token
-    params[ENV.fetch("JWT_PARAM_NAME")]
-  end
-
-  def request_auth_url
-    ENV.fetch("JWT_PARAM_MISSING_REDIRECT_URL")
+    JwtAuthentication.call(self)
   end
 end

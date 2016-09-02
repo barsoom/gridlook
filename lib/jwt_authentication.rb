@@ -2,25 +2,38 @@ require "jwt"
 
 # Support for JWT token based authentication
 class JwtAuthentication
-  method_object :token, :session, :callback
+  method_object :controller
 
   def call
     return if authenticated?
 
+    token = params[ENV.fetch("JWT_PARAM_NAME")]
+
     if token
-      verify_token
+      verify_token(token)
       store_last_authenicated_in_session
-      callback.jwt_auth_successful
+      redirect_to "/"
     else
-      callback.jwt_auth_missing
+      if Rails.env.test?
+        render text: "Would redirect to: #{request_auth_url}"
+      else
+        redirect_to(request_auth_url)
+      end
     end
   rescue JWT::DecodeError
-    callback.jwt_auth_failed
+    render text: "Could not verify your JWT token. Unauthorized.", status: 403
   end
 
   private
 
-  def verify_token
+  delegate :redirect_to, :render, :params, :session,
+    to: :controller
+
+  def request_auth_url
+    ENV.fetch("JWT_PARAM_MISSING_REDIRECT_URL")
+  end
+
+  def verify_token(token)
     JWT.decode(token, ENV.fetch("JWT_KEY"), verify = true, algorithm: ENV.fetch("JWT_ALGORITHM"))
   end
 
