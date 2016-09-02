@@ -1,13 +1,13 @@
-class JwtAuthenticationMiddleware
+class JwtAuthentication
   pattr_initialize :app
 
   def call(env)
-    JwtAuth.call(app, env)
+    Request.call(app, env)
   end
 
   private
 
-  class JwtAuth
+  class Request
     method_object :app, :env
 
     def call
@@ -85,7 +85,7 @@ class JwtAuthenticationMiddleware
 
     memoize \
     def request
-      Rack::Request.new(env)
+      ::Rack::Request.new(env)
     end
   end
 end
