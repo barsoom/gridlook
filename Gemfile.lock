@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/barsoom/jwt_authentication.git
-  revision: 05997568b7e353b625353d3c8fe9f1824e863b5b
+  revision: d5d0d22d877e5976a6d7a83ae1acc02db8791d41
   specs:
     jwt_authentication (0.1)
       attr_extras
