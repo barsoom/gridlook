@@ -12,8 +12,10 @@ class JwtAuthentication
     if token
       verify_token(token)
       store_last_authenicated_in_session
-      redirect_to "/"
+      redirect_to url_after_auth
     else
+      store_url_for_later
+
       if Rails.env.test?
         render text: "Would redirect to: #{request_auth_url}"
       else
@@ -26,7 +28,7 @@ class JwtAuthentication
 
   private
 
-  delegate :redirect_to, :render, :params, :session,
+  delegate :redirect_to, :render, :params, :session, :request,
     to: :controller
 
   def request_auth_url
@@ -44,11 +46,19 @@ class JwtAuthentication
         (Time.now.to_i - last_authenticated < timeout_in_seconds)
   end
 
-  def store_last_authenicated_in_session
-    session[:last_authenticated_by_jwt] = Time.now.to_i
+  def url_after_auth
+    session.delete(:url_after_jwt_authentication) || "/"
   end
 
   def last_authenticated
     session[:last_authenticated_by_jwt]
+  end
+
+  def store_last_authenicated_in_session
+    session[:last_authenticated_by_jwt] = Time.now.to_i
+  end
+
+  def store_url_for_later
+    session[:url_after_jwt_authentication] = request.url
   end
 end

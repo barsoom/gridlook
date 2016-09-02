@@ -16,14 +16,15 @@ describe "JWT authenticate" do
     ENV["JWT_ALGORITHM"] = "HS512"
 
     # Asks for auth when missing
-    visit "/"
+    visit "/?email=foo@example.com"
     expect(page).to have_content("Would redirect to: http://example.com/request_jwt_auth?app=gridlook")
     expect(page).not_to have_content("Gridlook")
 
-    # Shows you gridlook when authenticated
+    # Shows you gridlook at the correct URL when authenticated
     token = build_token(secret: secret_key)
     visit "/?token=#{token}"
     expect(page).to have_content("Gridlook")
+    expect(current_url).to eq("http://www.example.com/?email=foo%40example.com")
 
     # Still authenticated on next request
     visit "/"
