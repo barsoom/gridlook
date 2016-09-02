@@ -17,135 +17,139 @@ $gray: #ccc;
 $black: #000;
 
 body {
+  margin: 0px;
+}
+
+.content {
   font-family: 'Helvetica Neue', Helvetica, sans-serif;
   font-size: 13px;
   padding: 15px 20px;
   background: #f9f9fa;
   color: #2d3238;
-}
 
-header {
-  margin-bottom: 30px;
-}
-
-footer {
-  margin-top: 50px;
-}
-
-.main-title {
-  font-size: 35px;
-  margin: 0;
-
-  a {
-    color: inherit;
-    text-decoration: none;
-    border-bottom: 1px solid $gray;
-  }
-}
-
-.stats {
-  margin-top: -10px;
-  .stat {
-    margin: 5px 0;
-  }
-}
-
-h2 {
-  font-weight: normal;
-}
-
-b, strong, label {
-  font-weight: 600;
-}
-
-.filter-form {
-  margin: $block-vmargin 0;
-}
-
-.filter-form-email {
-  margin: 0 10px;
-  padding: 3px 5px;
-  width: 20em;
-}
-
-.pagination {
-  a, span, em {
-    padding: 5px 5px;
+  header {
+    margin-bottom: 30px;
   }
 
-  em {
-    font-style: normal;
+  footer {
+    margin-top: 50px;
   }
 
-  .disabled, .current {
-    color: #888;
-  }
-}
+  .main-title {
+    font-size: 35px;
+    margin: 0;
 
-.events-table {
-  width: 900px;
-  margin: $block-vmargin 0;
-  border-collapse: collapse;
-
-  tr.main-data td {
-    border-top: 1px solid $gray;
-    padding-top: 22px;
-  }
-
-  tr.extra-data {
-    td {
-      vertical-align: top;
-      padding: 15px 0;
+    a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid $gray;
     }
-    td.identifier-image {
-      padding-right: 10px;
+  }
+
+  .stats {
+    margin-top: -10px;
+    .stat {
+      margin: 5px 0;
     }
-    td.event-image {
-      padding-left: 10px;
+  }
+
+  h2 {
+    font-weight: normal;
+  }
+
+  b, strong, label {
+    font-weight: 600;
+  }
+
+  .filter-form {
+    margin: $block-vmargin 0;
+  }
+
+  .filter-form-email {
+    margin: 0 10px;
+    padding: 3px 5px;
+    width: 20em;
+  }
+
+  .pagination {
+    a, span, em {
+      padding: 5px 5px;
+    }
+
+    em {
+      font-style: normal;
+    }
+
+    .disabled, .current {
+      color: #888;
+    }
+  }
+
+  .events-table {
+    width: 900px;
+    margin: $block-vmargin 0;
+    border-collapse: collapse;
+
+    tr.main-data td {
+      border-top: 1px solid $gray;
+      padding-top: 22px;
+    }
+
+    tr.extra-data {
+      td {
+        vertical-align: top;
+        padding: 15px 0;
+      }
+      td.identifier-image {
+        padding-right: 10px;
+      }
+      td.event-image {
+        padding-left: 10px;
+        text-align: right;
+      }
+      h4 {
+        margin-bottom: 5px;
+      }
+      p {
+        margin: 5px 0;
+        // Make sure we force line breaks to lines that are too long.
+        // Why use word-break:break-all See: http://stackoverflow.com/a/19282567
+        word-break: break-all;
+        &:first-child { margin-top: 0; }
+      }
+    }
+
+    td.email {
+      font-weight: bold;
+    }
+
+    td.event {
+      white-space: nowrap;
       text-align: right;
     }
-    h4 {
-      margin-bottom: 5px;
+  }
+
+  .tooltip {
+    display: inline;
+    position: relative;
+
+    &:hover:before {
+      bottom: 26px;
+      color: $black;
+      content: attr(data-tooltip);
+      padding: 5px 15px;
+      position: absolute;
+      width: 200px;
+      white-space: normal;
+      text-align: left;
+      font-weight: bold;
     }
-    p {
-      margin: 5px 0;
-      // Make sure we force line breaks to lines that are too long.
-      // Why use word-break:break-all See: http://stackoverflow.com/a/19282567
-      word-break: break-all;
-      &:first-child { margin-top: 0; }
-    }
   }
 
-  td.email {
-    font-weight: bold;
+  .help-block {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: lighten($black, 25%);
   }
-
-  td.event {
-    white-space: nowrap;
-    text-align: right;
-  }
-}
-
-.tooltip {
-  display: inline;
-  position: relative;
-
-  &:hover:before {
-    bottom: 26px;
-    color: $black;
-    content: attr(data-tooltip);
-    padding: 5px 15px;
-    position: absolute;
-    width: 200px;
-    white-space: normal;
-    text-align: left;
-    font-weight: bold;
-  }
-}
-
-.help-block {
-  display: block;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  color: lighten($black, 25%);
 }
