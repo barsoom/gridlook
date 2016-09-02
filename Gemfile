@@ -12,6 +12,8 @@ gem "pg"
 gem "jquery-rails"
 gem "attr_extras"
 gem "jwt"
+gem "memoit"
+gem "jwt_authentication", github: "barsoom/jwt_authentication"
 
 group :test, :development do
   gem "rspec-rails"

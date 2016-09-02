@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/barsoom/jwt_authentication.git
+  revision: d5d0d22d877e5976a6d7a83ae1acc02db8791d41
+  specs:
+    jwt_authentication (0.1)
+      attr_extras
+      jwt
+      memoit
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -73,6 +82,7 @@ GEM
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
     memcachier (0.0.2)
+    memoit (0.3.0)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
@@ -180,8 +190,10 @@ DEPENDENCIES
   gridhook
   jquery-rails
   jwt
+  jwt_authentication!
   kaminari
   memcachier
+  memoit
   newrelic_rpm
   pg
   rack-cache
