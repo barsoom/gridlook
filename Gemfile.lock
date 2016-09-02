@@ -1,12 +1,3 @@
-GIT
-  remote: git://github.com/barsoom/jwt_authentication.git
-  revision: 05997568b7e353b625353d3c8fe9f1824e863b5b
-  specs:
-    jwt_authentication (0.1)
-      attr_extras
-      jwt
-      memoit
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -190,7 +181,6 @@ DEPENDENCIES
   gridhook
   jquery-rails
   jwt
-  jwt_authentication!
   kaminari
   memcachier
   memoit
