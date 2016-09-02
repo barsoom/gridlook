@@ -12,6 +12,7 @@ gem "pg"
 gem "jquery-rails"
 gem "attr_extras"
 gem "jwt"
+gem "memoit"
 
 group :test, :development do
   gem "rspec-rails"
