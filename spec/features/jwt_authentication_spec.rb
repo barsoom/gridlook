@@ -12,6 +12,10 @@ describe "JWT authenticate" do
     ENV["JWT_ALGORITHM"] = "HS512"
   end
 
+  after do
+    ENV["JWT_KEY"] = nil
+  end
+
   it "can authenticate with JWT" do
     # Shows you gridlook at the correct URL when authenticated
     token = build_token(secret: secret_key)
