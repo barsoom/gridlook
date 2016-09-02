@@ -1,51 +1,41 @@
 require "rails_helper"
 
 describe "JWT authenticate" do
-  after do
-    ENV["JWT_KEY"] = nil
-  end
-
   let(:secret_key) { "test" * 20 }
-  let(:invalid_secret_key) { "test" * 20 + "invalid "}
+  let(:invalid_secret_key) { "test" * 20 + "." }
 
-  it "can authenticate with JWT" do
+  before do
     ENV["JWT_SESSION_TIMEOUT_IN_SECONDS"] = "600"
     ENV["JWT_KEY"] = secret_key
     ENV["JWT_PARAM_NAME"] = "token"
     ENV["JWT_PARAM_MISSING_REDIRECT_URL"] = "http://example.com/request_jwt_auth?app=gridlook"
     ENV["JWT_ALGORITHM"] = "HS512"
+  end
 
-    # Asks for auth when missing
-    visit "/?email=foo@example.com"
-    expect(page).to have_content("Would redirect to: http://example.com/request_jwt_auth?app=gridlook")
-    expect(page).not_to have_content("Gridlook")
-
+  it "can authenticate with JWT" do
     # Shows you gridlook at the correct URL when authenticated
     token = build_token(secret: secret_key)
     visit "/?token=#{token}"
+    expect(page.status_code).to eq(200)
     expect(page).to have_content("Gridlook")
-    expect(current_url).to eq("http://www.example.com/?email=foo%40example.com")
+    expect(current_url).to eq("http://www.example.com/")
+  end
 
-    # Still authenticated on next request
-    visit "/"
-    expect(page).to have_content("Gridlook")
-
-    # Still valid before the timeout
-    Timecop.travel 9.minutes
-    visit "/"
-    expect(page).to have_content("Gridlook")
-
-    # Requires new authentication after the timeout
-    Timecop.travel 1.minute
-    visit "/"
-    expect(page).to have_content("Would redirect to: http://example.com/request_jwt_auth?app=gridlook")
-
-    # Invalid token shows an error
+  it "does not provide access without a valid token" do
     token = build_token(secret: invalid_secret_key)
-
     visit "/?token=#{token}"
     expect(page.status_code).to eq(403)
   end
+
+  it "does not authenticate with JWT when there it is not configured" do
+    ENV["JWT_KEY"] = nil
+    token = build_token(secret: invalid_secret_key)
+    visit "/?token=#{token}"
+    expect(page.status_code).to eq(200)
+    expect(page).to have_content("Gridlook")
+  end
+
+  private
 
   def build_token(secret:)
     payload_data = { exp: Time.now.to_i + 2 }
