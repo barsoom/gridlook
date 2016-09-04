@@ -6,7 +6,7 @@ html
     = javascript_include_tag "application"
     = csrf_meta_tags
   body
-    = raw ENV["CUSTOM_HTML_HEADER"].to_s
+    = raw ERB.new(ENV["CUSTOM_HTML_HEADER"] || "").result(binding)
 
     .content
       header
