@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20140825062349) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "events", force: true do |t|
+  create_table "events", force: :cascade do |t|
     t.string   "email"
     t.string   "name"
     t.text     "category"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20140825062349) do
   add_index "events", ["mailer_action", "happened_at", "id"], name: "index_events_on_mailer_action_and_happened_at_and_id", using: :btree
   add_index "events", ["name"], name: "index_events_on_name", using: :btree
 
-  create_table "events_data", force: true do |t|
+  create_table "events_data", force: :cascade do |t|
     t.integer "total_events"
   end
 
