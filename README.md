@@ -36,6 +36,9 @@ heroku config:set SECRET_KEY_BASE=`rake secret`
 # Configure Rails time zone.
 heroku config:set RAILS_TZ=CET  # Whatever you prefer.
 
+# Optional custom header:
+# heroku config:set CUSTOM_HTML_HEADER="<div>Your custom header on top of the page, can include ERB like <%= params[:action] %></div>"
+
 # Deploy app.
 git push heroku
 
