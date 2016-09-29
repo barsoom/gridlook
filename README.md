@@ -38,6 +38,8 @@ heroku config:set RAILS_TZ=CET  # Whatever you prefer.
 
 # Optional custom header:
 # heroku config:set CUSTOM_HTML_HEADER="<div>Your custom header on top of the page, can include ERB like <%= params[:action] %></div>"
+#
+# ^ One thing this can be used for is to display JWT data, see the jwt_authentication gem for docs on the available session data.
 
 # Deploy app.
 git push heroku
