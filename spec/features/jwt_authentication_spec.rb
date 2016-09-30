@@ -7,7 +7,7 @@ describe "JWT authenticate" do
   before do
     ENV["JWT_SESSION_TIMEOUT_IN_SECONDS"] = "600"
     ENV["JWT_KEY"] = secret_key
-    ENV["JWT_PARAM_MISSING_REDIRECT_URL"] = "http://example.com/request_jwt_auth?app=gridlook"
+    ENV["JWT_AUTH_MISSING_REDIRECT_URL"] = "http://example.com/request_jwt_auth?app=gridlook"
     ENV["JWT_ALGORITHM"] = "HS512"
   end
 
@@ -41,7 +41,7 @@ describe "JWT authenticate" do
   private
 
   def build_token(secret:)
-    payload_data = { exp: Time.now.to_i + 2 }
+    payload_data = { exp: Time.now.to_i + 2, user: {} }
     JWT.encode(payload_data, secret, "HS512")
   end
 end
