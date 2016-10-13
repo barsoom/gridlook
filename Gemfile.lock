@@ -49,7 +49,7 @@ GEM
     arel (6.0.3)
     attr_extras (5.0.0)
     builder (3.2.2)
-    capybara (2.9.2)
+    capybara (2.10.1)
       addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
