@@ -19,8 +19,8 @@ Gridlook::Application.configure do
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
   # config.action_dispatch.rack_cache = true
 
-  # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_files = true
+  # Enable Rails's static asset server.
+  config.public_file_server.enabled = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor  = :uglifier
@@ -65,7 +65,7 @@ Gridlook::Application.configure do
     metastore: client,
     entitystore: client
   }
-  config.static_cache_control = "public, max-age=2592000"
+  config.public_file_server.headers = { "Cache-Control" => "public, max-age=2592000" }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = "http://assets.example.com"

@@ -41,11 +41,11 @@ module ApplicationHelper
 
   def prev_page_link(page)
     if page && page > 1
-      link_to("← Newer", params.merge(page: page - 1))
+      link_to("← Newer", params.merge(page: page - 1)).permit(:email, :name, :mailer_action, :page)
     end
   end
 
   def next_page_link(records, page)
-    link_to("Older →", params.merge(page: page + 1)) if records.any?
+    link_to("Older →", params.merge(page: page + 1).permit(:email, :name, :mailer_action, :page)) if records.any?
   end
 end
