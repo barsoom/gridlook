@@ -49,7 +49,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.4.0)
     arel (7.1.4)
-    attr_extras (5.0.0)
+    attr_extras (5.1.0)
     builder (3.2.2)
     capybara (2.10.1)
       addressable
@@ -172,7 +172,7 @@ GEM
     timecop (0.8.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (3.0.2)
+    uglifier (3.0.3)
       execjs (>= 0.3.0, < 3)
     unicorn (5.1.0)
       kgio (~> 2.6)
