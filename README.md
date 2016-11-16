@@ -3,7 +3,7 @@
 
 # gridlook
 
-Rails 4 app on Heroku to log SendGrid webhook events.
+Rails 5 app on Heroku to log SendGrid webhook events.
 
 It improves on SendGrid's email activity page in these ways:
 
