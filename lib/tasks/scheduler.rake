@@ -10,7 +10,7 @@ namespace :scheduler do
     puts "Database tuning done."
   end
 
-  desc "Remove events older than six months"
+  desc "Remove older events"
   task remove_events: :environment do
     RemoveEvents.call
   end
