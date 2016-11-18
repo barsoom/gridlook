@@ -1,7 +1,10 @@
 class RemoveEvents
   method_object
 
-  LIMIT = 3.months.ago
+  # 64 GB storage limit on Heroku's Standard-0 plan.
+  # We used ~8 GB for 3 months of data per 2016-11-18.
+  # That makes 24 months, but mail amounts tend to grow, so let's be conservative.
+  LIMIT = 22.months.ago
 
   def call
     destroy_events_older_than_the_limit
