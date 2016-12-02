@@ -1,6 +1,10 @@
 require "rails_helper"
 
 describe "Browsing" do
+  before do
+    Event.clear_cached_mailer_actions
+  end
+
   it "lists events" do
     event = create_event
     visit root_path
