@@ -18,6 +18,8 @@ group :test, :development do
   gem "rspec-rails"
   gem "capybara"
   gem "timecop"
+  gem "barsoom_utils", github: "barsoom/barsoom_utils"
+  gem "lolcat"
 end
 
 group :production do
