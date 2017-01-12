@@ -24,22 +24,15 @@
 - if filtered?(local_assigns)
   .remove-filter= button_to "Remove filters", {}, method: :get
 
-p
-  = prev_page_link(page)
-  '
-  = next_page_link(events, page)
-
 - if events.any?
 
+  = paginate events, without_count: true
+
   table.events-table= render events
+
+  = paginate events, without_count: true
 
 - else
 
   p
-    = params[:page] ? 'No more events' : 'No events :('
-
-p
-  = prev_page_link(page)
-  '
-  = next_page_link(events, page)
-
+    = "No events :("
