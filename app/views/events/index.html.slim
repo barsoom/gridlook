@@ -24,22 +24,27 @@
 - if filtered?(local_assigns)
   .remove-filter= button_to "Remove filters", {}, method: :get
 
-p
-  = prev_page_link(page)
-  '
-  = next_page_link(events, page)
-
 - if events.any?
 
+  p
+    = prev_page_link(page)
+    '
+    = next_page_link(events, page)
+
   table.events-table= render events
+
+  p
+    = prev_page_link(page)
+    '
+    = next_page_link(events, page)
 
 - else
 
   p
-    = params[:page] ? 'No more events' : 'No events :('
-
-p
-  = prev_page_link(page)
-  '
-  = next_page_link(events, page)
-
+    - if params[:page]
+      = prev_page_link(page)
+      p
+        = "No more events"
+      = prev_page_link(page)
+    - else
+      = "No events :("
