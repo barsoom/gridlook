@@ -2,9 +2,14 @@ require "rails_helper"
 require "tasks/remove_events"
 
 describe RemoveEvents, ".call" do
+  around do |test|
+    ENV["REMOVE_EVENTS_OLDER_THAN"] = 1.day.ago.to_s
+    test.run
+  end
+
   it "removes data older than the limit and updates total events" do
     # No need for the logging output in the test
-    limit = RemoveEvents::LIMIT
+    limit = Time.parse(ENV.fetch("REMOVE_EVENTS_OLDER_THAN"))
     allow_any_instance_of(RemoveEvents).to receive(:puts)
 
     event_older_than_the_limit = Event.create!(happened_at: limit - 1.second)
