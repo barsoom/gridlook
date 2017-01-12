@@ -12,7 +12,7 @@ class RemoveEvents
     # We have no associated relations so we can use delete_all
     number_of_events_deleted = Event.where("happened_at < ?", limit).delete_all
     EventsData.instance.decrement!(:total_events, number_of_events_deleted)
-    puts "Deleted events older than #{LIMIT}"
+    puts "Deleted events older than #{limit}"
   end
 
   def limit
