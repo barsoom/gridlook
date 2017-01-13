@@ -16,7 +16,7 @@ class RemoveEvents
   end
 
   def limit
-    time = ENV.fetch("NUMBER_OF_WEEKS_TO_KEEP_EVENTS_FOR", nil)
-    time ? time.to_i.weeks.ago : time
+    time = ENV.fetch("NUMBER_OF_MONTHS_TO_KEEP_EVENTS_FOR", nil)
+    time ? time.to_i.months.ago : time
   end
 end
