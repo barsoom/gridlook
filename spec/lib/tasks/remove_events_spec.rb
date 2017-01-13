@@ -7,6 +7,7 @@ describe RemoveEvents, ".call" do
   around do |test|
     ENV["NUMBER_OF_MONTHS_TO_KEEP_EVENTS_FOR"] = limit_in_months
     test.run
+    ENV["NUMBER_OF_MONTHS_TO_KEEP_EVENTS_FOR"] = nil
   end
 
   it "removes data older than the limit and updates total events" do
