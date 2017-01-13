@@ -133,7 +133,7 @@ If you have a limited heroku db plan and a lot of events coming in, you will soo
 
 To automate that, you may schedule `rake scheduler:remove_events` to run e.g. hourly.
 
-To be able to limit the number of events, just set `REMOVE_EVENTS_OLDER_THAN`. Example: `heroku config:set REMOVE_EVENTS_OLDER_THAN="2017-01-12 15:25:14 +0100`.
+To be able to limit the number of events, just set `NUMBER_OF_WEEKS_TO_KEEP_EVENTS_FOR`. Example: `heroku config:set NUMBER_OF_WEEKS_TO_KEEP_EVENTS_FOR="10"  # Keep events that are created ten weeks ago or newer`.
 
 ## TODO
 
