@@ -17,12 +17,12 @@
     => label_tag :mailer_action, "Mailer:"
     = select_tag :mailer_action, event_mailer_options(mailer_action)
     span.help-block
-      small= "This is a cached list that is not updated automatically."
+      small = "This is a cached list that is not updated automatically."
 
   p= button_tag "Filter", type: :submit
 
 - if filtered?(local_assigns)
-  .remove-filter= button_to "Remove filters", {}, method: :get
+  = button_to "Remove filters", {}, method: :get
 
 - if events.any?
 
@@ -43,8 +43,7 @@
   p
     - if params[:page]
       = prev_page_link(page)
-      p
-        = "No more events"
+      .no-more-events = "No more events"
       = prev_page_link(page)
     - else
       = "No events :("
