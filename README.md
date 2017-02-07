@@ -13,6 +13,8 @@ It improves on SendGrid's email activity page in these ways:
 
 Uses [gridhook](https://github.com/injekt/gridhook) to parse the events.
 
+Has some support for [outbound.io](https://www.outbound.io/) metadata.
+
 ## Installation
 
 Check out this repo (clone it first if you like).

@@ -16,5 +16,13 @@ tr.extra-data
 
     = data_if_present event.data
     = data_if_present event.unique_args, "Unique arguments"
+
+    - if event.unique_args.has_key?(:outbound_id)
+      / there are older events from outbound that does not have campaign_id
+      - campaign_id = event.unique_args.fetch(:campaign_id, nil)
+
+      - if campaign_id
+        = link_to("See outbound.io campaign", "https://dashboard.outbound.io/dashboard/campaign/#{campaign_id}/manage'>#{campaign_id}</a>")
+
   td.event-image
     img alt="" src="/events/#{event.name}.png"
