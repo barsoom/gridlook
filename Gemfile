@@ -4,8 +4,6 @@ ruby "2.4.2"
 
 gem "rails", "5.0.6"
 
-gem "puma"
-gem "puma_worker_killer"
 gem "gridhook"
 gem "slim"
 gem "kaminari"
@@ -26,6 +24,7 @@ group :test, :development do
 end
 
 group :production do
+  gem "unicorn"
   gem "rails_12factor"
   gem "newrelic_rpm"
   gem "rack-cache"
