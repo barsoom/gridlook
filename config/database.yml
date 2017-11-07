@@ -50,4 +50,4 @@ production:
   adapter: postgresql
   encoding: unicode
   database: gridlook_production
-  pool: <%= ENV["DB_POOL"] || 5 %>
+  pool: 5
