@@ -24,7 +24,12 @@ group :test, :development do
 end
 
 group :production do
+  # Two things to consider if we want to run Puma.
+  #
+  # - During deploy we’ll get timeouts (could be how we handle deploys).
+  # - Sendgrid will try to resend events with a new internal send grid id, gridhook (the engine) doesn’t handle that (We already have this issue).
   gem "unicorn"
+
   gem "rails_12factor"
   gem "newrelic_rpm"
   gem "rack-cache"
