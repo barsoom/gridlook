@@ -10,13 +10,13 @@ class AttributeMapper
   def to_hash
     @hash ||= begin
       {
-        email:       attributes.delete(:email),
-        name:        attributes.delete(:event),
-        happened_at: timestamp,
+        email:         attributes.delete(:email),
+        name:          attributes.delete(:event),
+        happened_at:   timestamp,
         mailer_action: mailer_action(attributes[:category]),
-        category:    attributes.delete(:category),
-        data:        data,
-        unique_args: attributes.symbolize_keys  # Whatever remains.
+        category:      attributes.delete(:category),
+        data:          data,
+        unique_args:   attributes.symbolize_keys  # Whatever remains.
       }
     end
   end
