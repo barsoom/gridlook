@@ -84,7 +84,7 @@ class Event < ActiveRecord::Base
   end
 
   def unique_args
-    super || {}
+    (super || {}).symbolize_keys
   end
 
   private

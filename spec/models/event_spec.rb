@@ -109,7 +109,14 @@ describe Event do
   end
 
   describe "#unique_args" do
-    it "fallback to an empty hash if nil" do
+    it "returns the unique arguments of an event with symbolized keys" do
+      unique_args = { "ip" => "192.254.122.68" }
+      event = Event.new(unique_args: unique_args)
+
+      expect(event.unique_args).to eq(ip: "192.254.122.68")
+    end
+
+    it "returns an empty hash" do
       event = Event.new(unique_args: nil)
 
       expect(event.unique_args).to eq({})
