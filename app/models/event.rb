@@ -83,6 +83,10 @@ class Event < ActiveRecord::Base
     EVENT_TYPES_WITH_DESCRIPTION.fetch(name.to_sym, "No description")
   end
 
+  def unique_args
+    super || {}
+  end
+
   private
 
   def increment_events_counter

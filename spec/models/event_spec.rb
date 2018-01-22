@@ -107,4 +107,12 @@ describe Event do
       expect(event.description).to eq("No description")
     end
   end
+
+  describe "#unique_args" do
+    it "fallback to an empty hash if nil" do
+      event = Event.new(unique_args: nil)
+
+      expect(event.unique_args).to eq({})
+    end
+  end
 end
