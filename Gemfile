@@ -7,7 +7,11 @@ gem "rails", "5.0.6"
 gem "gridhook"
 gem "slim"
 gem "kaminari"
-gem "pg"
+
+# Locked down due to Rails dependencies, this is fixed in master: https://github.com/rails/rails/commit/181836d894b0a198b150583fe4ac97dc70badcea.
+# So should be fixed with the next release of Rails.
+gem "pg", "< 1.0"
+
 gem "jquery-rails"
 gem "attr_extras"
 gem "jwt"
