@@ -2,6 +2,14 @@ source "https://rubygems.org"
 
 ruby "2.5.0"
 
+# Get rid of "git protocol is insecure" warnings by fetching "github: 'foo/bar'" gems with HTTPS instead.
+# Can be removed after bundler 2.0.
+# From: https://github.com/bundler/bundler/issues/4978#issuecomment-272248627
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
+
 gem "rails", "5.0.6"
 
 gem "gridhook"

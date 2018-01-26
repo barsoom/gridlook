@@ -1,11 +1,11 @@
 GIT
-  remote: git://github.com/barsoom/barsoom_utils.git
+  remote: https://github.com/barsoom/barsoom_utils.git
   revision: fe0de3b697337f7088e591a252a2a767b6b825d2
   specs:
     barsoom_utils (0.1.0)
 
 GIT
-  remote: git://github.com/barsoom/jwt_authentication.git
+  remote: https://github.com/barsoom/jwt_authentication.git
   revision: 5f68797cd1369528972a5c63419d05e84988f0e8
   specs:
     jwt_authentication (0.1)
