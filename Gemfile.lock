@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/barsoom/barsoom_utils.git
-  revision: fe0de3b697337f7088e591a252a2a767b6b825d2
+  revision: 03427f61b37819ac01f99b116f30884c963c3d67
   specs:
     barsoom_utils (0.1.0)
 
@@ -96,7 +96,7 @@ GEM
       activerecord
       kaminari-core (= 1.1.1)
     kaminari-core (1.1.1)
-    kgio (2.11.1)
+    kgio (2.11.2)
     lolcat (90.8.8)
       paint (~> 2.0.0)
       trollop (~> 2.1.2)
@@ -112,14 +112,14 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     multi_json (1.13.1)
-    newrelic_rpm (4.7.1.340)
+    newrelic_rpm (4.8.0.341)
     nio4r (2.2.0)
-    nokogiri (1.8.1)
+    nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     paint (2.0.1)
     pg (0.21.0)
     public_suffix (3.0.1)
-    rack (2.0.3)
+    rack (2.0.4)
     rack-cache (1.7.1)
       rack (>= 0.4)
     rack-test (0.6.3)
@@ -173,7 +173,7 @@ GEM
       rspec-expectations (~> 3.7.0)
       rspec-mocks (~> 3.7.0)
       rspec-support (~> 3.7.0)
-    rspec-support (3.7.0)
+    rspec-support (3.7.1)
     sass (3.5.5)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
