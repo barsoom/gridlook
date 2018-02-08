@@ -1,8 +1,3 @@
-dependencies:
-  # This pre step is just temporary until circleci install a newer version of rubygems. (>= 2.7.4 will make this unneeded)
-  pre:
-    - gem update --system
-
 test:
   override:
     - script/ci/pipeline.sh gridlook_tests "bundle exec rake"
