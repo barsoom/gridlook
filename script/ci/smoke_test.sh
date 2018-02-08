@@ -1,4 +1,3 @@
 #!/bin/sh
-# TODO: Add a real smoke test here, we already check revision elsewhere.
-revision=$(git rev-parse HEAD)
-curl -s "$APP_URL/revision" | grep $revision 1> /dev/null || exit 1
+# Ensure basic auth is enabled for /events.
+curl --verbose --silent --request POST --url "$APP_URL/events" 2>&1 | grep "HTTP/1.1 401 Unauthorized" > /dev/null || exit 1

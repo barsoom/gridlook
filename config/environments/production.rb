@@ -1,4 +1,20 @@
 Gridlook::Application.configure do
+  class EnableBasicAuthForGridhook < Rack::Auth::Basic
+    def call(env)
+      request_path = Rack::Request.new(env).path
+
+      if request_path == "/events"
+        super
+      else
+        @app.call(env)
+      end
+    end
+  end
+
+  config.middleware.use EnableBasicAuthForGridhook, "Secret" do |username, password|
+    [ username, password ] == [ ENV["HTTP_USER"], ENV["HTTP_PASSWORD"] ]
+  end
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
