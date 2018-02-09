@@ -44,6 +44,10 @@ test:
   adapter: postgresql
   encoding: unicode
   database: gridlook_test
+  <% if ENV["CIRCLECI"] %>
+  username: postgres
+  host: localhost
+  <% end %>
   pool: 5
 
 production:
