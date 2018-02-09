@@ -5,6 +5,7 @@ jobs:
     docker:
       - image: circleci/ruby:2.5.0-node # NOTE: keep in sync with Gemfile
 
+
       # NOTE: Keep versions in sync with dev.yml
       - image: postgres:9.5.5
         environment:
@@ -26,6 +27,11 @@ jobs:
           key: gridlook-gems-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
+
+      - run:
+          name: "Preparing database"
+          command: bash script/ci/prepare_database.sh
+
       - run:
           name: "Running tests"
           command: script/ci/pipeline.sh gridlook_tests "bundle exec rake"
