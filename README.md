@@ -137,10 +137,6 @@ To automate that, you may schedule `rake scheduler:remove_events` to run e.g. ho
 
 To be able to limit the number of events, just set `NUMBER_OF_MONTHS_TO_KEEP_EVENTS_FOR`. Example: `heroku config:set NUMBER_OF_MONTHS_TO_KEEP_EVENTS_FOR="10"  # Keep events that are created ten months ago or newer`.
 
-## TODO
-
-* Tests that auth is applied in prod
-
 ## Also see
 
 * [Postman](https://github.com/mynewsdesk/postman), backed by [keen.io](https://keen.io). May cost significantly more than Gridlook/Heroku Postgres for large event volumes.
