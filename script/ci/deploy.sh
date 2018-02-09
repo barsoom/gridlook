@@ -3,7 +3,7 @@
 set -e
 
 # Add config for heroku commands like "heroku config:set" and git based deploy over https
-echo -e "machine api.heroku.com\n  login $HEROKU_API_USER\n  password $HEROKU_API_TOKEN\nmachine code.heroku.com\n  login $HEROKU_API_USER\n  password $HEROKU_API_TOKEN\nmachine git.heroku.com\n  login $HEROKU_API_USER\n  password $HEROKU_API_TOKEN" > ~/.netrc
+echo -e "machine api.heroku.com\n  login $HEROKU_API_USER\n  password $HEROKU_API_KEY\nmachine code.heroku.com\n  login $HEROKU_API_USER\n  password $HEROKU_API_KEY\nmachine git.heroku.com\n  login $HEROKU_API_USER\n  password $HEROKU_API_KEY" > ~/.netrc
 chmod 0600 ~/.netrc
 
 wget https://cli-assets.heroku.com/branches/stable/heroku-linux-amd64.tar.gz 1> /dev/null
