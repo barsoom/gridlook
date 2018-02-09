@@ -1,0 +1,53 @@
+version: 2
+
+jobs:
+  test:
+    docker:
+      - image: circleci/ruby:2.5.0-node # NOTE: keep in sync with Gemfile
+
+      # NOTE: Keep versions in sync with dev.yml
+      - image: postgres:9.5.5
+        environment:
+          - POSTGRES_USER=postgres
+          - POSTGRES_DB=gridlook_test
+    steps:
+      - checkout:
+          name: "Checking out code"
+
+      # Bundle and cache gems for later builds
+      - restore_cache:
+          name: "Restoring gems cache"
+          key: gridlook-gems-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: "Bundling gems"
+          command: bundle check --path vendor/bundle || bundle install --path vendor/bundle
+      - save_cache:
+          name: "Saving gems cache"
+          key: gridlook-gems-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - run:
+          name: "Running tests"
+          command: script/ci/pipeline.sh gridlook_tests "bundle exec rake"
+  deploy:
+    docker:
+      - image: circleci/ruby:2.5.0-node # NOTE: keep in sync with Gemfile
+    steps:
+      - checkout:
+          name: "Checking out code"
+
+      - run:
+          name: "Deploying to production"
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              script/ci/pipeline.sh deploy_production "script/ci/deploy.sh $HEROKU_APP_NAME"
+            fi
+
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+      - test
+      - deploy:
+          requires:
+            - test
