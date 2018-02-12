@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/barsoom/barsoom_utils.git
-  revision: 03427f61b37819ac01f99b116f30884c963c3d67
+  revision: 9324efaac6a4a6cce428d9f4fd6d3c47a4a2ad10
   specs:
     barsoom_utils (0.1.0)
 
@@ -71,13 +71,13 @@ GEM
     diff-lcs (1.3)
     erubis (2.7.0)
     execjs (2.7.0)
-    ffi (1.9.18)
+    ffi (1.9.21)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     gridhook (0.2.0)
       multi_json (>= 1.3.0)
       rails (>= 3.1.0)
-    i18n (0.9.3)
+    i18n (0.9.4)
       concurrent-ruby (~> 1.0)
     jquery-rails (4.3.1)
       rails-dom-testing (>= 1, < 3)
@@ -100,7 +100,7 @@ GEM
     lolcat (90.8.8)
       paint (~> 2.0.0)
       trollop (~> 2.1.2)
-    loofah (2.1.1)
+    loofah (2.2.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
@@ -201,9 +201,9 @@ GEM
     tilt (2.0.8)
     timecop (0.9.1)
     trollop (2.1.2)
-    tzinfo (1.2.4)
+    tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.5)
+    uglifier (4.1.6)
       execjs (>= 0.3.0, < 3)
     unicorn (5.4.0)
       kgio (~> 2.6)
