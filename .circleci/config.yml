@@ -11,6 +11,7 @@ jobs:
         environment:
           - POSTGRES_USER=postgres
           - POSTGRES_DB=gridlook_test
+
     steps:
       - checkout:
           name: "Checking out code"
@@ -35,9 +36,11 @@ jobs:
       - run:
           name: "Running tests"
           command: script/ci/pipeline.sh gridlook_tests "bundle exec rake"
+
   deploy:
     docker:
-      - image: circleci/ruby:2.5.0-node # NOTE: keep in sync with Gemfile
+      - image: circleci/ruby:latest  # At least one deploy script needs ruby
+
     steps:
       - checkout:
           name: "Checking out code"
