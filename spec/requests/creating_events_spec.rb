@@ -3,7 +3,7 @@ require "rails_helper"
 describe "The webhook" do
   include Rack::Test::Methods
 
-  it "creates events with basic auth enabled" do
+  before do
     allow(ENV).to receive(:[]) do |key|
       case key
       when "HTTP_USER"
@@ -12,30 +12,25 @@ describe "The webhook" do
         "secret"
       end
     end
+  end
 
+  it "creates events with basic auth enabled" do
     expect {
       basic_authorize "foobar", "secret"
       post "/events", { email: "foo@example.com" }.to_json
     }.to change(Event, :count).by(1)
 
+    expect(last_response.status).to eq(200)  # Ok
     event = Event.last
     expect(event.email).to eq("foo@example.com")
   end
 
   it "does not create events when basic auth fails" do
-    allow(ENV).to receive(:[]) do |key|
-      case key
-      when "HTTP_USER"
-        "foobar"
-      when "HTTP_PASSWORD"
-        "wrongsecret"
-      end
-    end
-
-    basic_authorize "foobar", "secret"
-    post "/events", { email: "foo@example.com" }.to_json
+    expect {
+      basic_authorize "foobar", "wrongsecret"
+      post "/events", { email: "foo@example.com" }.to_json
+    }.not_to change(Event, :count)
 
     expect(last_response.status).to eq(401)  # Unauthorized
-    expect(Event.count).to eq(0)
   end
 end
