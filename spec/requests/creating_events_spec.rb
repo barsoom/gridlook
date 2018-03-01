@@ -26,16 +26,16 @@ describe "The webhook" do
     allow(ENV).to receive(:[]) do |key|
       case key
       when "HTTP_USER"
-        nil
+        "foobar"
       when "HTTP_PASSWORD"
-        nil
+        "wrongsecret"
       end
     end
 
     basic_authorize "foobar", "secret"
     post "/events", { email: "foo@example.com" }.to_json
 
+    expect(last_response.status).to eq(401)  # Unauthorized
     expect(Event.count).to eq(0)
   end
-
 end
