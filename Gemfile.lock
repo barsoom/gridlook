@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/barsoom/barsoom_utils.git
-  revision: 9324efaac6a4a6cce428d9f4fd6d3c47a4a2ad10
+  revision: 065ee9275256c980bf65d4dcf3d411ab4d8f6b64
   specs:
     barsoom_utils (0.1.0)
 
@@ -154,7 +154,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.19.0)
     rake (12.3.0)
-    rb-fsevent (0.10.2)
+    rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     rspec-core (3.7.1)
