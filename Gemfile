@@ -16,9 +16,7 @@ gem "gridhook"
 gem "slim"
 gem "kaminari"
 
-# Locked down due to Rails dependencies, this is fixed in master: https://github.com/rails/rails/commit/181836d894b0a198b150583fe4ac97dc70badcea.
-# So should be fixed with the next release of Rails.
-gem "pg", "< 1.0"
+gem "pg"
 
 gem "jquery-rails"
 gem "attr_extras"
