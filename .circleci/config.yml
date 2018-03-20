@@ -49,7 +49,7 @@ jobs:
           name: "Deploying to production"
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              script/ci/pipeline.sh deploy_production "script/ci/deploy.sh $HEROKU_APP_NAME"
+              script/ci/pipeline.sh gridlook_deploy "script/ci/deploy.sh $HEROKU_APP_NAME"
             fi
 
 workflows:
