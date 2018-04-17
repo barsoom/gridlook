@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
-ruby "2.5.0"
+# NOTE: keep in sync with .circleci/config
+ruby "2.5.1"
 
 # Get rid of "git protocol is insecure" warnings by fetching "github: 'foo/bar'" gems with HTTPS instead.
 # Can be removed after bundler 2.0.
