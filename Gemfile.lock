@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/barsoom/barsoom_utils.git
-  revision: 065ee9275256c980bf65d4dcf3d411ab4d8f6b64
+  revision: 7a0c368f335861c0f61b197eb7104b1401312d34
   specs:
     barsoom_utils (0.1.0)
 
