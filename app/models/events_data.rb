@@ -1,3 +1,11 @@
+# == Schema Information
+#
+# Table name: events_data
+#
+#  id           :bigint(8)        not null, primary key
+#  total_events :integer
+#
+
 class EventsData < ActiveRecord::Base
   def self.total_events
     EventsData.instance.total_events

@@ -30,8 +30,11 @@ group :test, :development do
   gem "capybara"
   gem "timecop"
   gem "barsoom_utils", github: "barsoom/barsoom_utils"
+
   # Needed for barsoom_utils since it doesn't require it's depenencies on it's own.
   gem "lolcat"
+
+  gem "annotate"
 end
 
 group :production do

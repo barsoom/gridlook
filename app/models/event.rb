@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id            :bigint(8)        not null, primary key
+#  category      :text
+#  data          :text
+#  email         :string
+#  happened_at   :datetime
+#  mailer_action :string
+#  name          :string
+#  unique_args   :text
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+# Indexes
+#
+#  index_events_on_email                                 (email)
+#  index_events_on_happened_at_and_id                    (happened_at,id)
+#  index_events_on_mailer_action_and_happened_at_and_id  (mailer_action,happened_at,id)
+#  index_events_on_name                                  (name)
+#
+
 class Event < ActiveRecord::Base
   # NOTE: We have a rake task (rake scheduler:remove_events) that uses delete_all, so if you introduce a relation that does not work with that
   # make sure that you change the rake task as well.
