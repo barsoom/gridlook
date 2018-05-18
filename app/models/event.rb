@@ -2,16 +2,17 @@
 #
 # Table name: events
 #
-#  id            :bigint(8)        not null, primary key
-#  category      :text
-#  data          :text
-#  email         :string
-#  happened_at   :datetime
-#  mailer_action :string
-#  name          :string
-#  unique_args   :text
-#  created_at    :datetime
-#  updated_at    :datetime
+#  id                       :bigint(8)        not null, primary key
+#  category                 :text
+#  data                     :text
+#  email                    :string
+#  happened_at              :datetime
+#  mailer_action            :string
+#  name                     :string
+#  unique_args              :text
+#  created_at               :datetime
+#  updated_at               :datetime
+#  sendgrid_unique_event_id :text
 #
 # Indexes
 #
