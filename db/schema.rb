@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_18_133150) do
+ActiveRecord::Schema.define(version: 2018_05_25_194727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2018_05_18_133150) do
     t.index ["happened_at", "id"], name: "index_events_on_happened_at_and_id"
     t.index ["mailer_action", "happened_at", "id"], name: "index_events_on_mailer_action_and_happened_at_and_id"
     t.index ["name"], name: "index_events_on_name"
+    t.index ["sendgrid_unique_event_id"], name: "index_events_on_sendgrid_unique_event_id"
   end
 
   create_table "events_data", id: :serial, force: :cascade do |t|

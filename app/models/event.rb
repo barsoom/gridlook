@@ -20,6 +20,7 @@
 #  index_events_on_happened_at_and_id                    (happened_at,id)
 #  index_events_on_mailer_action_and_happened_at_and_id  (mailer_action,happened_at,id)
 #  index_events_on_name                                  (name)
+#  index_events_on_sendgrid_unique_event_id              (sendgrid_unique_event_id)
 #
 
 class Event < ActiveRecord::Base
