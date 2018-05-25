@@ -29,6 +29,10 @@ function _deploy_to_heroku {
 
   git push heroku master
 
+  `git diff --exit-code HEAD $(heroku run 'echo "$GIT_COMMIT"' -a "$app_name") -- db/schema.rb` || {
+    _run_migrations
+  }
+
   heroku config:set GIT_COMMIT=$revision -a $app_name
 }
 
@@ -39,6 +43,11 @@ function _smoke_test {
   echo "Running smoke test."
 
   APP_URL=https://$app_name.herokuapp.com script/ci/smoke_test.sh
+}
+
+function _run_migrations {
+  (heroku run 'rake db:migrate && echo HEROKU_OK' -a $app_name | grep HEROKU_OK)
+    heroku restart -a $app_name  # So Rails picks up on column changes.
 }
 
 _main
