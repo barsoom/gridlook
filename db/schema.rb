@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2018_05_18_133150) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "events", force: :cascade do |t|
+  create_table "events", id: :serial, force: :cascade do |t|
     t.string "email"
     t.string "name"
     t.text "category"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2018_05_18_133150) do
     t.index ["name"], name: "index_events_on_name"
   end
 
-  create_table "events_data", force: :cascade do |t|
+  create_table "events_data", id: :serial, force: :cascade do |t|
     t.integer "total_events"
   end
 

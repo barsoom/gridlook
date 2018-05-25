@@ -2,7 +2,7 @@
 #
 # Table name: events
 #
-#  id                       :bigint(8)        not null, primary key
+#  id                       :integer          not null, primary key
 #  category                 :text
 #  data                     :text
 #  email                    :string
