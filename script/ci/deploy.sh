@@ -46,7 +46,7 @@ function _smoke_test {
 }
 
 function _run_migrations {
-  (heroku run 'rake db:migrate && echo HEROKU_OK' -a $app_name | grep HEROKU_OK)
+  heroku run 'rake db:migrate && echo HEROKU_OK' -a $app_name | grep HEROKU_OK
   heroku restart -a $app_name  # So Rails picks up on column changes.
 }
 
