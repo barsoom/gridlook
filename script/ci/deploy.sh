@@ -29,7 +29,7 @@ function _deploy_to_heroku {
 
   git push heroku master
 
-  `echo "DEBUG1: '$(heroku run 'echo "$GIT_COMMIT"' -a "$app_name")'`
+  `echo "DEBUG1: '$(heroku run 'echo "$GIT_COMMIT"' -a "$app_name")'"`
   echo "DEBUG2: '$(heroku run 'echo "$GIT_COMMIT"' -a "$app_name")'"
 
   `git diff --exit-code HEAD $(heroku run 'echo "$GIT_COMMIT"' -a "$app_name") -- db/schema.rb` || {
