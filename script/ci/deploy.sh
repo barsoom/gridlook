@@ -29,6 +29,8 @@ function _deploy_to_heroku {
 
   git push heroku master
 
+  echo "DEBUG app_name: $app_name"
+
   heroku config:set GIT_COMMIT=$revision -a $app_name
 }
 
