@@ -1,7 +1,7 @@
 [![CircleCi](https://circleci.com/gh/barsoom/gridlook.svg?style=shield)](https://circleci.com/gh/barsoom/gridlook)
 [![Dependency Status](https://gemnasium.com/badges/github.com/barsoom/gridlook.svg)](https://gemnasium.com/github.com/barsoom/gridlook)
 
-# gridlook
+# Gridlook
 
 Rails 5 app on Heroku to log SendGrid webhook events.
 
