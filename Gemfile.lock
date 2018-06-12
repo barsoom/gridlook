@@ -132,7 +132,7 @@ GEM
     pg (1.0.0)
     public_suffix (3.0.2)
     rack (2.0.5)
-    rack-cache (1.7.2)
+    rack-cache (1.8.0)
       rack (>= 0.4)
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
