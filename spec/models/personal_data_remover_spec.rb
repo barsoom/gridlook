@@ -8,7 +8,7 @@ describe PersonalDataRemover, ".call" do
 
     result = PersonalDataRemover.call("foo@EXAMPLE.com")
 
-    expect(result).to eq 1
+    expect(result).to eq "Removed 1 event(s)."
 
     expect(EventsData.total_events).to eq(0)
     expect { event.reload }.to raise_error(ActiveRecord::RecordNotFound)

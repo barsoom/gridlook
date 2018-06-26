@@ -5,6 +5,7 @@ class PersonalDataRemover
     removed_count = Event.email(email).delete_all
     EventsData.decrement(removed_count)
 
-    removed_count
+    # This string should be a report of what was done.
+    "Removed #{removed_count} event(s)."
   end
 end
