@@ -6,7 +6,9 @@ describe PersonalDataRemover, ".call" do
 
     expect(EventsData.total_events).to eq(1)
 
-    PersonalDataRemover.call("foo@EXAMPLE.com")
+    result = PersonalDataRemover.call("foo@EXAMPLE.com")
+
+    expect(result).to eq 1
 
     expect(EventsData.total_events).to eq(0)
     expect { event.reload }.to raise_error(ActiveRecord::RecordNotFound)

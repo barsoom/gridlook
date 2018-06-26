@@ -4,5 +4,7 @@ class PersonalDataRemover
   def self.call(email)
     removed_count = Event.email(email).delete_all
     EventsData.decrement(removed_count)
+
+    removed_count
   end
 end
