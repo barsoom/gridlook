@@ -15,6 +15,10 @@ class EventsData < ActiveRecord::Base
     EventsData.instance.increment!(:total_events)
   end
 
+  def self.decrement(by)
+    EventsData.instance.decrement!(:total_events, by)
+  end
+
   def self.instance
     EventsData.first_or_create(total_events: 0)
   end
