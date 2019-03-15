@@ -3,7 +3,7 @@ version: 2
 jobs:
   test:
     docker:
-      - image: auctionet/circleci:2.6.2-node # NOTE: keep in sync with Gemfile
+      - image: auctionet/circleci-ruby:2.6.2-node # NOTE: keep in sync with Gemfile
 
 
       # NOTE: Keep versions in sync with dev.yml
