@@ -2,7 +2,7 @@ tr.main-data id=dom_id(event)
   td
   td.email
     = link_to(event.email, safe_params.merge(email: event.email).except(:page))
-  td.happened-at = event.happened_at
+  td.happened-at = event.happened_at.strftime("%-d %b %Y at %H:%M:%S %Z")
   td.event
     - if event.mailer_action
       b = link_to(event.mailer_action, safe_params.merge(mailer_action: event.mailer_action).except(:page))
