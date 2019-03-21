@@ -19,7 +19,7 @@
     span.help-block
       small = "This is a cached list that is not updated automatically."
 
-  p= button_tag "Filter", type: :submit
+  p = button_tag "Filter", type: :submit
 
 - if filtered?(local_assigns)
   = button_to "Remove filters", {}, method: :get
