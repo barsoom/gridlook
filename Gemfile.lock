@@ -126,7 +126,7 @@ GEM
     minitest (5.11.3)
     multi_json (1.13.1)
     newrelic_rpm (6.5.0.357)
-    nio4r (2.3.1)
+    nio4r (2.4.0)
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
     optimist (3.0.0)
