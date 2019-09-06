@@ -3,7 +3,7 @@ version: 2
 jobs:
   test:
     docker:
-      - image: circleci/ruby:2.6.3-node # NOTE: keep in sync with Gemfile
+      - image: circleci/ruby:2.6.4-node # NOTE: keep in sync with Gemfile
 
 
       # NOTE: Keep versions in sync with dev.yml
