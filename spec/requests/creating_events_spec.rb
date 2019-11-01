@@ -4,14 +4,13 @@ describe "The webhook" do
   include Rack::Test::Methods
 
   before do
-    allow(ENV).to receive(:[]) do |key|
-      case key
-      when "HTTP_USER"
-        "foobar"
-      when "HTTP_PASSWORD"
-        "secret"
-      end
-    end
+    ENV["HTTP_USER"] = "foobar"
+    ENV["HTTP_PASSWORD"] = "secret"
+  end
+
+  after do
+    ENV["HTTP_USER"] = nil
+    ENV["HTTP_PASSWORD"] = nil
   end
 
   it "creates events with basic auth enabled" do

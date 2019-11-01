@@ -9,10 +9,15 @@ describe "JWT authenticate" do
     ENV["JWT_KEY"] = secret_key
     ENV["JWT_AUTH_MISSING_REDIRECT_URL"] = "http://example.com/request_jwt_auth?app=gridlook"
     ENV["JWT_ALGORITHM"] = "HS512"
+
+    ENV["HTTP_USER"] = "foobar"
+    ENV["HTTP_PASSWORD"] = "secret"
   end
 
   after do
     ENV["JWT_KEY"] = nil
+    ENV["HTTP_USER"] = nil
+    ENV["HTTP_PASSWORD"] = nil
   end
 
   it "can authenticate with JWT" do
@@ -32,9 +37,6 @@ describe "JWT authenticate" do
 
   it "does not authenticate with JWT when there it is not configured" do
     ENV["JWT_KEY"] = nil
-
-    allow(ENV).to receive(:fetch).with("HTTP_USER").and_return("foobar")
-    allow(ENV).to receive(:fetch).with("HTTP_PASSWORD").and_return("secret")
 
     token = build_token(secret: invalid_secret_key)
     visit "/?jwt_authentication_token=#{token}"

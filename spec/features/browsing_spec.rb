@@ -4,9 +4,15 @@ describe "Browsing" do
   before do
     Event.clear_cached_mailer_actions
 
-    allow(ENV).to receive(:fetch).with("HTTP_USER").and_return("foobar")
-    allow(ENV).to receive(:fetch).with("HTTP_PASSWORD").and_return("secret")
+    ENV["HTTP_USER"] = "foobar"
+    ENV["HTTP_PASSWORD"] = "secret"
+
     page.driver.browser.authorize("foobar", "secret")
+  end
+
+  after do
+    ENV["HTTP_USER"] = nil
+    ENV["HTTP_PASSWORD"] = nil
   end
 
   it "lists events" do
