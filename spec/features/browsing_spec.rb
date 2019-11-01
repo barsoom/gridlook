@@ -3,6 +3,10 @@ require "rails_helper"
 describe "Browsing" do
   before do
     Event.clear_cached_mailer_actions
+
+    allow(ENV).to receive(:fetch).with("HTTP_USER").and_return("foobar")
+    allow(ENV).to receive(:fetch).with("HTTP_PASSWORD").and_return("secret")
+    page.driver.browser.authorize("foobar", "secret")
   end
 
   it "lists events" do
@@ -119,6 +123,8 @@ describe "Browsing" do
     expect(page).not_to list_event(bar)
     expect(page).not_to list_event(baz)
   end
+
+  private
 
   def within_event(event, &block)
     within("#event_#{event.id}", &block)

@@ -32,7 +32,16 @@ describe "JWT authenticate" do
 
   it "does not authenticate with JWT when there it is not configured" do
     ENV["JWT_KEY"] = nil
+
+    allow(ENV).to receive(:fetch).with("HTTP_USER").and_return("foobar")
+    allow(ENV).to receive(:fetch).with("HTTP_PASSWORD").and_return("secret")
+
     token = build_token(secret: invalid_secret_key)
+    visit "/?jwt_authentication_token=#{token}"
+    expect(page.status_code).to eq(401)
+
+    # falls back to basic auth
+    page.driver.browser.authorize("foobar", "secret")
     visit "/?jwt_authentication_token=#{token}"
     expect(page.status_code).to eq(200)
     expect(page).to have_content("Gridlook")
