@@ -5,6 +5,6 @@ Gridlook::Application.routes.draw do
   # post "/events" is added by Gridhook. See config/initializers/gridhook.rb.
 
   # NOTE: If you change anything here, also check JwtAuthentication config in application.rb
-
-  root to: 'events#index'
+  get "/api/v1/events", to: "api#events"
+  root to: "events#index"
 end

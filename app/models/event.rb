@@ -58,8 +58,11 @@ class Event < ActiveRecord::Base
   end
 
   def self.recent(page, per)
-    order("happened_at DESC, id DESC").
-      page(page).per(per)
+    recent_first.page(page).per(per)
+  end
+
+  def self.recent_first
+    order("happened_at DESC, id DESC")
   end
 
   def self.oldest_time
