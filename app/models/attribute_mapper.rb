@@ -16,6 +16,8 @@ class AttributeMapper
         mailer_action: mailer_action(attributes[:category]),
         category:      attributes.delete(:category),
         data:          data,
+        user_type:     attributes.delete(:user_type),
+        user_id:       attributes.delete(:user_id),
         unique_args:   attributes.symbolize_keys  # Whatever remains.
       }
     end

@@ -6,7 +6,9 @@ describe AttributeMapper, "#to_hash" do
       event: "sent",
       email: "foo@bar.com",
       timestamp: "1322000095",
-      category: ["FooMailer#bar", "FooMailer"]
+      category: ["FooMailer#bar", "FooMailer"],
+      user_type: "Customer",
+      user_id: 123
     )
 
     actual = AttributeMapper.new(gridhook_event).to_hash
@@ -16,6 +18,8 @@ describe AttributeMapper, "#to_hash" do
     expect(actual[:happened_at]).to eq(Time.utc(2011,11,22, 22,14,55))
     expect(actual[:mailer_action]).to eq("FooMailer#bar")
     expect(actual[:category]).to eq(["FooMailer#bar", "FooMailer"])
+    expect(actual[:user_type]).to eq("Customer")
+    expect(actual[:user_id]).to eq(123)
   end
 
   # http://sendgrid.com/docs/API_Reference/Webhooks/event.html
