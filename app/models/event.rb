@@ -65,6 +65,10 @@ class Event < ActiveRecord::Base
     order("happened_at DESC, id DESC")
   end
 
+  def self.recent_last
+    order("happened_at ASC, id ASC")
+  end
+
   def self.oldest_time
     time = minimum(:happened_at)
     time && time.in_time_zone

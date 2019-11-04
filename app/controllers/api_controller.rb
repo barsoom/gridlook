@@ -13,7 +13,10 @@ class ApiController < ApplicationController
 
     events = Event.
       where(user_type: user_type, user_id: user_id).
-      recent_first
+      recent_first.
+      # Pagination is required. A single user can potentially generate thousands of events.
+      page(params[:page]).
+      per(params[:per_page] || 25)
 
     render json: events.map { |event|
       {

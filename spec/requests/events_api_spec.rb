@@ -37,7 +37,7 @@ describe "/api/v1/events" do
     post "/events", { user_type: "Customer", user_id: 456, email: "bar@example.com" }.to_json
     post "/events", { email: "baz@example.com" }.to_json
 
-    get "/api/v1/events", { user_type: "Customer", user_id: 123 }
+    get "/api/v1/events", { user_type: "Customer", user_id: 123, page: 1 }
 
     expect(last_response.status).to eq(200)
     expect(JSON.parse(last_response.body)).to eq([
@@ -61,6 +61,20 @@ describe "/api/v1/events" do
     expect(JSON.parse(last_response.body)).to eq({
       "error" => "You have to specify user_type and user_id."
     })
+  end
+
+  it "can paginate events" do
+    basic_authorize "foobar", "secret"
+
+    post "/events", { user_type: "Admin", user_id: 123, email: "admin@example.com", event: "processed" }.to_json
+    post "/events", { user_type: "Admin", user_id: 123, email: "admin@example.com", event: "delivered" }.to_json
+    post "/events", { user_type: "Admin", user_id: 123, email: "admin@example.com", event: "open" }.to_json
+
+    get "/api/v1/events", { user_type: "Admin", user_id: 123, page: 1, per_page: 2 }
+    expect(JSON.parse(last_response.body).map { |e| e.fetch("name") }).to eq([ "open", "delivered" ])
+
+    get "/api/v1/events", { user_type: "Admin", user_id: 123, page: 2, per_page: 2 }
+    expect(JSON.parse(last_response.body).map { |e| e.fetch("name") }).to eq([ "processed" ])
   end
 
   it "does not let you query events when auth fails" do
