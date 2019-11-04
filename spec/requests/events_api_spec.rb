@@ -15,6 +15,11 @@ describe "/api/v1/events" do
   end
 
   after do
+    ENV["JWT_SESSION_TIMEOUT_IN_SECONDS"] = nil
+    ENV["JWT_KEY"] = nil
+    ENV["JWT_AUTH_MISSING_REDIRECT_URL"] = nil
+    ENV["JWT_ALGORITHM"] = nil
+
     ENV["HTTP_USER"] = nil
     ENV["HTTP_PASSWORD"] = nil
   end
