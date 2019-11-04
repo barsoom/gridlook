@@ -29,8 +29,7 @@ describe "/api/v1/events" do
 
     post "/events", {
       event: "open",
-      user_type: "Customer",
-      user_id: 123,
+      user_id: "Customer:123",
       email: "foo@example.com",
       category: [ "FooMailer", "FooMailer#bar" ],
       other: "value"
@@ -38,8 +37,8 @@ describe "/api/v1/events" do
 
     event = Event.last
 
-    post "/events", { user_type: "Admin", user_id: 123, email: "admin@example.com" }.to_json
-    post "/events", { user_type: "Customer", user_id: 456, email: "bar@example.com" }.to_json
+    post "/events", { user_id: "Admin:123", email: "admin@example.com" }.to_json
+    post "/events", { user_id: "Customer:456", email: "bar@example.com" }.to_json
     post "/events", { email: "baz@example.com" }.to_json
 
     get "/api/v1/events", { user_type: "Customer", user_id: 123, page: 1 }
@@ -71,9 +70,9 @@ describe "/api/v1/events" do
   it "can paginate events" do
     basic_authorize "foobar", "secret"
 
-    post "/events", { user_type: "Admin", user_id: 123, email: "admin@example.com", event: "processed" }.to_json
-    post "/events", { user_type: "Admin", user_id: 123, email: "admin@example.com", event: "delivered" }.to_json
-    post "/events", { user_type: "Admin", user_id: 123, email: "admin@example.com", event: "open" }.to_json
+    post "/events", { user_id: "Admin:123", email: "admin@example.com", event: "processed" }.to_json
+    post "/events", { user_id: "Admin:123", email: "admin@example.com", event: "delivered" }.to_json
+    post "/events", { user_id: "Admin:123", email: "admin@example.com", event: "open" }.to_json
 
     get "/api/v1/events", { user_type: "Admin", user_id: 123, page: 1, per_page: 2 }
     expect(JSON.parse(last_response.body).map { |e| e.fetch("name") }).to eq([ "open", "delivered" ])

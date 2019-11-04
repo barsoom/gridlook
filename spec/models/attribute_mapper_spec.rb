@@ -7,8 +7,7 @@ describe AttributeMapper, "#to_hash" do
       email: "foo@bar.com",
       timestamp: "1322000095",
       category: ["FooMailer#bar", "FooMailer"],
-      user_type: "Customer",
-      user_id: 123
+      user_id: "Customer:123"
     )
 
     actual = AttributeMapper.new(gridhook_event).to_hash
