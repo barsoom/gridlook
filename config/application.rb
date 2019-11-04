@@ -25,6 +25,7 @@ module Gridlook
     # config.i18n.default_locale = :de
     config.middleware.insert_after ActionDispatch::Session::CookieStore, JwtAuthentication, ignore: [
       { method: "GET",  path: "/revision" },
+      { method: "GET",  path: "/api/*" },
       { method: "POST", path: "/events" },
     ]
   end

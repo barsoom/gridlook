@@ -6,9 +6,10 @@ class ApplicationController < ActionController::Base
   before_action :authenticate
 
   def authenticate
-    if ENV["JWT_KEY"]
-      # authenticate using jwt_authentication gem
-    elsif Rails.env.development?
+    # authenticated using jwt_authentication gem
+    return if ENV["JWT_KEY"] && session[:jwt_user_data]
+
+    if Rails.env.development?
       # no auth in dev by default
     else
       authenticate_with_basic_auth

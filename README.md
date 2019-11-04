@@ -19,7 +19,7 @@ Has some support for [outbound.io](https://www.outbound.io/) metadata.
 
 As long as you pass in `user_type` and `user_id` to `unique_args` in sendgrid headers you can get event data via this API.
 
-The API uses the same authentication as the regular app. Here's an example using basic auth.
+The API uses basic auth (configured with `HTTP_USER` and `HTTP_PASSWORD`).
 
     curl -u user:password http://example.com/api/v1/events?user_type=Customer&user_id=123
 

@@ -4,6 +4,12 @@ describe "/api/v1/events" do
   include Rack::Test::Methods
 
   before do
+    # Even if JWT is configured we still use basic auth for the API.
+    ENV["JWT_SESSION_TIMEOUT_IN_SECONDS"] = "600"
+    ENV["JWT_KEY"] = "test" * 20
+    ENV["JWT_AUTH_MISSING_REDIRECT_URL"] = "http://example.com/request_jwt_auth?app=gridlook"
+    ENV["JWT_ALGORITHM"] = "HS512"
+
     ENV["HTTP_USER"] = "foobar"
     ENV["HTTP_PASSWORD"] = "secret"
   end
