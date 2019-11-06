@@ -18,6 +18,7 @@ class ApiController < ApplicationController
       recent_first
 
     query = query.where(mailer_action: params[:mailer_action]) if params[:mailer_action].present?
+    query = query.where(name: params[:event_name]) if params[:event_name].present?
 
     events =
       query.
