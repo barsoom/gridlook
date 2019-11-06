@@ -13,9 +13,14 @@ class ApiController < ApplicationController
     # If we want to support other formats we should probably change how it's stored in the database.
     db_user_type, db_user_id = user_id.split(":")
 
-    events = Event.
+    query = Event.
       where(user_type: db_user_type, user_id: db_user_id).
-      recent_first.
+      recent_first
+
+    query = query.where(mailer_action: params[:mailer_action]) if params[:mailer_action].present?
+
+    events =
+      query.
       # Pagination is required. A single user can potentially generate thousands of events.
       page(params[:page]).
       per(params[:per_page] || 25)
