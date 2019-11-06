@@ -71,13 +71,13 @@ describe "/api/v1/events" do
     expect(JSON.parse(last_response.body).size).to eq(0)
 
     # Can filter by event name
-    get "/api/v1/events", { user_id: "Customer:123", page: 1, event_name: "" }
+    get "/api/v1/events", { user_id: "Customer:123", page: 1, name: "" }
     expect(JSON.parse(last_response.body).size).to eq(1)
 
-    get "/api/v1/events", { user_id: "Customer:123", page: 1, event_name: "open" }
+    get "/api/v1/events", { user_id: "Customer:123", page: 1, name: "open" }
     expect(JSON.parse(last_response.body).size).to eq(1)
 
-    get "/api/v1/events", { user_id: "Customer:123", page: 1, event_name: "delivered" }
+    get "/api/v1/events", { user_id: "Customer:123", page: 1, name: "delivered" }
     expect(JSON.parse(last_response.body).size).to eq(0)
 
     # Requires user_id
