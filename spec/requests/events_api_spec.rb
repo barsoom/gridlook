@@ -87,6 +87,10 @@ describe "/api/v1/events" do
     expect(JSON.parse(last_response.body)).to eq({
       "error" => "You have to specify user_id."
     })
+
+    # Can fetch a single event
+    get "/api/v1/events/#{event.id}"
+    expect(JSON.parse(last_response.body).fetch("email")).to eq("foo@example.com")
   end
 
   it "can paginate events" do

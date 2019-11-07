@@ -26,18 +26,27 @@ class ApiController < ApplicationController
       page(params[:page]).
       per(params[:per_page] || 25)
 
-    render json: events.map { |event|
-      {
-        id: event.id,
-        category: event.category,
-        data: event.data,
-        email: event.email,
-        happened_at: event.happened_at,
-        mailer_action: event.mailer_action,
-        name: event.name,
-        unique_args: event.unique_args,
-        sendgrid_unique_event_id: event.sendgrid_unique_event_id
-      }
+    render json: events.map { |event| serialize_event(event) }
+  end
+
+  def event
+    event = Event.find(params[:id])
+    render json: serialize_event(event)
+  end
+
+  private
+
+  def serialize_event(event)
+    {
+      id: event.id,
+      category: event.category,
+      data: event.data,
+      email: event.email,
+      happened_at: event.happened_at,
+      mailer_action: event.mailer_action,
+      name: event.name,
+      unique_args: event.unique_args,
+      sendgrid_unique_event_id: event.sendgrid_unique_event_id
     }
   end
 end

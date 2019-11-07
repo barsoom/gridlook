@@ -6,5 +6,6 @@ Gridlook::Application.routes.draw do
 
   # NOTE: If you change anything here, also check JwtAuthentication config in application.rb
   get "/api/v1/events", to: "api#events"
+  get "/api/v1/events/:id", to: "api#event"
   root to: "events#index"
 end

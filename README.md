@@ -25,6 +25,10 @@ The API uses basic auth (configured with `HTTP_USER` and `HTTP_PASSWORD`).
 
     curl -u user:password http://example.com/api/v1/events?user_id=Customer:123
 
+You can also get data about any event as long as you know it's id.
+
+    curl -u user:password http://example.com/api/v1/events/123
+
 ## Installation
 
 Check out this repo (clone it first if you like).
