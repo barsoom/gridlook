@@ -46,7 +46,8 @@ class ApiController < ApplicationController
       mailer_action: event.mailer_action,
       name: event.name,
       unique_args: event.unique_args,
-      sendgrid_unique_event_id: event.sendgrid_unique_event_id
+      sendgrid_unique_event_id: event.sendgrid_unique_event_id,
+      user_id: [ event.user_type, event.user_id ].join(":")
     }
   end
 end

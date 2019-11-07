@@ -57,7 +57,8 @@ describe "/api/v1/events" do
         "sendgrid_unique_event_id" => nil,
         "unique_args" => {
           "other" => "value"
-        }
+        },
+        "user_id" => "Customer:123"
       }
     ])
 
