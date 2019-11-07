@@ -5,6 +5,7 @@ describe "/api/v1/events" do
 
   before do
     # Even if JWT is configured we still use basic auth for the API.
+    # We do this because JWT overrides the auth completely when configured so basic auth isn't even an option then. It's also makes a bit of sense to access the API using API credentials rather than a user login.
     ENV["JWT_SESSION_TIMEOUT_IN_SECONDS"] = "600"
     ENV["JWT_KEY"] = "test" * 20
     ENV["JWT_AUTH_MISSING_REDIRECT_URL"] = "http://example.com/request_jwt_auth?app=gridlook"
