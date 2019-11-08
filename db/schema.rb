@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_31_184452) do
+ActiveRecord::Schema.define(version: 2019_11_07_152117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,11 +28,13 @@ ActiveRecord::Schema.define(version: 2019_10_31_184452) do
     t.text "sendgrid_unique_event_id"
     t.string "user_type"
     t.integer "user_id"
+    t.string "user_identifier"
     t.index ["email"], name: "index_events_on_email"
     t.index ["happened_at", "id"], name: "index_events_on_happened_at_and_id"
     t.index ["mailer_action", "happened_at", "id"], name: "index_events_on_mailer_action_and_happened_at_and_id"
     t.index ["name"], name: "index_events_on_name"
     t.index ["sendgrid_unique_event_id"], name: "index_events_on_sendgrid_unique_event_id"
+    t.index ["user_identifier"], name: "index_events_on_user_identifier"
     t.index ["user_type", "user_id"], name: "index_events_on_user_type_and_user_id"
   end
 
