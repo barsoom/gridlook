@@ -12,15 +12,16 @@ class AttributeMapper
 
     @hash ||= begin
       {
-        email:         attributes.delete(:email),
-        name:          attributes.delete(:event),
-        happened_at:   timestamp,
-        mailer_action: mailer_action(attributes[:category]),
-        category:      attributes.delete(:category),
-        data:          data,
-        user_id:       user_id(user_id_data),
-        user_type:     user_type(user_id_data),
-        unique_args:   attributes.symbolize_keys  # Whatever remains.
+        email:           attributes.delete(:email),
+        name:            attributes.delete(:event),
+        happened_at:     timestamp,
+        mailer_action:   mailer_action(attributes[:category]),
+        category:        attributes.delete(:category),
+        data:            data,
+        user_id:         user_id(user_id_data),
+        user_type:       user_type(user_id_data),
+        user_identifier: user_id_data,
+        unique_args:     attributes.symbolize_keys  # Whatever remains.
       }
     end
   end
