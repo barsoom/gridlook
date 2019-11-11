@@ -58,8 +58,7 @@ describe "/api/v1/events" do
         "unique_args" => {
           "other" => "value"
         },
-        "user_identifier" => "Customer:123",
-        "user_id" => "Customer:123"
+        "user_identifier" => "Customer:123"
       }
     ])
 
