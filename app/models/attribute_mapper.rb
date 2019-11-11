@@ -8,7 +8,7 @@ class AttributeMapper
   end
 
   def to_hash
-    user_id_data = attributes.delete(:user_id)
+    user_identifier = attributes.delete(:user_identifier) || attributes.delete(:user_id)
 
     @hash ||= begin
       {
@@ -18,27 +18,13 @@ class AttributeMapper
         mailer_action:   mailer_action(attributes[:category]),
         category:        attributes.delete(:category),
         data:            data,
-        user_id:         user_id(user_id_data),
-        user_type:       user_type(user_id_data),
-        user_identifier: user_id_data,
+        user_identifier: user_identifier,
         unique_args:     attributes.symbolize_keys  # Whatever remains.
       }
     end
   end
 
   private
-
-  def user_id(user_id_data)
-    return nil unless user_id_data
-
-    user_id_data.split(":").last.to_i
-  end
-
-  def user_type(user_id_data)
-    return nil unless user_id_data
-
-    user_id_data.split(":").first
-  end
 
   def timestamp
     # Preparsed.

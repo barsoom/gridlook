@@ -30,7 +30,7 @@ describe "/api/v1/events" do
 
     post "/events", {
       event: "open",
-      user_id: "Customer:123",
+      user_identifier: "Customer:123",
       email: "foo@example.com",
       category: [ "FooMailer", "FooMailer#bar" ],
       other: "value"
@@ -38,11 +38,11 @@ describe "/api/v1/events" do
 
     event = Event.last
 
-    post "/events", { user_id: "Admin:123", email: "admin@example.com" }.to_json
-    post "/events", { user_id: "Customer:456", email: "bar@example.com" }.to_json
+    post "/events", { user_identifier: "Admin:123", email: "admin@example.com" }.to_json
+    post "/events", { user_identifier: "Customer:456", email: "bar@example.com" }.to_json
     post "/events", { email: "baz@example.com" }.to_json
 
-    get "/api/v1/events", { user_id: "Customer:123", page: 1 }
+    get "/api/v1/events", { user_identifier: "Customer:123", page: 1 }
 
     expect(last_response.status).to eq(200)
     expect(JSON.parse(last_response.body)).to eq([
@@ -58,35 +58,36 @@ describe "/api/v1/events" do
         "unique_args" => {
           "other" => "value"
         },
+        "user_identifier" => "Customer:123",
         "user_id" => "Customer:123"
       }
     ])
 
     # Can filter by mailer_action
-    get "/api/v1/events", { user_id: "Customer:123", page: 1, mailer_action: "" }
+    get "/api/v1/events", { user_identifier: "Customer:123", page: 1, mailer_action: "" }
     expect(JSON.parse(last_response.body).size).to eq(1)
 
-    get "/api/v1/events", { user_id: "Customer:123", page: 1, mailer_action: "FooMailer#bar" }
+    get "/api/v1/events", { user_identifier: "Customer:123", page: 1, mailer_action: "FooMailer#bar" }
     expect(JSON.parse(last_response.body).size).to eq(1)
 
-    get "/api/v1/events", { user_id: "Customer:123", page: 1, mailer_action: "FooMailer#other" }
+    get "/api/v1/events", { user_identifier: "Customer:123", page: 1, mailer_action: "FooMailer#other" }
     expect(JSON.parse(last_response.body).size).to eq(0)
 
     # Can filter by event name
-    get "/api/v1/events", { user_id: "Customer:123", page: 1, name: "" }
+    get "/api/v1/events", { user_identifier: "Customer:123", page: 1, name: "" }
     expect(JSON.parse(last_response.body).size).to eq(1)
 
-    get "/api/v1/events", { user_id: "Customer:123", page: 1, name: "open" }
+    get "/api/v1/events", { user_identifier: "Customer:123", page: 1, name: "open" }
     expect(JSON.parse(last_response.body).size).to eq(1)
 
-    get "/api/v1/events", { user_id: "Customer:123", page: 1, name: "delivered" }
+    get "/api/v1/events", { user_identifier: "Customer:123", page: 1, name: "delivered" }
     expect(JSON.parse(last_response.body).size).to eq(0)
 
-    # Requires user_id
+    # Requires user_identifier
     get "/api/v1/events"
     expect(last_response.status).to eq(400)
     expect(JSON.parse(last_response.body)).to eq({
-      "error" => "You have to specify user_id."
+      "error" => "You have to specify user_identifier."
     })
 
     # Can fetch a single event
@@ -97,21 +98,21 @@ describe "/api/v1/events" do
   it "can paginate events" do
     basic_authorize "foobar", "secret"
 
-    post "/events", { user_id: "Admin:123", email: "admin@example.com", event: "processed" }.to_json
-    post "/events", { user_id: "Admin:123", email: "admin@example.com", event: "delivered" }.to_json
-    post "/events", { user_id: "Admin:123", email: "admin@example.com", event: "open" }.to_json
+    post "/events", { user_identifier: "Admin:123", email: "admin@example.com", event: "processed" }.to_json
+    post "/events", { user_id: "Admin:123", email: "admin@example.com", event: "delivered" }.to_json # user_id to ensure that works, wip
+    post "/events", { user_identifier: "Admin:123", email: "admin@example.com", event: "open" }.to_json
 
-    get "/api/v1/events", { user_id: "Admin:123", page: 1, per_page: 2 }
+    get "/api/v1/events", { user_identifier: "Admin:123", page: 1, per_page: 2 }
     expect(JSON.parse(last_response.body).map { |e| e.fetch("name") }).to eq([ "open", "delivered" ])
 
-    get "/api/v1/events", { user_id: "Admin:123", page: 2, per_page: 2 }
+    get "/api/v1/events", { user_identifier: "Admin:123", page: 2, per_page: 2 }
     expect(JSON.parse(last_response.body).map { |e| e.fetch("name") }).to eq([ "processed" ])
   end
 
   it "does not let you query events when auth fails" do
     basic_authorize "foobar", "wrongsecret"
 
-    get "/api/v1/events", { user_id: "Customer:123" }
+    get "/api/v1/events", { user_identifier: "Customer:123" }
 
     expect(last_response.status).to eq(401)
   end

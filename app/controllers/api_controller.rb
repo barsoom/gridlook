@@ -1,20 +1,17 @@
 class ApiController < ApplicationController
   def events
-    user_id = params[:user_id].presence
+    user_identifier = params[:user_identifier].presence || params[:user_id].presence
 
-    unless user_id
+    unless user_identifier
       render status: 400, json: {
-        error: "You have to specify user_id."
+        error: "You have to specify user_identifier."
       }
 
       return
     end
 
-    # If we want to support other formats we should probably change how it's stored in the database.
-    db_user_type, db_user_id = user_id.split(":")
-
     query = Event.
-      where(user_type: db_user_type, user_id: db_user_id).
+      where(user_identifier: user_identifier).
       recent_first
 
     query = query.where(mailer_action: params[:mailer_action]) if params[:mailer_action].present?
@@ -47,7 +44,8 @@ class ApiController < ApplicationController
       name: event.name,
       unique_args: event.unique_args,
       sendgrid_unique_event_id: event.sendgrid_unique_event_id,
-      user_id: [ event.user_type, event.user_id ].join(":")
+      user_identifier: event.user_identifier,
+      user_id: event.user_identifier,
     }
   end
 end
