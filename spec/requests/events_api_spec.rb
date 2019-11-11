@@ -99,13 +99,21 @@ describe "/api/v1/events" do
     basic_authorize "foobar", "secret"
 
     post "/events", { user_identifier: "Admin:123", email: "admin@example.com", event: "processed" }.to_json
-    post "/events", { user_id: "Admin:123", email: "admin@example.com", event: "delivered" }.to_json # user_id to ensure that works, wip
+    post "/events", { user_identifier: "Admin:123", email: "admin@example.com", event: "delivered" }.to_json
     post "/events", { user_identifier: "Admin:123", email: "admin@example.com", event: "open" }.to_json
 
     get "/api/v1/events", { user_identifier: "Admin:123", page: 1, per_page: 2 }
     expect(JSON.parse(last_response.body).map { |e| e.fetch("name") }).to eq([ "open", "delivered" ])
 
     get "/api/v1/events", { user_identifier: "Admin:123", page: 2, per_page: 2 }
+    expect(JSON.parse(last_response.body).map { |e| e.fetch("name") }).to eq([ "processed" ])
+  end
+
+  it "supports user_id since outbound uses that for user identity" do
+    basic_authorize "foobar", "secret"
+    post "/events", { user_id: "Admin:123", email: "admin@example.com", event: "processed" }.to_json
+
+    get "/api/v1/events", { user_identifier: "Admin:123", page: 1, per_page: 2 }
     expect(JSON.parse(last_response.body).map { |e| e.fetch("name") }).to eq([ "processed" ])
   end
 
