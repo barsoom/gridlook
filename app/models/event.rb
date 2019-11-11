@@ -26,6 +26,9 @@
 class Event < ActiveRecord::Base
   # NOTE: We have a rake task (rake scheduler:remove_events) that uses delete_all, so if you introduce a relation that does not work with that make sure that you change the rake task as well.
 
+  # Ignore user_id and user_type so we can remove them next deploy.
+  self.ignored_columns = %w(user_id user_type)
+
   serialize :data
   serialize :category
   serialize :unique_args
