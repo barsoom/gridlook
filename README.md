@@ -17,7 +17,7 @@ Has some support for [outbound.io](https://www.outbound.io/) metadata.
 
 ## API
 
-As long as you pass in `user_identifier` to `unique_args` in sendgrid headers you can get event data via this API.
+As long as you pass in `user_identifier` to `unique_args` in sendgrid headers you can get event data via this API (`user_id` is also supported due to outbound, but is saved as `user_identifier`).
 
 The API uses basic auth (configured with `HTTP_USER` and `HTTP_PASSWORD`).
 
