@@ -10,6 +10,7 @@
 #  mailer_action            :string
 #  name                     :string
 #  unique_args              :text
+#  user_identifier          :string
 #  created_at               :datetime
 #  updated_at               :datetime
 #  sendgrid_unique_event_id :text
@@ -21,6 +22,7 @@
 #  index_events_on_mailer_action_and_happened_at_and_id  (mailer_action,happened_at,id)
 #  index_events_on_name                                  (name)
 #  index_events_on_sendgrid_unique_event_id              (sendgrid_unique_event_id)
+#  index_events_on_user_identifier                       (user_identifier)
 #
 
 class Event < ActiveRecord::Base
