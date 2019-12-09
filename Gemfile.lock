@@ -127,7 +127,7 @@ GEM
     multi_json (1.14.1)
     newrelic_rpm (6.7.0.359)
     nio4r (2.5.2)
-    nokogiri (1.10.5)
+    nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
     optimist (3.0.0)
     paint (2.1.1)
