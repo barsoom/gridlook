@@ -63,7 +63,7 @@ GEM
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 14.0)
     arel (9.0.0)
-    attr_extras (6.2.1)
+    attr_extras (6.2.2)
     builder (3.2.4)
     capybara (3.30.0)
       addressable
