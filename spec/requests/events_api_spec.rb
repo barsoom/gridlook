@@ -25,7 +25,7 @@ describe "/api/v1/events" do
     ENV["HTTP_PASSWORD"] = nil
   end
 
-  it "can query events by user type/id and mailer_action" do
+  it "can query events by user type/id, mailer_action and associated_records" do
     basic_authorize "foobar", "secret"
 
     post "/events", {
@@ -82,6 +82,13 @@ describe "/api/v1/events" do
     expect(JSON.parse(last_response.body).size).to eq(1)
 
     get "/api/v1/events", { user_identifier: "Customer:123", page: 1, name: "delivered" }
+    expect(JSON.parse(last_response.body).size).to eq(0)
+
+    # Can filter by associated_record
+    get "/api/v1/events", { user_identifier: "Customer:123", page: 1, associated_record: "Item:666" }
+    expect(JSON.parse(last_response.body).size).to eq(1)
+
+    get "/api/v1/events", { user_identifier: "Customer:123", page: 1, associated_record: "Item:123" }
     expect(JSON.parse(last_response.body).size).to eq(0)
 
     # Requires user_identifier
