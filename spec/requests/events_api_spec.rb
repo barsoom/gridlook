@@ -33,7 +33,8 @@ describe "/api/v1/events" do
       user_identifier: "Customer:123",
       email: "foo@example.com",
       category: [ "FooMailer", "FooMailer#bar" ],
-      other: "value"
+      other: "value",
+      associated_records: '[ "Item:666" ]',
     }.to_json
 
     event = Event.last
@@ -58,7 +59,8 @@ describe "/api/v1/events" do
         "unique_args" => {
           "other" => "value"
         },
-        "user_identifier" => "Customer:123"
+        "associated_records" => [ "Item:666" ],
+        "user_identifier" => "Customer:123",
       }
     ])
 

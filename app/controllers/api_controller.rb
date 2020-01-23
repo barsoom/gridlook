@@ -45,6 +45,7 @@ class ApiController < ApplicationController
       unique_args: event.unique_args,
       sendgrid_unique_event_id: event.sendgrid_unique_event_id,
       user_identifier: event.user_identifier,
+      associated_records: event.associated_records,
     }
   end
 end
