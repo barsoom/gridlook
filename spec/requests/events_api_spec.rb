@@ -25,7 +25,7 @@ describe "/api/v1/events" do
     ENV["HTTP_PASSWORD"] = nil
   end
 
-  it "works" do
+  it "can filter by associated_record" do
     basic_authorize "foobar", "secret"
 
     post "/events", {
@@ -64,17 +64,33 @@ describe "/api/v1/events" do
       }
     ])
 
-    # Can filter by associated_record
-    puts "START"
     get "/api/v1/events", { page: 1, user_identifier: "Customer:123", associated_record: "Item:666" }
     expect(JSON.parse(last_response.body).size).to eq(1)
 
+    expect(JSON.parse(last_response.body)).to eq([
+      {
+        "category" => [ "FooMailer", "FooMailer#bar" ],
+        "data" => {},
+        "email" => "foo@example.com",
+        "happened_at" => JSON.parse(event.happened_at.to_json),
+        "id" => event.id,
+        "mailer_action" => "FooMailer#bar",
+        "name" => "open",
+        "sendgrid_unique_event_id" => nil,
+        "unique_args" => {
+          "other" => "value"
+        },
+        "associated_records" => [ "Item:666" ],
+        "user_identifier" => "Customer:123",
+      }
+    ])
+
     get "/api/v1/events", { page: 1, user_identifier: "Customer:123", associated_record: "Item:667" }
     expect(JSON.parse(last_response.body).size).to eq(0)
-    puts "END"
+
   end
 
-  xit "can query events by user type/id and mailer_action" do
+  it "can query events by user type/id and mailer_action" do
     basic_authorize "foobar", "secret"
 
     post "/events", {
@@ -83,7 +99,6 @@ describe "/api/v1/events" do
       email: "foo@example.com",
       category: [ "FooMailer", "FooMailer#bar" ],
       other: "value",
-      associated_records: '[ "Item:666" ]',
     }.to_json
 
     event = Event.last
@@ -108,8 +123,8 @@ describe "/api/v1/events" do
         "unique_args" => {
           "other" => "value"
         },
-        "associated_records" => [ "Item:666" ],
         "user_identifier" => "Customer:123",
+        "associated_records" => [],
       }
     ])
 
@@ -132,15 +147,6 @@ describe "/api/v1/events" do
 
     get "/api/v1/events", { user_identifier: "Customer:123", page: 1, name: "delivered" }
     expect(JSON.parse(last_response.body).size).to eq(0)
-    #
-    # Can filter by associated_record
-    puts "START"
-    get "/api/v1/events", { page: 1, associated_record: "Item:666" }
-    expect(JSON.parse(last_response.body).size).to eq(1)
-
-    get "/api/v1/events", { page: 1, associated_record: "Item:667" }
-    expect(JSON.parse(last_response.body).size).to eq(0)
-    puts "END"
 
     # Requires user_identifier
     get "/api/v1/events"
@@ -154,7 +160,7 @@ describe "/api/v1/events" do
     expect(JSON.parse(last_response.body).fetch("email")).to eq("foo@example.com")
   end
 
-  xit "can paginate events" do
+  it "can paginate events" do
     basic_authorize "foobar", "secret"
 
     post "/events", { user_identifier: "Admin:123", email: "admin@example.com", event: "processed" }.to_json
@@ -168,7 +174,7 @@ describe "/api/v1/events" do
     expect(JSON.parse(last_response.body).map { |e| e.fetch("name") }).to eq([ "processed" ])
   end
 
-  xit "supports user_id since outbound uses that for user identity" do
+  it "supports user_id since outbound uses that for user identity" do
     basic_authorize "foobar", "secret"
     post "/events", { user_id: "Admin:123", email: "admin@example.com", event: "processed" }.to_json
 
@@ -176,7 +182,7 @@ describe "/api/v1/events" do
     expect(JSON.parse(last_response.body).map { |e| e.fetch("name") }).to eq([ "processed" ])
   end
 
-  xit "does not let you query events when auth fails" do
+  it "does not let you query events when auth fails" do
     basic_authorize "foobar", "wrongsecret"
 
     get "/api/v1/events", { user_identifier: "Customer:123" }
