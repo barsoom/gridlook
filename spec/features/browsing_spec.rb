@@ -145,6 +145,7 @@ describe "Browsing" do
       email: email,
       name: name,
       happened_at: Time.now,
+      associated_records: [ "Item:123", "Item:456" ],
       unique_args: { hello: "there" },
       mailer_action: mailer,
       data: { url: "http://example.com/foo" }
