@@ -3,7 +3,7 @@
 # Table name: events
 #
 #  id                       :bigint(8)        not null, primary key
-#  associated_objects       :string           default([]), is an Array
+#  associated_records       :string           default([]), not null, is an Array
 #  category                 :text
 #  data                     :text
 #  email                    :string
@@ -18,7 +18,7 @@
 #
 # Indexes
 #
-#  index_events_on_associated_objects                    (associated_objects) USING gin
+#  index_events_on_associated_records                    (associated_records) USING gin
 #  index_events_on_email                                 (email)
 #  index_events_on_happened_at_and_id                    (happened_at,id)
 #  index_events_on_mailer_action_and_happened_at_and_id  (mailer_action,happened_at,id)

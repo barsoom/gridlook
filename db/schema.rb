@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 2020_01_22_132039) do
     t.string "mailer_action"
     t.text "sendgrid_unique_event_id"
     t.string "user_identifier"
-    t.string "associated_objects", default: [], array: true
-    t.index ["associated_objects"], name: "index_events_on_associated_objects", using: :gin
+    t.string "associated_records", default: [], null: false, array: true
+    t.index ["associated_records"], name: "index_events_on_associated_records", using: :gin
     t.index ["email"], name: "index_events_on_email"
     t.index ["happened_at", "id"], name: "index_events_on_happened_at_and_id"
     t.index ["mailer_action", "happened_at", "id"], name: "index_events_on_mailer_action_and_happened_at_and_id"
