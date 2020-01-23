@@ -49,9 +49,7 @@ class ApiController < ApplicationController
       unique_args: event.unique_args,
       sendgrid_unique_event_id: event.sendgrid_unique_event_id,
       user_identifier: event.user_identifier,
-
-      # Disabled 2020-01-23 to fix https://app.honeybadger.io/projects/250/faults/59891750 when Auctionet core was not deployable. Should be restored as soon as core has been deployed.
-      #associated_records: event.associated_records,
+      associated_records: event.associated_records,
     }
   end
 end

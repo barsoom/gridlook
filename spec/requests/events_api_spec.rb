@@ -59,7 +59,7 @@ describe "/api/v1/events" do
         "unique_args" => {
           "other" => "value"
         },
-        #"associated_records" => [ "Item:666" ],
+        "associated_records" => [ "Item:666" ],
         "user_identifier" => "Customer:123",
       }
     ])
