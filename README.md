@@ -13,6 +13,8 @@ It improves on SendGrid's email activity page in these ways:
 
 Uses [gridhook](https://github.com/injekt/gridhook) to parse the events.
 
+We treat this mostly as an internal tool, but open sourced in case it helps others. So documentation may be lacking. Feel free to ask questions.
+
 NOTE for Auctionet devs: As of 2020-01-22 we experimentally use [ex-gridhook](https://github.com/barsoom/ex_gridhook) to receive events more performantly. The [SendGrid event webhook](https://app.sendgrid.com/settings/mail_settings) might be configured to only post to ex-gridhook, and not to Gridlook. Gridlook is still used to view the event log.
 
 Has some support for [outbound.io](https://www.outbound.io/) metadata.
