@@ -9,6 +9,7 @@ class AttributeMapper
 
   def to_hash
     user_identifier = attributes.delete(:user_identifier) || attributes.delete(:user_id)
+    associated_records = attributes.delete(:associated_records)
 
     @hash ||= begin
       {
@@ -19,6 +20,7 @@ class AttributeMapper
         category:        attributes.delete(:category),
         data:            data,
         user_identifier: user_identifier,
+        associated_records: associated_records ? JSON.parse(associated_records) : [],
         unique_args:     attributes.symbolize_keys  # Whatever remains.
       }
     end
