@@ -34,6 +34,7 @@ class ApiController < ApplicationController
   private
 
   def serialize_event(event)
+    # NOTE: If you add, remove or rename keys, also change `GridlookEvent` in the Auctionet core repo to match.
     {
       id: event.id,
       category: event.category,
