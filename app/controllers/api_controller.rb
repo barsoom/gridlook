@@ -16,6 +16,11 @@ class ApiController < ApplicationController
 
     query = query.where(mailer_action: params[:mailer_action]) if params[:mailer_action].present?
     query = query.where(name: params[:name]) if params[:name].present?
+    query = query.where("(? = ANY (associated_records))") if params[:associated_record].present?
+
+    p params: params
+    p param: params[:associated_record]
+    puts query.to_sql
 
     events =
       query.
