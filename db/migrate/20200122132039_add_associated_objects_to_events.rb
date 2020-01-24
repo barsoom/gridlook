@@ -9,7 +9,10 @@ class AddAssociatedObjectsToEvents < ActiveRecord::Migration[6.0]
 
     add_column :events, :associated_records, :string, array: true, null: true
 
-    batch_size = 25_000
+    # Need "gin" for array indexes: https://stackoverflow.com/a/4059785/6962
+    add_index :events, :associated_records, using: "gin", algorithm: :concurrently
+
+    batch_size = 10_000
 
     # This will obviously miss new additions since the migration started, but that should be OK. Setting the column default later should fix them.
     min_id = Event.minimum(:id)
@@ -23,12 +26,9 @@ class AddAssociatedObjectsToEvents < ActiveRecord::Migration[6.0]
       to_id = from_id + batch_size - 1
       puts "Batch #{i} of #{batch_count}, records #{from_id} – #{to_id}."
 
-      Event.where(id: from_id..to_id).update_all(associated_records: [])
+      Event.where(id: from_id..to_id).where(associated_records: nil).update_all(associated_records: [])
     end
 
     change_column :events, :associated_records, :string, array: true, null: false, default: []
-
-    # Need "gin" for array indexes: https://stackoverflow.com/a/4059785/6962
-    add_index :events, :associated_records, using: "gin", algorithm: :concurrently
   end
 end
