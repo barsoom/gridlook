@@ -6,7 +6,7 @@ events_to_update = {
 }
 
 events_to_update.each do |mail, options|
-  scope = Event.where(mailer_action: mail).where("associated_records = '{}' OR associated_records IS NULL").order("id DESC")
+  scope = Event.where(mailer_action: mail).where("associated_records = '{}' OR associated_records IS NULL")
   scope.find_each.each do |event|
     id = options[:param].map { |param| JSON::parse(event.unique_args[:arguments])[param] }.compact.first
 
