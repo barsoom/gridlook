@@ -10,19 +10,12 @@ class ApiController < ApplicationController
       return
     end
 
-    query = Event.
+    events = Event.
       where(user_identifier: user_identifier).
-      recent_first
-
-    query = query.where(mailer_action: params[:mailer_action]) if params[:mailer_action].present?
-    query = query.where(name: params[:name]) if params[:name].present?
-
-    # This is an array column. The `? = ANY(associated_records)` syntax seems to always use a sequential scan and ignore the index on this column.
-    query = query.where("associated_records @> ?", "{\"#{params[:associated_record]}\"}") if params[:associated_record].present?
-
-    events =
-      query.
-      # Pagination is required. A single user can potentially generate thousands of events.
+      mailer_action(params[:mailer_action].presence).
+      named(params[:name].presence).
+      associated_record(params[:associated_record].presence).
+      recent_first.
       page(params[:page]).
       per(params[:per_page] || 25)
 
