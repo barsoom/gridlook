@@ -2,7 +2,7 @@ events_to_update = {
   "AskBuyerToCheckBankAccountMailer#build" => { param: [ "claim_id" ], model: "ReturnClaim" },
   "AskCustomerToProvideInsuranceClaimDetailsMailer#build" => { param: [ "insurance_claim_id", "claim_id" ], model: "InsuranceClaim" },
   "Seller::InformAboutUsedRightOfWithdrawalMailer#build" => { param: [ "claim_id" ], model: "ReturnClaim" },
-  "InformBuyerOfApprovedReturnClaimMaileri#build" => { param: [ "claim_id", "return_claim_id" ], model: "ReturnClaim" },
+  "InformBuyerOfApprovedReturnClaimMailer#build" => { param: [ "claim_id", "return_claim_id" ], model: "ReturnClaim" },
 }
 
 events_to_update.each do |mail, options|
