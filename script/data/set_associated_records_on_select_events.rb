@@ -1,3 +1,4 @@
+# These are Auctionet mailers. Adapt this script to your needs.
 events_to_update = {
   "AskBuyerToCheckBankAccountMailer#build" => { param: [ "claim_id" ], model: "ReturnClaim" },
   "AskCustomerToProvideInsuranceClaimDetailsMailer#build" => { param: [ "insurance_claim_id", "claim_id" ], model: "InsuranceClaim" },
