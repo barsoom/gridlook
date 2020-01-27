@@ -12,12 +12,11 @@ class ApiController < ApplicationController
 
     events = Event.
       where(user_identifier: user_identifier).
-      mailer_action(params[:mailer_action].presence).
-      named(params[:name].presence).
-      associated_record(params[:associated_record].presence).
-      recent_first.
-      page(params[:page]).
-      per(params[:per_page] || 25)
+      with_name_if_present(params[:name].presence).
+      with_mailer_action_if_present(params[:mailer_action].presence).
+      with_associated_record_if_present(params[:associated_record].presence).
+      page(params[:page]).per(params[:per_page] || 25).
+      recent_first
 
     render json: events.map { |event| serialize_event(event) }
   end

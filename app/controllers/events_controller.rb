@@ -9,10 +9,10 @@ class EventsController < ApplicationController
     page = params[:page] || 1
 
     filtered_events = Event.
-      email(email).
-      named(name).
-      mailer_action(mailer_action).
-      associated_record(associated_record)
+      with_email_if_present(email).
+      with_name_if_present(name).
+      with_mailer_action_if_present(mailer_action).
+      with_associated_record_if_present(associated_record)
 
     events_on_page = filtered_events.recent(page, PER_PAGE)
 

@@ -9,11 +9,13 @@ describe Event do
     end
   end
 
-  describe ".mailer_action" do
-    it "finds an mailer action" do
+  describe ".with_mailer_action_if_present" do
+    it "finds by mailer action" do
       foo = Event.create!(mailer_action: "FooMailer#baz")
+      bar = Event.create!(mailer_action: "BarMailer#baz")
 
-      expect(Event.mailer_action("FooMailer#baz")).to include(foo)
+      expect(Event.with_mailer_action_if_present("FooMailer#baz")).to contain_exactly(foo)
+      expect(Event.with_mailer_action_if_present(nil)).to contain_exactly(foo, bar)
     end
   end
 
@@ -36,11 +38,12 @@ describe Event do
     end
   end
 
-  describe ".email" do
+  describe ".with_email and .with_email_if_present" do
     it "is case insensitive" do
       foo = Event.create!(email: "foo@example.com")
 
-      expect(Event.email("FOO@example.com")).to include(foo)
+      expect(Event.with_email("FOO@example.com")).to include(foo)
+      expect(Event.with_email_if_present("FOO@example.com")).to include(foo)
     end
   end
 
