@@ -40,6 +40,9 @@ class Event < ActiveRecord::Base
   scope :named, -> name { name ? where(name: name) : all }
   scope :mailer_action, -> mailer_action { mailer_action ? where(mailer_action: mailer_action) : all }
 
+  # This is an array column. The alternative `? = ANY(associated_records)` syntax seems to always use a sequential scan and ignore the index on this column.
+  scope :associated_record, -> associated_record { associated_record ? where("associated_records @> ?","{\"#{associated_record}\"}") : all }
+
   after_create :increment_events_counter
 
   EVENT_TYPES_WITH_DESCRIPTION =

@@ -19,6 +19,14 @@
     span.help-block
       small = "This is a cached list that is not updated automatically."
 
+  / Only show it when a param has been provided. The idea is that we may link into a page with this filter applied, but are unlikely to enter things into this field directly.
+  - if associated_record
+    p
+      => label_tag :associated_record, "Associated record:"
+      = text_field_tag :associated_record, associated_record
+      span.help-block
+        small = "For example: <code>Item:123</code>".html_safe
+
   p = button_tag "Filter", type: :submit
 
 - if filtered?(local_assigns)
