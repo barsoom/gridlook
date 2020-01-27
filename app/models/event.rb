@@ -112,6 +112,11 @@ class Event < ActiveRecord::Base
     super(value.to_s.downcase.presence)
   end
 
+  # This can be removed when/if we change this DB column to be NOT NULL with a "[]" default. (Which may be slow and/or cause locking with big tables.)
+  def associated_records
+    super || []
+  end
+
   def smtp_id
     data[:"smtp-id"]
   end
