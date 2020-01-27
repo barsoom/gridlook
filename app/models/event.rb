@@ -36,12 +36,12 @@ class Event < ActiveRecord::Base
   serialize :unique_args
 
   # Since we save email downcased, we make sure that all email query data also are downcased.
-  scope :email, -> email { email ? where(email: email.downcase) : all }
-  scope :named, -> name { name ? where(name: name) : all }
-  scope :mailer_action, -> mailer_action { mailer_action ? where(mailer_action: mailer_action) : all }
+  scope :email, ->(email) { email ? where(email: email.downcase) : all }
+  scope :named, ->(name) { name ? where(name: name) : all }
+  scope :mailer_action, ->(mailer_action) { mailer_action ? where(mailer_action: mailer_action) : all }
 
   # This is an array column. The alternative `? = ANY(associated_records)` syntax seems to always use a sequential scan and ignore the index on this column.
-  scope :associated_record, -> associated_record { associated_record ? where("associated_records @> ?","{\"#{associated_record}\"}") : all }
+  scope :associated_record, ->(associated_record) { associated_record ? where("associated_records @> ?","{\"#{associated_record}\"}") : all }
 
   after_create :increment_events_counter
 
