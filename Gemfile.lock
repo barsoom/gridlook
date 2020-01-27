@@ -76,7 +76,7 @@ GEM
     annotate (3.0.3)
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 14.0)
-    attr_extras (6.2.2)
+    attr_extras (6.2.3)
     builder (3.2.4)
     capybara (3.30.0)
       addressable
