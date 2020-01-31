@@ -25,6 +25,8 @@ gem "jwt"
 gem "memoit"
 gem "jwt_authentication", github: "barsoom/jwt_authentication"
 
+gem "honeybadger"
+
 group :test, :development do
   gem "rspec-rails"
   gem "capybara"
