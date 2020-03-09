@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/barsoom/barsoom_utils.git
-  revision: 3e958afb77ed474da39ee9c34898841649dc8185
+  revision: 1e5ac8d72fbabcc690598b775c425fd9baa1cd62
   specs:
     barsoom_utils (0.1.0)
 
@@ -238,7 +238,7 @@ GEM
     websocket-extensions (0.1.4)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.2.2)
+    zeitwerk (2.3.0)
 
 PLATFORMS
   ruby
