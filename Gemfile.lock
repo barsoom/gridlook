@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/barsoom/barsoom_utils.git
-  revision: 1e5ac8d72fbabcc690598b775c425fd9baa1cd62
+  revision: 6fc67d60421d5c102bc88f53d033e4acad969b81
   specs:
     barsoom_utils (0.1.0)
 
@@ -203,7 +203,7 @@ GEM
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
     rspec-support (3.9.2)
-    sassc (2.2.1)
+    sassc (2.3.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
       railties (>= 4.0.0)
