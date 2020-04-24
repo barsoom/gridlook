@@ -3,9 +3,11 @@
 # the information in Gemfile (gems, ruby version, etc).
 
 dependencies:
-  node: "0.10.30"
+  node:
+    version: "8.10.0"
+    checksum: "57ddd302260f77fa6dfe774f97b196828ec7c08aafbbd8def5e527a388d18f2d"
 
 docker_services:
   postgres:
-    image: "postgres:9.5.5"
+    image: "postgres:9.6.16"
     options: "-e POSTGRES_PASSWORD=dev --publish 5432 -v $DATABASE_ROOT/gridlook/postgres:/var/lib/postgresql/data"
