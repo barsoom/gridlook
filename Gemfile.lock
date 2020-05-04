@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/barsoom/barsoom_utils.git
-  revision: 6fc67d60421d5c102bc88f53d033e4acad969b81
+  revision: b4fe9fdfdc642e1874a8d3a4bf0279782bf700d1
   specs:
     barsoom_utils (0.1.0)
 
@@ -186,8 +186,8 @@ GEM
     raindrops (0.19.1)
     rake (13.0.1)
     regexp_parser (1.7.0)
-    rspec-core (3.9.1)
-      rspec-support (~> 3.9.1)
+    rspec-core (3.9.2)
+      rspec-support (~> 3.9.3)
     rspec-expectations (3.9.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
@@ -202,7 +202,7 @@ GEM
       rspec-expectations (~> 3.9)
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
-    rspec-support (3.9.2)
+    rspec-support (3.9.3)
     sassc (2.3.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
