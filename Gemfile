@@ -27,6 +27,11 @@ gem "jwt_authentication", github: "barsoom/jwt_authentication"
 
 gem "honeybadger"
 
+group :development do
+  gem "rubocop" # See .rubocop.yml for configuration and docs.
+  gem "solargraph" # intellisense, diagnostics, inline documentation, and type checking
+end
+
 group :test, :development do
   gem "rspec-rails"
   gem "capybara"

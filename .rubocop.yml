@@ -1,0 +1,4 @@
+# To see or update the rules, modify it here and then update that gem in this repo: https://github.com/barsoom/barsoom_utils/blob/master/shared_rubocop.yml
+
+inherit_gem:
+  barsoom_utils: shared_rubocop.yml
