@@ -79,7 +79,7 @@ Gridlook::Application.configure do
   )
   config.action_dispatch.rack_cache = {
     metastore: client,
-    entitystore: client
+    entitystore: client,
   }
   config.public_file_server.headers = { "Cache-Control" => "public, max-age=2592000" }
 

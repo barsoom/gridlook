@@ -4,7 +4,7 @@ class ApiController < ApplicationController
 
     unless user_identifier
       render status: 400, json: {
-        error: "You have to specify user_identifier."
+        error: "You have to specify user_identifier.",
       }
 
       return

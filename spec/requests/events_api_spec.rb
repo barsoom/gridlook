@@ -57,11 +57,11 @@ describe "/api/v1/events" do
         "name" => "open",
         "sendgrid_unique_event_id" => nil,
         "unique_args" => {
-          "other" => "value"
+          "other" => "value",
         },
         "associated_records" => [ "Item:666" ],
         "user_identifier" => "Customer:123",
-      }
+      },
     ])
 
     # Can filter by mailer_action
@@ -95,7 +95,7 @@ describe "/api/v1/events" do
     get "/api/v1/events"
     expect(last_response.status).to eq(400)
     expect(JSON.parse(last_response.body)).to eq({
-      "error" => "You have to specify user_identifier."
+      "error" => "You have to specify user_identifier.",
     })
 
     # Can fetch a single event

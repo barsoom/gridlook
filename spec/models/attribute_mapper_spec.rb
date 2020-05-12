@@ -29,7 +29,7 @@ describe AttributeMapper, "#to_hash" do
       url: "x",
       reason: "x",
       type: "x",
-      status: "x"
+      status: "x",
     }
 
     gridhook_event = Gridhook::Event.new(attributes)

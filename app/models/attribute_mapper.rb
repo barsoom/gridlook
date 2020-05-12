@@ -21,7 +21,7 @@ class AttributeMapper
         data:            data,
         user_identifier: user_identifier,
         associated_records: associated_records ? JSON.parse(associated_records) : [],
-        unique_args:     attributes.symbolize_keys  # Whatever remains.
+        unique_args:     attributes.symbolize_keys,  # Whatever remains.
       }
     end
   end
