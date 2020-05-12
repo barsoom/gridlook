@@ -27,7 +27,7 @@ describe Event do
       Event.create!(mailer_action: "BarMailer#foo")
       Event.create!(mailer_action: "FooMailer#baz")
 
-      expect(Event.mailer_actions).to eq(["BarMailer#foo", "FooMailer#baz" ])
+      expect(Event.mailer_actions).to eq([ "BarMailer#foo", "FooMailer#baz" ])
     end
 
     it "ignores nil actions" do

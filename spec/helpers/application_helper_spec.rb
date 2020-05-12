@@ -7,12 +7,12 @@ describe ApplicationHelper do
     end
 
     it "shows an array in paragraphs" do
-      expect(inspect_value(["foo", "bar"])).to eq("<p>foo</p><p>bar</p>")
+      expect(inspect_value([ "foo", "bar" ])).to eq("<p>foo</p><p>bar</p>")
     end
 
     it "shows a hash value by value" do
-      actual = inspect_value({ foo: "1", bar: ["2"] })
-      expect(actual).to eq('<p>foo = 1</p>'+
+      actual = inspect_value({ foo: "1", bar: [ "2" ] })
+      expect(actual).to eq('<p>foo = 1</p>' +
                        '<p>bar = [&quot;2&quot;]</p>')
     end
 

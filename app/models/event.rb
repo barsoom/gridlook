@@ -43,7 +43,7 @@ class Event < ActiveRecord::Base
   scope :with_mailer_action_if_present, ->(mailer_action) { mailer_action ? where(mailer_action: mailer_action) : all }
 
   # This is an array column. The alternative `? = ANY(associated_records)` syntax seems to always use a sequential scan and ignore the index on this column.
-  scope :with_associated_record_if_present, ->(associated_record) { associated_record ? where("associated_records @> ?","{\"#{associated_record}\"}") : all }
+  scope :with_associated_record_if_present, ->(associated_record) { associated_record ? where("associated_records @> ?", "{\"#{associated_record}\"}") : all }
 
   after_create :increment_events_counter
 
