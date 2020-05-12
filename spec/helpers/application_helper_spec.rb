@@ -12,8 +12,8 @@ describe ApplicationHelper do
 
     it "shows a hash value by value" do
       actual = inspect_value({ foo: "1", bar: [ "2" ] })
-      expect(actual).to eq('<p>foo = 1</p>' +
-                       '<p>bar = [&quot;2&quot;]</p>')
+      expect(actual).to eq("<p>foo = 1</p>" +
+                       "<p>bar = [&quot;2&quot;]</p>")
     end
 
     it "inspects scalars" do

@@ -49,7 +49,7 @@ Gridlook::Application.configure do
   config.assets.digest = true
 
   # Version of your assets, change this if you want to expire all your assets.
-  config.assets.version = '1.0'
+  config.assets.version = "1.0"
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
@@ -61,7 +61,7 @@ Gridlook::Application.configure do
   # Be able to change level of logging in production (Heroku)
   # Use: heroku config:add LOG_LEVEL="debug" -> Set heroku logs to use debug level of logging
   config.logger = Logger.new(STDOUT)
-  config.logger.level = Logger.const_get(ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'INFO')
+  config.logger.level = Logger.const_get(ENV["LOG_LEVEL"] ? ENV["LOG_LEVEL"].upcase : "INFO")
 
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
