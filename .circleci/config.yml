@@ -7,7 +7,7 @@ jobs:
 
 
       # NOTE: Keep versions in sync with dev.yml
-      - image: postgres:9.5.5
+      - image: postgres:9.6.17
         environment:
           - POSTGRES_USER=postgres
           - POSTGRES_DB=gridlook_test
