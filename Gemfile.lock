@@ -92,7 +92,7 @@ GEM
     concurrent-ruby (1.1.6)
     crass (1.0.6)
     dalli (2.7.10)
-    diff-lcs (1.4)
+    diff-lcs (1.4.2)
     e2mmap (0.1.0)
     erubi (1.9.0)
     execjs (2.7.0)
@@ -225,7 +225,7 @@ GEM
       rubocop-ast (>= 0.0.3, < 1.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
-    rubocop-ast (0.0.3)
+    rubocop-ast (0.1.0)
       parser (>= 2.7.0.1)
     ruby-progressbar (1.10.1)
     sassc (2.4.0)
@@ -279,7 +279,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yard (0.9.25)
-    zeitwerk (2.3.0)
+    zeitwerk (2.3.1)
 
 PLATFORMS
   ruby
