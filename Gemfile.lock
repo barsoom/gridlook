@@ -128,7 +128,7 @@ GEM
       manpages (~> 0.6.1)
       optimist (~> 3.0.0)
       paint (~> 2.1)
-    loofah (2.6.0)
+    loofah (2.7.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
