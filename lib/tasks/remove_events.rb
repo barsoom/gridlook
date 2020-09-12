@@ -14,9 +14,10 @@ class RemoveEvents
     puts "Deleted events older than #{general_limit}"
 
     # Some events are less important than others
-    remove_events_for_scope(Event.where(mailer_action: "SavedSearchMailer#build").where("happened_at < ?", short_limit))
-    remove_events_for_scope(Event.where("unique_args LIKE '%campaign_id%'").where("happened_at < ?", short_limit))
-    puts "Deleted short-lived-events older than #{short_limit}"
+    remove_events_for_scope(Event.where(mailer_action: "SavedSearchMailer#build").where("happened_at < ?", saved_search_limit))
+    puts "Deleted saved searche events older than 2 months"
+    remove_events_for_scope(Event.where("unique_args LIKE '%campaign_id%'").where("happened_at < ?", campaign_limit))
+    puts "Deleted campaign events older than 1 month"
   end
 
   def remove_events_for_scope(scope)
@@ -33,8 +34,14 @@ class RemoveEvents
     event_retention_setting.to_i.months.ago
   end
 
-  def short_limit
-    (event_retention_setting.to_i / 2).months.ago
+  # Campaign email are very frequent and not very useful for the support
+  def campaign_limit
+    1.month.ago
+  end
+
+  # Saved searches are the 2nd most frequent mail and not very useful either
+  def saved_search_limit
+    2.months.ago
   end
 
   def event_retention_setting

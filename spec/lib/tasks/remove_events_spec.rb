@@ -30,8 +30,8 @@ describe RemoveEvents, ".call" do
     expect(EventsData.total_events).to eq(1)
   end
 
-  it "keeps campaign events half as long as normal events" do
-    limit = (limit_in_months.to_i / 2).months.ago
+  it "keeps campaign events for only one month" do
+    limit = 1.month.ago
 
     event_older_than_the_limit = Event.create!(unique_args: "campaign_id=1", happened_at: limit - 1.second)
     event_newer_than_the_limit = Event.create!(unique_args: "campaign_id=2", happened_at: limit + 1.second)
@@ -45,8 +45,8 @@ describe RemoveEvents, ".call" do
     expect(EventsData.total_events).to eq(1)
   end
 
-  it "keeps saved_search events half as long as normal events" do
-    limit = (limit_in_months.to_i / 2).months.ago
+  it "keeps saved_search events for only 2 months" do
+    limit = 2.months.ago
 
     event_older_than_the_limit = Event.create!(mailer_action: "SavedSearchMailer#build", happened_at: limit - 1.second)
     event_newer_than_the_limit = Event.create!(mailer_action: "SavedSearchMailer#build" , happened_at: limit + 1.second)
