@@ -30,19 +30,15 @@ describe RemoveEvents, ".call" do
     expect(EventsData.total_events).to eq(1)
   end
 
-  it "keeps campaign events for only one month" do
-    limit = 1.month.ago
-
-    event_older_than_the_limit = Event.create!(unique_args: "campaign_id=1", happened_at: limit - 1.second)
-    event_newer_than_the_limit = Event.create!(unique_args: "campaign_id=2", happened_at: limit + 1.second)
-    expect(Event.count).to eq(2)  # Sanity
-    expect(EventsData.total_events).to eq(2)  # Sanity
+  it "remove campaign events" do
+    event = Event.create!(unique_args: "campaign_id=1")
+    expect(Event.count).to eq(1)  # Sanity
+    expect(EventsData.total_events).to eq(1)  # Sanity
 
     RemoveEvents.call
 
-    expect { event_older_than_the_limit.reload }.to raise_error(ActiveRecord::RecordNotFound)
-    expect { event_newer_than_the_limit.reload }.not_to raise_error
-    expect(EventsData.total_events).to eq(1)
+    expect { event.reload }.to raise_error(ActiveRecord::RecordNotFound)
+    expect(EventsData.total_events).to eq(0)
   end
 
   it "keeps saved_search events for only 2 months" do

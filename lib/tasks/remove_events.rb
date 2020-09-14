@@ -15,9 +15,9 @@ class RemoveEvents
 
     # Some events are less important than others
     remove_events_for_scope(Event.where(mailer_action: "SavedSearchMailer#build").where("happened_at < ?", saved_search_limit))
-    puts "Deleted saved searche events older than 2 months"
-    remove_events_for_scope(Event.where("unique_args LIKE '%campaign_id%'").where("happened_at < ?", campaign_limit))
-    puts "Deleted campaign events older than 1 month"
+    puts "Deleted saved search events older than 2 months"
+    remove_events_for_scope(Event.where("unique_args LIKE '%campaign_id%'"))
+    puts "Deleted campaign events"
   end
 
   def remove_events_for_scope(scope)
