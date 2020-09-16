@@ -1,4 +1,4 @@
-[![CircleCi](https://circleci.com/gh/barsoom/gridlook.svg?style=shield)](https://circleci.com/gh/barsoom/gridlook)
+# 2020-09-16: Sorry, this project is no longer maintained. Feel free to make your own open-source fork
 
 # Gridlook
 
